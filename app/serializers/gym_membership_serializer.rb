@@ -1,3 +1,6 @@
 class GymMembershipSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :price
+
+  belongs_to :gym
+  belongs_to :user
 end

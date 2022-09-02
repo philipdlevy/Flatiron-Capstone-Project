@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 2022_09_02_192702) do
     t.string "name"
     t.text "bio"
     t.string "email"
+    t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_id"], name: "index_trainers_on_gym_id"
   end
 
   create_table "training_appointments", force: :cascade do |t|
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_09_02_192702) do
 
   add_foreign_key "gym_memberships", "gyms"
   add_foreign_key "gym_memberships", "users"
+  add_foreign_key "trainers", "gyms"
   add_foreign_key "training_appointments", "trainers"
   add_foreign_key "training_appointments", "users"
   add_foreign_key "users", "roles"
