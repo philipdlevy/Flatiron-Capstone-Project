@@ -1,0 +1,2 @@
+class GymMembershipsController < ApplicationController
+end
