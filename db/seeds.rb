@@ -1,6 +1,6 @@
 
-userRole = Role.create(id: 1, name: "user")
-adminRole = Role.create(id: 2, name: "admin")
+# userRole = Role.create(id: 1, name: "user")
+# adminRole = Role.create(id: 2, name: "admin")
 
 user = User.create(username: "whatever", role_id: 1)
 

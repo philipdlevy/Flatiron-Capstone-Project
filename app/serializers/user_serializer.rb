@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :age, :email, :address
 
-  has_one :role
+  belongs_to :role
 
   has_many :training_appointments
   has_many :trainers, through: :training_appointments
