@@ -2,10 +2,13 @@
 # userRole = Role.create(id: 1, name: "user")
 # adminRole = Role.create(id: 2, name: "admin")
 
-user = User.create(username: "whatever", role_id: 1)
+# user = User.create(username: "whatever", role_id: 1)
 
-admin = User.create(username: "joe", role_id: 2)
+# admin = User.create(username: "joe", role_id: 2)
 
+
+
+exercise1 = Exercise.create(name: "Pull up", info: "test", image_url: "https://hips.hearstapps.com/hmg-prod/images/f03pullup-ism-mh270917-1565989722.jpg?resize=480:*")
 
 
 # review1 = Review.create(title: "It's a review", body: "Lots of stuff goes here", rating: 3, item_id: 9, user_id: 1)
