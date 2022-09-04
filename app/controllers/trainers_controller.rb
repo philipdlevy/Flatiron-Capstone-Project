@@ -1,3 +1,5 @@
+require 'pry'
+
 class TrainersController < ApplicationController
 
     def index
@@ -11,6 +13,7 @@ class TrainersController < ApplicationController
     end
 
     def create
+        # binding.pry
         trainer = Trainer.create(params[:id])
         render json: trainer, status: :created
     end
@@ -31,6 +34,6 @@ class TrainersController < ApplicationController
     private 
 
     def trainer_params
-        params.permit(:name, :bio, :email)
+        params.permit(:name, :bio, :email, gym_id)
     end
 end

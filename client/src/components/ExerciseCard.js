@@ -59,11 +59,11 @@ function ExerciseCard({ exerciseObj }) {
         alt="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          Press arrow to display more info
-        </Typography>
       </CardContent>
       <CardActions disableSpacing>
+      <Typography>
+          How to perform:
+        </Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -75,9 +75,8 @@ function ExerciseCard({ exerciseObj }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>How to perform:</Typography>
-          <Typography paragraph>
-            Test2
+          <Typography paragraph color="text.secondary">
+            Pull yourself up
           </Typography>
         </CardContent>
       </Collapse>

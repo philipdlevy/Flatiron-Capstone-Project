@@ -1,10 +1,17 @@
 import React from 'react'
 
-import AddGym from './AddGym'
+import GymCard from './GymCard'
 
-function GymLister() {
+function GymLister({ gyms }) {
+
+  const gymArray = gyms.map((gym) => {
+    return <GymCard key={gym.id} gymObj={gym}/>
+  })
+
   return (
-    <div>GymLister</div>
+    <div>
+      {gymArray}
+    </div>
   )
 }
 

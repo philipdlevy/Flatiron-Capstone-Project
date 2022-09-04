@@ -11,7 +11,9 @@ import Navbar from "./components/Navbar.js";
 
 function App() {
   const [exercises, setExercises] = useState([])
-  console.log(exercises)
+  const [gyms, setGyms] = useState([])
+  const [trainers, setTrainers] = useState([])
+
 
   useEffect(() => {
     fetch("/exercises")
@@ -22,7 +24,25 @@ function App() {
     .catch((error) => alert(error))
   },[])
 
-  console.log(exercises)
+  useEffect(() => {
+    fetch("/gyms")
+    .then((resp) => resp.json())
+    .then((gyms) => {
+      setGyms(gyms)
+    })
+    .catch((error) => alert(error))
+  },[])
+
+  useEffect(() => {
+    fetch("/trainers")
+    .then((resp) => resp.json())
+    .then((trainers) => {
+      setTrainers(trainers)
+    })
+    .catch((error) => alert(error))
+  },[])
+
+
   return (
     <div >
       <Navbar />
@@ -31,6 +51,14 @@ function App() {
 
         <Route exact path="/exercises">
           <ExerciseLister exercises={exercises}/>
+        </Route>
+
+        <Route exact path="/gyms">
+          <GymLister gyms={gyms}/>
+        </Route>
+
+        <Route exact path="/trainers">
+          <TrainerLister trainers={trainers}/>
         </Route>
 
 

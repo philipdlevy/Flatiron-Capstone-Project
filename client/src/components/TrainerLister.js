@@ -1,8 +1,19 @@
 import React from 'react'
+import TrainerCard from './TrainerCard'
 
-function TrainerLister() {
+
+
+
+function TrainerLister({ trainers }) {
+
+  const trainerArray = trainers.map((trainer) => {
+    return <TrainerCard key={trainer.id} trainerObj={trainer} />
+  })
+
   return (
-    <div>TrainerLister</div>
+    <div>
+      {trainerArray}
+    </div>
   )
 }
 
