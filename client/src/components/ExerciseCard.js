@@ -41,14 +41,9 @@ function ExerciseCard({ exerciseObj }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: blue[500] }} >
             ❚█══█❚
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
         }
         title={name}
       />
@@ -56,7 +51,6 @@ function ExerciseCard({ exerciseObj }) {
         component="img"
         height="194"
         image={image_url}
-        alt="Paella dish"
       />
       <CardContent>
       </CardContent>
@@ -76,7 +70,7 @@ function ExerciseCard({ exerciseObj }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph color="text.secondary">
-            Pull yourself up
+            {info}
           </Typography>
         </CardContent>
       </Collapse>

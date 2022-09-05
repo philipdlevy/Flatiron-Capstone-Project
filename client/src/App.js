@@ -6,7 +6,10 @@ import ExerciseLister from "./components/ExerciseLister"
 import TrainerLister from "./components/TrainerLister"
 import HomePage from "./components/HomePage"
 import Navbar from "./components/Navbar.js";
-
+import BackgroundImg from "./components/BackgroundImg";
+import AddExercise from "./components/AddExercise";
+import AddTrainingAppointment from "./components/AddTrainingAppointment";
+import SignUp from "./components/SignUp";
 
 
 function App() {
@@ -61,6 +64,17 @@ function App() {
           <TrainerLister trainers={trainers}/>
         </Route>
 
+        <Route path="/exercises/new">
+          <AddExercise exercises={exercises} setExercises={setExercises}/>
+        </Route>
+
+        <Route  path="/trainingAppointment/new">
+          <AddTrainingAppointment />
+        </Route>
+
+        <Route path="/signup">
+          <SignUp />
+        </Route>
 
       </Switch>
     </div>

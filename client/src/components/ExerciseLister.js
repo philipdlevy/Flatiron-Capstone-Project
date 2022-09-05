@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import ExerciseCard from './ExerciseCard'
+
+import Button from '@mui/material/Button';
 
 function ExerciseLister({ exercises }) {
 
@@ -11,6 +13,9 @@ function ExerciseLister({ exercises }) {
 
   return (
     <div>
+      <Link to="exercises/new">
+        <Button variant="contained">Add New Exercise</Button>
+      </Link>
       {exercisesArray}
     </div>
   )

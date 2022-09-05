@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -10,11 +11,12 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Button from '@mui/material/Button'; 
 
 
 const ExpandMore = styled((props) => {
@@ -36,12 +38,11 @@ function TrainerCard({ trainerObj }) {
     setExpanded(!expanded);
   };
 
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
             ❚█══█❚
           </Avatar>
         }
@@ -61,6 +62,7 @@ function TrainerCard({ trainerObj }) {
       <CardActions disableSpacing>
         <Typography>
           Contact info:
+          
         </Typography>
         <ExpandMore
           expand={expanded}
@@ -74,6 +76,9 @@ function TrainerCard({ trainerObj }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
+          <Link to="/trainingAppointment/new">
+            <Button variant="contained">Book an appointment</Button>
+          </Link>
         </CardContent>
       </Collapse>
     </Card>
