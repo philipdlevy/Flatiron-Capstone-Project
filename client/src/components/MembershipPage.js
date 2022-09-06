@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 
 
-function SignUp() {
+function MembershipPage() {
   return (
     <Container>
       <Grid container spacing={5} paddingY={5}>
@@ -73,4 +73,4 @@ function SignUp() {
   );
 }
 
-export default SignUp
+export default MembershipPage;

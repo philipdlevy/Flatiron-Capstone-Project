@@ -43,7 +43,8 @@ function Login() {
               label="Password"
               type="password"
             />
-          <input type="submit"/>
+          {/* <input type="submit"/> */}
+          <Button variant="contained">Create Account</Button>
         </form>
       </Paper>
     </Box>

@@ -22,7 +22,7 @@ const pagesLinks = [
   {route: "/trainers", pageName: "Trainers"},
   {route: "/exercises", pageName: "Exercise List"},
   {route: "/gyms", pageName: "Open Gyms"},
-  {route: "/signup", pageName: "Memberships"}
+  {route: "/memberships", pageName: "Memberships"}
 ]
 
 const settings = ['Account', 'HomePage', 'My Training Appointments', 'Logout'];

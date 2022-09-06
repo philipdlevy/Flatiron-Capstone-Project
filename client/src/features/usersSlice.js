@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const usersSlice = createSlice({
     name: "users",
     initialState: {
@@ -7,6 +8,7 @@ const usersSlice = createSlice({
     },
     reducers: {
         userAdded(state, action) {
+            console.log("slicerr", state, action)
             state.entities.push({
                 text: action.payload
             })

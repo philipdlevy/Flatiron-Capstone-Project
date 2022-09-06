@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar.js";
 import BackgroundImg from "./components/BackgroundImg";
 import AddExercise from "./components/AddExercise";
 import AddTrainingAppointment from "./components/AddTrainingAppointment";
-import SignUp from "./components/SignUp";
+import MembershipPage from "./components/MembershipPage";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
 
@@ -74,15 +74,15 @@ function App() {
           <AddTrainingAppointment />
         </Route>
 
-        <Route path="/signup">
-          <SignUp />
+        <Route path="/memberships">
+          <MembershipPage />
         </Route>
 
         <Route path="/login">
           <Login />
         </Route>
 
-        <Route>
+        <Route path="/signup">
           <SignupForm />
         </Route>
 
