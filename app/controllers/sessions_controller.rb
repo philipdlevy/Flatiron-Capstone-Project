@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
             sessions[:user_id] = user.id
-            rendere josn: user, status: :created
+            rendere json: user, status: :created
         else
             render json: {error: {login: "Invalid username or password"}}, status: :unauthorized
         end
@@ -17,5 +17,6 @@ class SessionsController < ApplicationController
             head :no_content
         else
             render json: {errors: ["Unauthorized"]}, status: :unauthorized
+        end
     end
 end

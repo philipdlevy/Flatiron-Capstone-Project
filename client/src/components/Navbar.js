@@ -27,10 +27,6 @@ const pagesLinks = [
 
 const settings = ['Account', 'HomePage', 'My Training Appointments', 'Logout'];
 
-// const signinLink = [{
-//   route: "/login", pageName: "Login"
-// }]
-
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -174,6 +170,11 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
+          <Link to="/login">
+            <Typography>
+              log in
+            </Typography>
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>

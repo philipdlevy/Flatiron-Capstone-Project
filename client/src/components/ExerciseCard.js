@@ -50,6 +50,7 @@ function ExerciseCard({ exerciseObj }) {
       <CardMedia
         component="img"
         height="194"
+        // className='img'
         image={image_url}
       />
       <CardContent>

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
 
+    validates :username, uniqueness: true, presence: true
+
     belongs_to :role
 
     has_many :training_appointments

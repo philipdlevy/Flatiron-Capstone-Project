@@ -10,6 +10,8 @@ import BackgroundImg from "./components/BackgroundImg";
 import AddExercise from "./components/AddExercise";
 import AddTrainingAppointment from "./components/AddTrainingAppointment";
 import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import SignupForm from "./components/SignupForm";
 
 
 function App() {
@@ -74,6 +76,14 @@ function App() {
 
         <Route path="/signup">
           <SignUp />
+        </Route>
+
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <Route>
+          <SignupForm />
         </Route>
 
       </Switch>
