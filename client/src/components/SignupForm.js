@@ -46,6 +46,13 @@ function SignupForm() {
         }).then((resp) => {
             if (resp.ok) {
                 dispatch(userAdded(newUserData))
+                setNewUserData({
+                    username: "",
+                    password: "",
+                    age: "",
+                    email: "",
+                    address: ""
+                })
             }
         })
         .catch((error) => alert(error))
@@ -124,14 +131,14 @@ function SignupForm() {
                 value={newUserData.address}
                 onChange={handleChange}
               />
-            {/* <Button 
+            <Button 
                 variant="contained"
                 type="submit"
-                onSubmit={(e) => handleSubmit(e)}
+                // onSubmit={(e) => handleSubmit(e)}
                 >
                 Create account
-            </Button> */}
-            <input type="submit" />
+            </Button>
+            {/* <input type="submit" /> */}
           </form>
         </Paper>
       </Box>

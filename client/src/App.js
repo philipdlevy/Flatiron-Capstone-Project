@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import {Route, Switch} from 'react-router-dom'
 
 import GymLister from "./components/GymLister";
+import AddGym from "./components/AddGym"
 import ExerciseLister from "./components/ExerciseLister"
 import TrainerLister from "./components/TrainerLister"
 import HomePage from "./components/HomePage"
@@ -51,6 +52,7 @@ function App() {
   return (
     <div >
       <Navbar />
+      
 
       <Switch>
 
@@ -84,6 +86,10 @@ function App() {
 
         <Route path="/signup">
           <SignupForm />
+        </Route>
+
+        <Route path="/gyms/new">
+          <AddGym gyms={gyms} setGyms={setGyms}/>
         </Route>
 
       </Switch>

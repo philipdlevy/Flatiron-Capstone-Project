@@ -44,7 +44,12 @@ function Login() {
               type="password"
             />
           {/* <input type="submit"/> */}
-          <Button variant="contained">Create Account</Button>
+          <Button 
+            variant="contained"
+            type="submit"
+            >
+              Sign in
+          </Button>
         </form>
       </Paper>
     </Box>
