@@ -1,4 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const fetchUser = createAsyncThunk("user/login", () => {
+    return fetch("/users")
+        .then((response) => response.json())
+        .then((data) => console.log(data));   
+}) 
 
 
 const usersSlice = createSlice({
@@ -8,7 +14,6 @@ const usersSlice = createSlice({
     },
     reducers: {
         userAdded(state, action) {
-            console.log("slicerr", state, action)
             state.entities.push({
                 text: action.payload
             })

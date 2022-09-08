@@ -1,3 +1,5 @@
+require 'pry'
+
 class GymsController < ApplicationController
 
     def index
@@ -17,6 +19,7 @@ class GymsController < ApplicationController
     end
 
     def destroy
+        # binding.pry
         gym = Gym.find(params[:id])
         gym.destroy
         head :no_content

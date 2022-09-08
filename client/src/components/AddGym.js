@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useHistory} from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { gymAdded } from '../features/gymsSlice';
 
 
 import Box from '@mui/material/Box';
@@ -8,35 +10,44 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 
-function AddGym({ gyms, setGyms }) {
-  const[ gymAddressData, setGymAddressData] = useState("")
-  const[ gymPhoneNmber, setGymPhoneNmber] = useState("")
+function AddGym() {
+  const [newGymData, setNewGymData] = useState({
+    address: "",
+    phone_number: ""
+  })
+
+  const dispatch = useDispatch()
 
   const history = useHistory()
+
+  function handleChange(e) {
+    setNewGymData({
+      ...newGymData,
+      [e.target.name]: e.target.value
+    })
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
 
-    const newGymObj = {
-      address: gymAddressData,
-      phone_number: gymPhoneNmber
-    }
-
     fetch("/gyms", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json", 
       },
-      body: JSON.stringify(newGymObj),
+      body: JSON.stringify(newGymData)
     })
-    .then((resp) => resp.json())
-    .then((gymData) => {
-      setGyms([...gyms, gymData])
-      setGymAddressData("")
-      setGymPhoneNmber("")
-      history.push("/gyms")
+    .then((resp) => {
+      if (resp.ok) {
+        dispatch(gymAdded(newGymData))
+        setNewGymData({
+          address: "",
+          phone_number: ""
+        })
+        history.push("/gyms")
+      }
     })
-    .catch((error) => alert(error));
+    .catch((error) => alert(error))
   }
 
   return (
@@ -57,8 +68,8 @@ function AddGym({ gyms, setGyms }) {
             placeholder='Gym Address'
             type="text"
             name="address"
-            value={gymAddressData}
-            onChange={(e) => setGymAddressData(e.target.value)}
+            value={newGymData.address}
+            onChange={handleChange}
           />
           <Typography padding={1}>Gym Phone Nmber:</Typography>
           <TextField
@@ -67,8 +78,8 @@ function AddGym({ gyms, setGyms }) {
             label="required"
             type="integer"
             name="phone_number"
-            value={gymPhoneNmber}
-            onChange={(e) => setGymPhoneNmber(e.target.value)}
+            value={newGymData.phone_number}
+            onChange={handleChange}
           />
           <Box paddingY={1}>
             <Button

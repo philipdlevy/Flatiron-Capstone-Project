@@ -1,16 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
-// import Paper from '@mui/material/Paper';
+
 import Box from '@mui/material/Box';
-import { blue, grey } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 
 function Login() {
-  // const color = blue[900]
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const dispatch = useDispatch()
+  const history = useHistory()
+
   const color = grey[800]
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+
+  //   fetch("/login", {
+  //     method: "POST", 
+  //     headers: {
+  //         "Content-Type": "application/json", 
+  //     }, 
+  //     body: JSON.stringify({username, password})
+  //   })
+  //   .then((resp) => resp.json())
+  //   .then(())
+  //   .catch((error) => alert(error))
+  // }
 
   return (
     <Box
@@ -44,12 +66,14 @@ function Login() {
               type="password"
             />
           {/* <input type="submit"/> */}
-          <Button 
-            variant="contained"
-            type="submit"
-            >
-              Sign in
-          </Button>
+          <Box>
+            <Button 
+              variant="contained"
+              type="submit"
+              >
+                Sign in
+            </Button>
+          </Box>
         </form>
       </Paper>
     </Box>

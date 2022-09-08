@@ -1,4 +1,6 @@
 import React from 'react'
+import { gymRemoved } from "../features/gymsSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -8,16 +10,24 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 
-// const bull = (
-//     <Box
-//       component="span"
-//       sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-//     >
-//       •
-//     </Box>
-//   );
-
 function GymCard({ gymObj }) {
+
+  const dispatch = useDispatch()
+
+  function handleDelete(id) {
+    console.log(id)
+    fetch(`/gyms/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      dispatch(gymRemoved(gymObj.id))
+    })
+    .catch((error) => alert(error))
+  }
+
+  // function handleDelete() {
+  //     dispatch(gymRemoved(gymObj.id))
+  // }
 
   return (
     <Box padding={1}>
@@ -33,6 +43,14 @@ function GymCard({ gymObj }) {
               Address: {gymObj.address}
           </Typography>
         </CardContent>
+        <Button 
+          variant='contained' 
+          size='small'
+          onClick={() => handleDelete(gymObj.id)}
+          > 
+            Delete Gym
+          </Button>
+        <Button variant='contained' size='small'> Edit Gym</Button>
       </Card>
     </Box>
   );
