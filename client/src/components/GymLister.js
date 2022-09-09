@@ -19,7 +19,6 @@ function GymLister() {
   }, [dispatch])
 
 
-
   const gymArray = gymsArray.map((gym, index) => {
     return <GymCard key={index} gymObj={gym} />
   })

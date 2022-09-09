@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
+import { exerciseRemoved } from '../features/exercisesSlice';
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -16,6 +17,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Button } from '@mui/material';
 
 
 
@@ -40,6 +42,16 @@ function ExerciseCard({ exerciseObj }) {
     setExpanded(!expanded);
   };
 
+  function handleDelete(id) {
+    fetch(`/exercises/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      dispatch(exerciseRemoved(exerciseObj.id))
+    })
+    .catch((error) => alert(error))
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -53,7 +65,6 @@ function ExerciseCard({ exerciseObj }) {
       <CardMedia
         component="img"
         height="194"
-        // className='img'
         image={image_url}
       />
       <CardContent>
@@ -78,6 +89,14 @@ function ExerciseCard({ exerciseObj }) {
           </Typography>
         </CardContent>
       </Collapse>
+      <Button 
+          variant='contained' 
+          size='small'
+          onClick={() => handleDelete(exerciseObj.id)}
+          > 
+            Delete Exercise
+          </Button>
+        <Button variant='contained' size='small'> Edit Gym</Button>
     </Card>
   );
 }
