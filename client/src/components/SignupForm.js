@@ -55,8 +55,7 @@ function SignupForm() {
                 })
             }
         })
-        .catch((error) => alert(error))
-        
+        .catch((error) => alert(error))   
     }
 
     return (
@@ -134,11 +133,9 @@ function SignupForm() {
             <Button 
                 variant="contained"
                 type="submit"
-                // onSubmit={(e) => handleSubmit(e)}
                 >
                 Create account
             </Button>
-            {/* <input type="submit" /> */}
           </form>
         </Paper>
       </Box>

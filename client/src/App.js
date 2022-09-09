@@ -17,7 +17,6 @@ import SignupForm from "./components/SignupForm";
 
 function App() {
   const [exercises, setExercises] = useState([])
-  // const [gyms, setGyms] = useState([])
   const [trainers, setTrainers] = useState([])
 
 
@@ -29,15 +28,6 @@ function App() {
     })
     .catch((error) => alert(error))
   },[])
-
-  // useEffect(() => {
-  //   fetch("/gyms")
-  //   .then((resp) => resp.json())
-  //   .then((gyms) => {
-  //     setGyms(gyms)
-  //   })
-  //   .catch((error) => alert(error))
-  // },[])
 
   useEffect(() => {
     fetch("/trainers")

@@ -17,9 +17,6 @@ const gymsSlice = createSlice({
         },
         gymRemoved(state, action) {
             state.entities = state.entities.filter((gym) => gym.id !== action.payload);
-            console.log(state.entities)
-            // const index = state.entities.findIndex((gym) => gym.id === action.payload);
-            // state.entities.splice(index, 1)
         }
     },
     extraReducers: {

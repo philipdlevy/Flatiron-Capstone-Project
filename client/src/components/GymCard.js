@@ -25,10 +25,6 @@ function GymCard({ gymObj }) {
     .catch((error) => alert(error))
   }
 
-  // function handleDelete() {
-  //     dispatch(gymRemoved(gymObj.id))
-  // }
-
   return (
     <Box padding={1}>
       <Card sx={{ minWidth: 275, borderBottom: 1}}>

@@ -10,17 +10,21 @@ export const fetchUser = createAsyncThunk("user/login", () => {
 const usersSlice = createSlice({
     name: "users",
     initialState: {
+        user: {},
         entities: [],
     },
     reducers: {
         userAdded(state, action) {
-            state.entities.push({
-                text: action.payload
-            })
+            state.entities.push(action.payload)
+        },
+        loginUser(state, action) {
+            console.log(state, action)
+            state.user = action.payload
+            console.log(state.user)
         }
     }
 })
 
-export const { userAdded } = usersSlice.actions;
+export const { userAdded, loginUser } = usersSlice.actions;
 
 export default usersSlice.reducer;
