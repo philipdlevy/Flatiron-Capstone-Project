@@ -1,5 +1,7 @@
 import React from 'react'
 import AccountPage from './AccountPage';
+import { useSelector } from "react-redux";
+import { loginUser } from '../features/usersSlice';
 
 import {NavLink, Link} from 'react-router-dom'
 
@@ -45,6 +47,9 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
 
   return (
     <AppBar position="static">
@@ -177,9 +182,9 @@ function Navbar() {
           </Link>
         </Toolbar>
       </Container>
+      <Typography>{currentUser.username}</Typography>
     </AppBar>
   );
-  
 }
 
 export default Navbar;

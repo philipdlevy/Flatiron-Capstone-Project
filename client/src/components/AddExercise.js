@@ -1,36 +1,45 @@
 import React, { useState } from 'react'
 import {useHistory} from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { exerciseAdded } from '../features/exercisesSlice';
 
-function AddExercise({ exercises, setExercises }) {
-  const [nameData, setNameData] = useState("")
-  const [image_urlData, setImage_urlData] = useState("")
-  const [infoData, setInfoData] = useState("")
+function AddExercise() {
+  const [newExerciseData, setNewExerciseData] = useState({
+    name: "",
+    info: "", 
+    image_url: ""
+  })
 
   const history = useHistory()
+  const dispatch = useDispatch()
+
+  function handleChange(e) {
+    setNewExerciseData({
+      ...newExerciseData,
+      [e.target.name]: e.target.value
+    })
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    const newExerciseObj = {
-      name: nameData,
-      image_url: image_urlData,
-      info: infoData
-    }
 
     fetch("/exercises", {
       method: "POST", 
       headers: {
         "Content-Type": "application/json"
       }, 
-      body: JSON.stringify(newExerciseObj), 
+      body: JSON.stringify(newExerciseData), 
     })
-    .then((resp) => resp.json())
-    .then((exerciseData) => {
-      setExercises([...exercises, exerciseData])
-      history.push("/exercises")
-      setNameData("")
-      setImage_urlData("")
-      setInfoData("")
+    .then((resp) => {
+      if (resp.ok) {
+        dispatch(exerciseAdded(newExerciseData))
+        setNewExerciseData({
+          name: "",
+          info: "",
+          image_url: ""
+        })
+        history.push("/exercises")
+      }
     })
     .catch((error) => alert(error));
   }
@@ -40,24 +49,24 @@ function AddExercise({ exercises, setExercises }) {
       <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
         <label><strong>name</strong></label>
         <input 
-        value={nameData}
+        value={newExerciseData.name}
         type="text" 
-        name="title"
-        onChange={(e) => setNameData(e.target.value)}
+        name="name"
+        onChange={handleChange}
         /><br/>
         <label><strong>image</strong></label>
         <input 
-        value={image_urlData}
+        value={newExerciseData.image_url}
         type="text" 
         name="image_url"
-        onChange={(e) => setImage_urlData(e.target.value)}
+        onChange={handleChange}
         /><br/>
         <label><strong>info</strong></label>
         <textarea 
-        value={infoData}
+        value={newExerciseData.info}
         type="text" 
         name="info"
-        onChange={(e) => setInfoData(e.target.value)}
+        onChange={handleChange}
         /><br/>
         <input type="submit"></input>
       </form>

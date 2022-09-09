@@ -16,18 +16,18 @@ import SignupForm from "./components/SignupForm";
 
 
 function App() {
-  const [exercises, setExercises] = useState([])
+  // const [exercises, setExercises] = useState([])
   const [trainers, setTrainers] = useState([])
 
 
-  useEffect(() => {
-    fetch("/exercises")
-    .then((resp) => resp.json())
-    .then((exercises) => {
-      setExercises(exercises)
-    })
-    .catch((error) => alert(error))
-  },[])
+  // useEffect(() => {
+  //   fetch("/exercises")
+  //   .then((resp) => resp.json())
+  //   .then((exercises) => {
+  //     setExercises(exercises)
+  //   })
+  //   .catch((error) => alert(error))
+  // },[])
 
   useEffect(() => {
     fetch("/trainers")
@@ -38,8 +38,6 @@ function App() {
     .catch((error) => alert(error))
   },[])
 
-  
-
 
   return (
     <div >
@@ -48,7 +46,7 @@ function App() {
       <Switch>
 
         <Route exact path="/exercises">
-          <ExerciseLister exercises={exercises}/>
+          <ExerciseLister />
         </Route>
 
         <Route exact path="/gyms">
@@ -60,7 +58,7 @@ function App() {
         </Route>
 
         <Route path="/exercises/new">
-          <AddExercise exercises={exercises} setExercises={setExercises}/>
+          <AddExercise />
         </Route>
 
         <Route  path="/trainingAppointment/new">

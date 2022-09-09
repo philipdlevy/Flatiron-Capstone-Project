@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -32,6 +33,8 @@ const ExpandMore = styled((props) => {
 function ExerciseCard({ exerciseObj }) {
   const {id, name, info, image_url} = exerciseObj
   const [expanded, setExpanded] = React.useState(false);
+
+  const dispatch = useDispatch()
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
