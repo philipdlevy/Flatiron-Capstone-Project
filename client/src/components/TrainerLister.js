@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 
 function TrainerLister() {
 
+  
   const trainersArray = useSelector((state) => state.trainers.entities)
 
   const dispatch = useDispatch()
