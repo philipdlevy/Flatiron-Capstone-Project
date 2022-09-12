@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { exerciseRemoved } from '../features/exercisesSlice';
 
 import { styled } from '@mui/material/styles';

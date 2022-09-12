@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { trainerRemoved } from '../features/trainersSlice';
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -35,6 +37,18 @@ function TrainerCard({ trainerObj }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const dispatch = useDispatch()
+
+  function handleDelete(id) {
+    fetch(`/trainers/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      dispatch(trainerRemoved(trainerObj.id))
+    })
+    .catch((error) => alert(error))
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -77,6 +91,13 @@ function TrainerCard({ trainerObj }) {
           <Link to="/trainingAppointment/new">
             <Button variant="contained">Book an appointment</Button>
           </Link>
+            <Button 
+              variant="contained"
+              size='small'
+              onClick={() => handleDelete(trainerObj.id)}
+            >
+              Delete trainer
+            </Button>
         </CardContent>
       </Collapse>
     </Card>
