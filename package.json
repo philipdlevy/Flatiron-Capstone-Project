@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@mui/icons-material": "^5.10.3"
+    "@mui/icons-material": "^5.10.3",
+    "redux-persist": "^6.0.0"
   }
 }

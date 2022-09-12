@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { userAdded, fetchUsers } from '../features/usersSlice';
+import { userAdded } from '../features/usersSlice';
 
 
 import Box from '@mui/material/Box';
@@ -33,7 +33,6 @@ function SignupForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-
 
         fetch("/users", {
             method: "POST", 

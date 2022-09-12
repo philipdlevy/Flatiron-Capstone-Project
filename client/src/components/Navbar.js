@@ -182,7 +182,7 @@ function Navbar() {
           </Link>
         </Toolbar>
       </Container>
-      <Typography>{currentUser.username}</Typography>
+      <Typography paddingX={1}>Welcome, {currentUser.username}!</Typography>
     </AppBar>
   );
 }

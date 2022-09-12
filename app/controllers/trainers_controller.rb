@@ -14,7 +14,9 @@ class TrainersController < ApplicationController
 
     def create
         # binding.pry
-        trainer = Trainer.create(params[:id])
+        # gym = Gym.find(params[:id])
+
+        trainer = Trainer.create(trainer_params)
         render json: trainer, status: :created
     end
 
@@ -34,6 +36,6 @@ class TrainersController < ApplicationController
     private 
 
     def trainer_params
-        params.permit(:name, :bio, :email, gym_id)
+        params.permit(:name, :bio, :email, :gym_id)
     end
 end
