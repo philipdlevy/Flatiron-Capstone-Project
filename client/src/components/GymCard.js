@@ -1,6 +1,7 @@
 import React from 'react'
 import { gymRemoved } from "../features/gymsSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -11,6 +12,7 @@ import Typography from '@mui/material/Typography';
 
 
 function GymCard({ gymObj }) {
+  const {id, address, phone_number} = gymObj
 
   const dispatch = useDispatch()
 
@@ -43,10 +45,12 @@ function GymCard({ gymObj }) {
           variant='contained' 
           size='small'
           onClick={() => handleDelete(gymObj.id)}
-          > 
-            Delete Gym
-          </Button>
-        <Button variant='contained' size='small'> Edit Gym</Button>
+        > 
+          Delete Gym
+        </Button>
+        <Link to={`/gyms/${id}`}>
+          <Button variant='contained' size='small'> Edit Gym</Button>
+        </Link>
       </Card>
     </Box>
   );

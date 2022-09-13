@@ -17,6 +17,9 @@ const gymsSlice = createSlice({
         },
         gymRemoved(state, action) {
             state.entities = state.entities.filter((gym) => gym.id !== action.payload);
+        },
+        gymUpdated(state, action) {
+            const selectedGym = state.entities.find((gym) => gym.id === action.payload.id)
         }
     },
     extraReducers: {
@@ -30,6 +33,6 @@ const gymsSlice = createSlice({
     }
 })
 
-export const { gymAdded, gymRemoved } = gymsSlice.actions;
+export const { gymAdded, gymRemoved, gymUpdated } = gymsSlice.actions;
 
 export default gymsSlice.reducer;

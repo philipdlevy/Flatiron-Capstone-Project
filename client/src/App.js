@@ -13,6 +13,9 @@ import AddTrainingAppointment from "./components/AddTrainingAppointment";
 import MembershipPage from "./components/MembershipPage";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
+import EditExerciseForm from "./components/EditExerciseForm";
+import EditGymForm from "./components/EditGymForm";
+import EditTrainerForm from "./components/EditTrainerForm";
 
 
 function App() {
@@ -35,6 +38,10 @@ function App() {
           <AddExercise />
         </Route>
 
+        <Route path="/exercises/:id">
+          <EditExerciseForm />
+        </Route>
+
         <Route exact path="/gyms">
           <GymLister />
         </Route>
@@ -43,12 +50,20 @@ function App() {
           <AddGym />
         </Route> 
 
+        <Route path="/gyms/:id">
+          <EditGymForm />
+        </Route>
+
         <Route exact path="/trainers">
           <TrainerLister />
         </Route>
 
         <Route path="/trainers/new">
           <AddTrainer />
+        </Route>
+
+        <Route path="/trainers/:id">
+          <EditTrainerForm />
         </Route>
 
         <Route  path="/trainingAppointment/new">

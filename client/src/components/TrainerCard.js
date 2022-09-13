@@ -32,6 +32,7 @@ const ExpandMore = styled((props) => {
 
 
 function TrainerCard({ trainerObj }) {
+  const {id, name, bio, email} = trainerObj
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -91,13 +92,16 @@ function TrainerCard({ trainerObj }) {
           <Link to="/trainingAppointment/new">
             <Button variant="contained">Book an appointment</Button>
           </Link>
-            <Button 
-              variant="contained"
-              size='small'
-              onClick={() => handleDelete(trainerObj.id)}
-            >
-              Delete trainer
-            </Button>
+          <Button 
+            variant="contained"
+            size='small'
+            onClick={() => handleDelete(trainerObj.id)}
+          >
+            Delete trainer
+          </Button>
+          <Link to={`/trainers/${id}`}>
+            <Button variant='contained' size='small'>Edit Trainer</Button>
+          </Link>
         </CardContent>
       </Collapse>
     </Card>

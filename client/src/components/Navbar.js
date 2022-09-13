@@ -49,7 +49,7 @@ function Navbar() {
   };
 
   const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
+  // console.log(currentUser)
 
   return (
     <AppBar position="static">

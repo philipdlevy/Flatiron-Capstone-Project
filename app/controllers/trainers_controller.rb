@@ -23,7 +23,7 @@ class TrainersController < ApplicationController
     def update
         trainer = Trainer.find(params[:id])
         trainer.update(trainer_params)
-        redner json: trainer
+        render json: trainer
     end
 
     def destroy

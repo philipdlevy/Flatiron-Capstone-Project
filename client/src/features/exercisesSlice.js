@@ -17,6 +17,9 @@ const exercisesSlice = createSlice({
         },
         exerciseRemoved(state, action) {
             state.entities = state.entities.filter((exercise) => exercise.id !== action.payload);
+        },
+        exerciseUpdated(state, action) {
+            const selectedExercise = state.entities.find((exercise) => exercise.id === action.payload.id)
         }
     },
     extraReducers: {
@@ -30,6 +33,6 @@ const exercisesSlice = createSlice({
     }
 })
 
-export const { exerciseAdded, exerciseRemoved } = exercisesSlice.actions;
+export const { exerciseAdded, exerciseRemoved, exerciseUpdated } = exercisesSlice.actions;
 
 export default exercisesSlice.reducer;

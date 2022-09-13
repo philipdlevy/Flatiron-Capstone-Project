@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import { exerciseRemoved } from '../features/exercisesSlice';
+import { Link } from 'react-router-dom';
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -16,7 +17,6 @@ import { blue } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Button } from '@mui/material';
-
 
 
 const ExpandMore = styled((props) => {
@@ -88,13 +88,15 @@ function ExerciseCard({ exerciseObj }) {
         </CardContent>
       </Collapse>
       <Button 
-          variant='contained' 
-          size='small'
-          onClick={() => handleDelete(exerciseObj.id)}
-          > 
-            Delete Exercise
-          </Button>
-        <Button variant='contained' size='small'> Edit Gym</Button>
+        variant='contained' 
+        size='small'
+        onClick={() => handleDelete(exerciseObj.id)}
+      > 
+        Delete Exercise
+      </Button>
+      <Link to={`/exercises/${id}`}>
+        <Button variant='contained' size='small'> Edit Exercise</Button>
+      </Link>
     </Card>
   );
 }
