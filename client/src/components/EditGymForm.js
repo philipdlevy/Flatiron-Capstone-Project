@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory, useParams} from "react-router-dom"
-import { gymUpdated } from '../features/gymsSlice';
+import { gymUpdated, fetchGyms } from '../features/gymsSlice';
+
 
 function EditGymForm() {
     const [pickedObj, setPickedObj] = useState({
@@ -16,9 +17,13 @@ function EditGymForm() {
     const gymArray = useSelector((state) => state.gyms.entities)
 
     useEffect(() => {
+      if (!gymArray.length) {
+        dispatch(fetchGyms())
+      } else {
         const pickedGym = gymArray.find((gym) => gym.id == id)
         setPickedObj(pickedGym)
-    }, [id, gymArray])
+      }
+    }, [id, gymArray, dispatch])
 
     function handleChange(e) {
         setPickedObj({

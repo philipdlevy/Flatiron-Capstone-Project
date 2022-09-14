@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory, useParams} from "react-router-dom"
-import { exerciseUpdated } from '../features/exercisesSlice';
+import { exerciseUpdated, fetchExercises } from '../features/exercisesSlice';
 
 function EditExerciseForm() {
     const [pickedObj, setPickedObj] = useState({
@@ -17,9 +17,13 @@ function EditExerciseForm() {
     const exercisesArray = useSelector((state) => state.exercises.entities)
 
     useEffect(() => {
+      if (!exercisesArray.length) {
+        dispatch(fetchExercises())
+      } else {
         const pickedExercise = exercisesArray.find((exercise) => exercise.id == id)
         setPickedObj(pickedExercise)
-    }, [id, exercisesArray])
+      }
+    }, [id, exercisesArray, dispatch])
     
 
     function handleChange(e) {
