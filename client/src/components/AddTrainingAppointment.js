@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTrainers } from '../features/trainersSlice';
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -14,26 +15,32 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 
 function AddTrainingAppointment() {
   const [trainer, setTrainer] = useState("")
-  const [value, setValue] = useState(null);
-  const [time, setTime] = useState("")
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null)
 
+  const trainersArray = useSelector((state) => state.trainers.entities)
 
+  const dispatch = useDispatch()
 
-  // const [trainingAppointmentData, setTrainingAppointmentData] = useState({
-  //   date: "",
-  //   time: ""
-  // })
+  useEffect(() => {
+    dispatch(fetchTrainers())
+  }, [dispatch])
 
-  // const handleChange = (e) => {
-  //   setTrainingAppointmentData({
-  //     ...trainingAppointmentData,
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
+  const trainerArray = trainersArray.map((trainer) => {
+    return <MenuItem key={trainer.id} value={trainer.name}>{trainer.name}</MenuItem>
+  })
+
+  const handleChange = (event) => {
+    console.log(event.target.value)
+    setTrainer(event.target.value);
+    console.log(event.target.value)
+    console.log(trainer)
+  };
 
   return (
     <Box>
@@ -44,7 +51,7 @@ function AddTrainingAppointment() {
       }}
       >
         <Box sx={{ minWidth: 120 }}>
-          <Typography paddingX={1}>Select Trainer:</Typography>
+          <Typography padding={1}>Select Trainer:</Typography>
           <FormControl sx={{ m: 1, width: 230 }}>
             <InputLabel id="select-label">Trainer</InputLabel>
             <Select
@@ -52,51 +59,53 @@ function AddTrainingAppointment() {
               id="demo-simple-select"
               value={trainer}
               label="Trainer"
-              onChange={(e) => setTrainer(e.target.value)}
+              // onChange={(e) => setTrainer(e.target.value)}
+              onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
+              {/* <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem> */}
+              {trainerArray}
             </Select>
           </FormControl>
         </Box>
 
         <Box sx={{ minWidth: 120, marginLeft: 1 }}>
-          <Typography paddingX={1}>Select Date:</Typography>
+          <Typography padding={1}>Select Date:</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
             <DatePicker
               label="Date"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
+              value={date}
+              onChange={(newDate) => {
+                setDate(newDate);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </Box>
 
-        <Box sx={{ minWidth: 120 }}>
-          <Typography paddingX={1}>Select Time:</Typography>
-          <FormControl sx={{ m: 1, width: 230 }}>
-            <InputLabel id="select-label">Time</InputLabel>
-            <Select
-              labelId="select-label"
-              id="demo-simple-select"
-              value={time}
+        <Box sx={{ minWidth: 120, marginLeft: 1 }}>
+          <Typography padding={1}>Select Time:</Typography>
+          <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
+            <TimePicker
               label="Time"
-              onChange={(e) => setTime(e.target.value)}
-            >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-            </Select>
-          </FormControl>
-          <Button
-            variant="contained"
-            type="submit"
-          >
-            Add Appointment
-          </Button>
-        </Box>
+              value={time}
+              onChange={(newTime) => {
+                setTime(newTime);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
 
+          <Box paddingY={3}>
+            <Button
+              variant="contained"
+              type="submit"
+            >
+              Add Appointment
+            </Button>
+          </Box>
+
+        </Box>
       </Paper>
     </Box>
   )
