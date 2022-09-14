@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :roles, only: [:show, :index, :create, :destroy]
   resources :trainers, only: [:show, :index, :create, :destroy, :update]
   resources :users, only: [:show, :index, :create, :destroy]
-  resources :training_appointments, only: [:show, :index, :create]
+  resources :training_appointments, only: [:show, :index, :create, :destroy]
   resources :gym_memberships, only: [:show, :index, :create, :destroy]
 
   # Custom Routes
