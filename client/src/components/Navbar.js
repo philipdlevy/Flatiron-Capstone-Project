@@ -1,8 +1,7 @@
 import React from 'react'
 import AccountPage from './AccountPage';
-import { useSelector } from "react-redux";
-import { loginUser } from '../features/usersSlice';
-
+import { useSelector, useDispatch  } from "react-redux";
+import { loginUser, logoutUser } from '../features/usersSlice';
 import {NavLink, Link} from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar';
@@ -18,6 +17,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { red } from '@mui/material/colors';
 
 // const pages = ['Trainers', 'Exercise List', 'Open Gyms'];
 const pagesLinks = [
@@ -50,6 +50,39 @@ function Navbar() {
 
   const currentUser = useSelector((state) => state.users.user) 
   // console.log(currentUser)
+
+  const dispatch = useDispatch()
+
+  function onLogout() {
+    dispatch(logoutUser())
+  }
+
+  let loginLink;
+  let welcomeMessage;
+  let logoutButton;
+  if (!currentUser.id) {
+    loginLink = 
+    <Link to="/login">
+      <Typography>
+        log in
+      </Typography>
+    </Link>
+  } else {
+    logoutButton = 
+    <Button 
+      sx={{ bgcolor: red[500] }}
+      onClick={onLogout}
+    >
+      Logout
+    </Button>;
+
+    welcomeMessage =
+    <Typography 
+      paddingX={1}
+    >
+      Welcome, {currentUser.username}!
+    </Typography>
+  } 
 
   return (
     <AppBar position="static">
@@ -175,14 +208,23 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <Link to="/login">
+          {/* <Link to="/login">
             <Typography>
               log in
             </Typography>
-          </Link>
+          </Link> */}
+          {loginLink}
+        {/* <Button 
+          sx={{ bgcolor: red[500] }}
+          onClick={onLogout}
+        >
+          Logout
+        </Button> */}
+        {logoutButton}
         </Toolbar>
       </Container>
-      <Typography paddingX={1}>Welcome, {currentUser.username}!</Typography>
+      {welcomeMessage}
+      {/* <Typography paddingX={1}>Welcome, {currentUser.username}!</Typography> */}
     </AppBar>
   );
 }

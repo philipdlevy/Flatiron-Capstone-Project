@@ -47,6 +47,7 @@ function Login() {
         username: "",
         password: ""
       })
+      history.push("/")
     })
     .catch((error) => alert(error))
   }

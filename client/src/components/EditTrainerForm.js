@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory, useParams} from "react-router-dom"
 import { trainerUpdated } from '../features/trainersSlice';
+import { fetchTrainers } from "../features/trainersSlice"
 
 function EditTrainerForm() {
     const [pickedObj, setPickedObj] = useState({
@@ -19,10 +20,14 @@ function EditTrainerForm() {
     const trainerArray = useSelector((state) => state.trainers.entities)
 
     useEffect(() => {
-        const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
-        setPickedObj(pickedTrainer)
-        console.log(pickedTrainer)
-    }, [id, trainerArray])
+        if (!trainerArray.length) {
+            dispatch(fetchTrainers())
+        } else {
+            const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
+            setPickedObj(pickedTrainer)
+            console.log(pickedTrainer)
+        }
+    }, [id, trainerArray, dispatch])
 
     function handleChange(e) {
         setPickedObj({
