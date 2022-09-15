@@ -131,7 +131,7 @@ function AddTrainingAppointment() {
             <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
               <TimePicker
                 label="Time"
-                // inputFormat='h:mm AM/PM'
+                // inputFormat='hh:mm AM/PM'
                 value={timeData}
                 onChange={(newTime) => {
                   setTimeData(newTime);

@@ -14,8 +14,6 @@ class UserSerializer < ActiveModel::Serializer
   def trainers 
     # binding.pry
     trainers = object.trainers.uniq
-    # {id: object.id, name: object.name}
-    # allTrainers = Trainer.all
   end
 end
 
