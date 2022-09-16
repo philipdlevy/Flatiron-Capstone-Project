@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage"
 import Navbar from "./components/Navbar.js";
 import AddTrainingAppointment from "./components/AddTrainingAppointment";
 import MembershipPage from "./components/MembershipPage";
+import AddGymMembership from "./components/AddGymMembership";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
 import EditExerciseForm from "./components/EditExerciseForm";
@@ -71,8 +72,12 @@ function App() {
           <AddTrainingAppointment />
         </Route>
 
-        <Route path="/memberships">
+        <Route exact path="/memberships">
           <MembershipPage />
+        </Route>
+
+        <Route path="/memberships/new">
+          <AddGymMembership />
         </Route>
 
         <Route path="/login">

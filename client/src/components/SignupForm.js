@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { userAdded } from '../features/usersSlice';
-
+import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
@@ -129,12 +129,14 @@ function SignupForm() {
                 value={newUserData.address}
                 onChange={handleChange}
               />
-            <Button 
-                variant="contained"
-                type="submit"
-                >
-                Create account
-            </Button>
+            <Link to="/memberships/new">
+              <Button 
+                  variant="contained"
+                  type="submit"
+                  >
+                  Create account
+              </Button>
+            </Link>
           </form>
         </Paper>
       </Box>

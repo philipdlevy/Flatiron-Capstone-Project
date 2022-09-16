@@ -15,12 +15,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 function AddTrainer() {
-  // const [newTrainerData, setNewTrainerData] = useState({
-  //   name: "",
-  //   bio: "",
-  //   email: "",
-  //   gym: ""
-  // })
   const [nameData, setNameData] = useState("")
   const [bioData, setBioData] = useState("");
   const [emailData, setEmailData] = useState("")
@@ -37,13 +31,6 @@ function AddTrainer() {
   const gyms = gymArray.map((gym) => {
     return <MenuItem key={gym.id} value={gym}>{gym.address}</MenuItem>
   })
-
-  // function handleChange(e) {
-  //   setNewTrainerData({
-  //     ...newTrainerData,
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
 
   const handleNameChange = (event) => {
     setNameData(event.target.value);

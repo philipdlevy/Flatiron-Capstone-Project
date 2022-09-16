@@ -3,6 +3,7 @@ import usersReducer from "./features/usersSlice"
 import gymsReducer from "./features/gymsSlice"
 import exercisesReducer from "./features/exercisesSlice";
 import trainersReducer from "./features/trainersSlice";
+import membershipsReducer from "./features/membershipsSlice";
 
 import sessionStorage from 'redux-persist/lib/storage/session';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -11,7 +12,7 @@ import thunk from 'redux-thunk';
 const persistConfig = {
     key: 'root',
     storage: sessionStorage
-  }
+}
   
 const persistedReducer = persistReducer(persistConfig, usersReducer)
 
@@ -22,6 +23,7 @@ const store = configureStore({
         gyms: gymsReducer,  
         exercises: exercisesReducer,
         trainers: trainersReducer,
+        memberships: membershipsReducer,
 
         persistedReducer,
         middleware: [thunk]

@@ -131,14 +131,16 @@ function AddTrainingAppointment() {
             <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
               <TimePicker
                 label="Time"
-                // inputFormat='hh:mm AM/PM'
+                // inputFormat='hh:mm tt'
                 value={timeData}
                 onChange={(newTime) => {
                   setTimeData(newTime);
+                  console.log(newTime)
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
+          </Box>
 
             <Box paddingY={3}>
               <Button
@@ -148,7 +150,6 @@ function AddTrainingAppointment() {
                 Add Appointment
               </Button>
             </Box>
-          </Box>
         </form>
       </Paper>
     </Box>
