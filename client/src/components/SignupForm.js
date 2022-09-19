@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { userAdded } from '../features/usersSlice';
+import { userAdded, loginUser } from '../features/usersSlice';
 import { Link, useHistory } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -42,20 +42,35 @@ function SignupForm() {
       }, 
       body: JSON.stringify(newUserData)
     })
-    .then((resp) => {
-      if (resp.ok) { 
-        dispatch(userAdded(newUserData))
-        setNewUserData({
-          username: "",
-          password: "",
-          age: "",
-          email: "",
-          address: ""
-        })
-        history.push("/memberships/new")
-      }
+    .then((resp) => resp.json())
+    .then((user) => {
+      console.log(user)
+      dispatch(userAdded(user))
+      dispatch(loginUser(user))
+      setNewUserData({
+        username: "",
+        password: "",
+        age: "",
+        email: "",
+        address: ""
+      })
+      history.push("/memberships/new")
     })
-    .catch((error) => alert(error))   
+    .catch((error) => alert(error))
+    // .then((resp) => {
+    //   if (resp.ok) { 
+    //     dispatch(userAdded(newUserData))
+        // setNewUserData({
+        //   username: "",
+        //   password: "",
+        //   age: "",
+        //   email: "",
+        //   address: ""
+        // })
+    //     history.push("/memberships/new")
+    //   }
+    // })
+    // .catch((error) => alert(error))   
   }
 
   return (

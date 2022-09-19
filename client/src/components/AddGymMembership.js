@@ -85,7 +85,7 @@ function AddGymMembership() {
   const handleGymChange = (event) => {
     setGymData(event.target.value);
   };
-  
+
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -93,7 +93,7 @@ function AddGymMembership() {
     const newMembership = {
       membershipType: membershipData,
       price: priceData,
-      use_id: currentUser.id,
+      user_id: currentUser.id,
       gym_id: gymData.id
     }
 
@@ -109,7 +109,7 @@ function AddGymMembership() {
         setAllMemberships([...allMemberships, newMembership])
         console.log(newMembership)
       }
-      // history.push("/")
+      history.push("/")
     })
     .catch((error) => alert(error))
   }
