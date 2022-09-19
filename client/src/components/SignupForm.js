@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { userAdded } from '../features/usersSlice';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
@@ -23,6 +23,7 @@ function SignupForm() {
   })
 
   const dispatch = useDispatch();
+  const history = useHistory()
 
   function handleChange(e) {
     setNewUserData({
@@ -42,7 +43,7 @@ function SignupForm() {
       body: JSON.stringify(newUserData)
     })
     .then((resp) => {
-      if (resp.ok) {
+      if (resp.ok) { 
         dispatch(userAdded(newUserData))
         setNewUserData({
           username: "",
@@ -51,6 +52,7 @@ function SignupForm() {
           email: "",
           address: ""
         })
+        history.push("/memberships/new")
       }
     })
     .catch((error) => alert(error))   
@@ -128,14 +130,14 @@ function SignupForm() {
               value={newUserData.address}
               onChange={handleChange}
             />
-          <Link to="/memberships/new">
+          {/* <Link to="/memberships/new"> */}
             <Button 
                 variant="contained"
                 type="submit"
                 >
                 Create account
             </Button>
-          </Link>
+          {/* </Link> */}
         </form>
       </Paper>
     </Box>
