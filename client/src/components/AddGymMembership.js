@@ -17,22 +17,36 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { current } from '@reduxjs/toolkit';
 
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
 
 function AddGymMembership() {
+  const [allMemberships, setAllMemberships] = useState("")
   const [membershipData, setMembershipData] = useState("")
   const [priceData, setPriceData] = useState("")
   const [gymData, setGymData] = useState("")
 
+
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const gymArray = useSelector((state) => state.gyms.entities)
+  const currentUser = useSelector((state) => state.users.user) 
 
   useEffect(() => {
     dispatch(fetchGyms())
   }, [dispatch])
+
+  useEffect(() => {
+    fetch("/gym_memberships")
+    .then((resp) => resp.json())
+    .then((memberships) => {
+      setAllMemberships(memberships)
+    })
+    .catch((error) => alert(error))
+  }, [])
 
   const gymsList = gymArray.map((gym, index) => {
     return <MenuItem key={index} value={gym}>{gym.address}</MenuItem>
@@ -46,6 +60,16 @@ function AddGymMembership() {
   const handleMembershipChange = (event) => {
     setMembershipData(event.target.value);
     console.log(membershipData)
+    // if (membershipData == "Monthly Membership") {
+    //   setPriceData(39.99)
+    // } else if (membershipData == "Yearly Membership") {
+    //   setPriceData(400.00)
+    // } else {
+    //   setPriceData("")
+    // }
+  };
+
+  useEffect(() => {
     if (membershipData == "Monthly Membership") {
       setPriceData(39.99)
     } else if (membershipData == "Yearly Membership") {
@@ -53,7 +77,7 @@ function AddGymMembership() {
     } else {
       setPriceData("")
     }
-  };
+  }, [membershipData, priceData])
 
   const handlePriceChange = (event) => {
     setPriceData(event.target.value);
@@ -61,16 +85,45 @@ function AddGymMembership() {
   const handleGymChange = (event) => {
     setGymData(event.target.value);
   };
+  
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const newMembership = {
+      membershipType: membershipData,
+      price: priceData,
+      use_id: currentUser.id,
+      gym_id: gymData.id
+    }
+
+    fetch("/gym_memberships", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify(newMembership)
+    })
+    .then((resp) => {
+      if (resp.ok) {
+        setAllMemberships([...allMemberships, newMembership])
+        console.log(newMembership)
+      }
+      // history.push("/")
+    })
+    .catch((error) => alert(error))
+  }
+
 
   return (
     <Box>
       <Paper sx={{
         width: 350,
-        height: 450,
+        height: 410,
         ml: 3,
       }}
       > 
-        <form >
+        <form onSubmit={handleSubmit}>
         <Box sx={{ minWidth: 120 }}>
             <Typography padding={1}>Select Membership:</Typography>
             <FormControl sx={{ m: 1, width: 300 }}>
@@ -93,7 +146,7 @@ function AddGymMembership() {
               <InputLabel id="select-label"></InputLabel>
               <TextField
                 id="outlined-read-only-input"
-                label="Read Only"
+                label="Price"
                 value={priceData}
                 InputProps={{
                   readOnly: true,
@@ -120,6 +173,7 @@ function AddGymMembership() {
 
           <Box paddingY={3}>
             <Button
+              sx={{ ml: 1}}
               variant="contained"
               type="submit"
             >

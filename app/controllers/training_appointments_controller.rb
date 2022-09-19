@@ -3,6 +3,7 @@ require 'pry'
 class TrainingAppointmentsController < ApplicationController
 
     def index
+        # binding.pry
         training_appointments = TrainingAppointment.all
         render json: training_appointments
     end

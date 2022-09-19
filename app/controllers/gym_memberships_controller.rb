@@ -7,16 +7,22 @@ class GymMembershipsController < ApplicationController
         render json: gym_memberships
     end
 
-    def create(gym_membership_params)
-        binding.pry
-        membership = Gym_membership.create(gym_membership_params)
+    def create
+        # binding.pry
+        membership = GymMembership.create(gym_membership_params)
         render json: membership
+    end
+
+    def destroy
+        membership = GymMembership.find(params[:id])
+        membership.destroy
+        head :no_content
     end
 
 
     private
 
     def gym_membership_params
-        params.permit(:price, :user_id, :gym_id)
+        params.permit(:price, :membershipType, :user_id, :gym_id)
     end
 end

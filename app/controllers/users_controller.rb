@@ -3,6 +3,7 @@ require 'pry'
 class UsersController < ApplicationController
 
     def index
+        # binding.pry
         users = User.all
         render json: users
     end
