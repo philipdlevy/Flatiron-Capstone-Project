@@ -17,6 +17,7 @@ import { blue } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Button } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 
 const ExpandMore = styled((props) => {
@@ -51,53 +52,55 @@ function ExerciseCard({ exerciseObj }) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: blue[500] }} >
-            ❚█══█❚
-          </Avatar>
-        }
-        title={name}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={image_url}
-      />
-      <CardContent>
-      </CardContent>
-      <CardActions disableSpacing>
-      <Typography>
-          How to perform:
-        </Typography>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+    <Grid item xs={3}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: blue[500] }} >
+              ❚█══█❚
+            </Avatar>
+          }
+          title={name}
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={image_url}
+        />
         <CardContent>
-          <Typography paragraph color="text.secondary">
-            {info}
-          </Typography>
         </CardContent>
-      </Collapse>
-      <Button 
-        variant='contained' 
-        size='small'
-        onClick={() => handleDelete(exerciseObj.id)}
-      > 
-        Delete Exercise
-      </Button>
-      <Link to={`/exercises/${id}`}>
-        <Button variant='contained' size='small'> Edit Exercise</Button>
-      </Link>
-    </Card>
+        <CardActions disableSpacing>
+        <Typography>
+            How to perform:
+          </Typography>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph color="text.secondary">
+              {info}
+            </Typography>
+          </CardContent>
+        </Collapse>
+        <Button 
+          variant='contained' 
+          size='small'
+          onClick={() => handleDelete(exerciseObj.id)}
+        > 
+          Delete Exercise
+        </Button>
+        <Link to={`/exercises/${id}`}>
+          <Button variant='contained' size='small'> Edit Exercise</Button>
+        </Link>
+      </Card>
+    </Grid>
   );
 }
 

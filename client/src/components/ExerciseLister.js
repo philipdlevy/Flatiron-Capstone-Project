@@ -7,6 +7,8 @@ import EditExerciseForm from "./EditExerciseForm"
 
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 function ExerciseLister() {
   const [editing, setEditing] = useState(false)
@@ -28,12 +30,21 @@ function ExerciseLister() {
     return <EditExerciseForm />
   } else {
     return (
-      <Box paddingY={2}>
-        <Link to="exercises/new">
-          <Button variant="contained">Add New Exercise</Button>
-        </Link>
-        {displayedExercises}
-      </Box>
+      <div>
+
+        <Box paddingY={2}>
+          <Link to="exercises/new">
+            <Button variant="contained">Add New Exercise</Button>
+          </Link>
+        </Box>
+
+        <Container>
+          <Grid container spacing={2} paddingY={1}>
+            {displayedExercises}
+          </Grid>
+        </Container>
+        
+      </div>
     )
   }
 }
