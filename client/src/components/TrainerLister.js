@@ -7,7 +7,8 @@ import EditTrainerForm from "./EditTrainerForm";
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 function TrainerLister() {
   const [editing, setEditing] = useState(false)
@@ -28,12 +29,22 @@ function TrainerLister() {
     return <EditTrainerForm />
   } else {
     return (
-      <Box paddingY={2}>
-        <Link to="/trainers/new">
-          <Button variant="contained">Add new trainer</Button>
-        </Link>
-        {trainerArray}
-      </Box>
+      <div>
+
+        <Box paddingY={2}>
+          <Link to="/trainers/new">
+            <Button variant="contained">Add new trainer</Button>
+          </Link>
+        </Box>
+        
+        <Container>
+
+          <Grid container spacing={2} paddingY={1}>
+            {trainerArray}
+          </Grid>
+
+        </Container>
+      </div>
     )
   }
 }

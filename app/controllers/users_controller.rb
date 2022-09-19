@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     end
 
     def show
+        # When looking at a single user on localhost3000, 
+        # only gets the user who is signed in or was. fix this
         user = User.find_by(id: session[:user_id])
         render json: user
     end

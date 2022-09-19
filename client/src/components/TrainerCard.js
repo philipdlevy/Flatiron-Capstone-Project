@@ -18,6 +18,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button'; 
 
+import Grid from '@mui/material/Grid';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -52,59 +54,63 @@ function TrainerCard({ trainerObj }) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
-            ❚█══█❚
-          </Avatar>
-        }
-        title={trainerObj.name}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={trainerObj.image_url}
-      />
-      <CardContent>
-        Bio:
-        <Typography variant="body2" color="text.secondary">
-          {trainerObj.bio}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <Typography>
-          Contact info:
-          
-        </Typography>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+    <Grid item xs={4}>
+
+      <Card sx={{ maxWidth: 345 }}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
+              ❚█══█❚
+            </Avatar>
+          }
+          title={trainerObj.name}
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={trainerObj.image_url}
+        />
         <CardContent>
-          <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
-          <Link to="/trainingAppointment/new">
-            <Button variant="contained">Book an appointment</Button>
-          </Link>
-          <Button 
-            variant="contained"
-            size='small'
-            onClick={() => handleDelete(trainerObj.id)}
-          >
-            Delete trainer
-          </Button>
-          <Link to={`/trainers/${id}`}>
-            <Button variant='contained' size='small'>Edit Trainer</Button>
-          </Link>
+          Bio:
+          <Typography variant="body2" color="text.secondary">
+            {trainerObj.bio}
+          </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <Typography>
+            Contact info:
+            
+          </Typography>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
+            <Link to="/trainingAppointment/new">
+              <Button variant="contained">Book an appointment</Button>
+            </Link>
+            <Button 
+              variant="contained"
+              size='small'
+              onClick={() => handleDelete(trainerObj.id)}
+            >
+              Delete trainer
+            </Button>
+            <Link to={`/trainers/${id}`}>
+              <Button variant='contained' size='small'>Edit Trainer</Button>
+            </Link>
+          </CardContent>
+        </Collapse>
+      </Card>
+
+    </Grid>
   );
 }
 
