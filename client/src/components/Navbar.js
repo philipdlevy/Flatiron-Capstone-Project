@@ -50,12 +50,6 @@ function Navbar() {
 
   const currentUser = useSelector((state) => state.users.user) 
   console.log(currentUser)
-  // const name = currentUser.username.slice(0, 1)
-  // console.log(name)
-  // const firstLetter = Array.from(currentUser.username)[0];
-  // console.log(firstLetter)
-
-  // Array.from('some string')[0];
 
   useEffect(() => {
     if (!currentUser.username) {
@@ -72,6 +66,7 @@ function Navbar() {
     dispatch(logoutUser())
   }
 
+  //
   let loginLink;
   let welcomeMessage;
   let logoutButton;
@@ -98,6 +93,7 @@ function Navbar() {
       Welcome, {currentUser.username}!
     </Typography>
   } 
+  //
 
   return (
     <AppBar position="static">
@@ -194,6 +190,7 @@ function Navbar() {
             ))}
           </Box>
 
+          {currentUser.id ? 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -225,6 +222,8 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
+          : null }
+          
           {/* <Link to="/login">
             <Typography>
               log in
