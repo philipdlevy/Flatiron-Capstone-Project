@@ -1,8 +1,14 @@
 import React from 'react'
 
+import { Box } from '@mui/system'
+
 function AccountPage() {
   return (
-    <div>AccountPage</div>
+    <Box 
+      sx={{ m: 1}}
+    >
+      AccountPage
+    </Box>
   )
 }
 

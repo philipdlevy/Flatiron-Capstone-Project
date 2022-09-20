@@ -1,5 +1,4 @@
-import React from 'react'
-import AccountPage from './AccountPage';
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch  } from "react-redux";
 import { loginUser, logoutUser } from '../features/usersSlice';
 import {NavLink, Link} from 'react-router-dom'
@@ -30,6 +29,7 @@ const pagesLinks = [
 const settings = ['Account', 'HomePage', 'My Training Appointments', 'Logout'];
 
 function Navbar() {
+  const [firstLetterOfName, setFirstLetterOfName] = useState("")
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -49,7 +49,22 @@ function Navbar() {
   };
 
   const currentUser = useSelector((state) => state.users.user) 
-  // console.log(currentUser)
+  console.log(currentUser)
+  // const name = currentUser.username.slice(0, 1)
+  // console.log(name)
+  // const firstLetter = Array.from(currentUser.username)[0];
+  // console.log(firstLetter)
+
+  // Array.from('some string')[0];
+
+  useEffect(() => {
+    if (!currentUser.username) {
+      return ""
+    } else {
+      const name = currentUser.username.slice(0, 1)
+      setFirstLetterOfName(name)
+    }
+  }, [currentUser])
 
   const dispatch = useDispatch()
 
@@ -182,7 +197,9 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {/* This shows the letter */}
+                <Avatar>{firstLetterOfName}</Avatar>
+                {/* This shows the letter */}
               </IconButton>
             </Tooltip>
             <Menu

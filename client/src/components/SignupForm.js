@@ -47,6 +47,7 @@ function SignupForm() {
       console.log(user)
       dispatch(userAdded(user))
       dispatch(loginUser(user))
+      console.log(user)
       setNewUserData({
         username: "",
         password: "",
@@ -147,10 +148,13 @@ function SignupForm() {
             />
           {/* <Link to="/memberships/new"> */}
             <Button 
-                variant="contained"
-                type="submit"
-                >
-                Create account
+              sx={{
+                mt: 2
+              }}
+              variant="contained"
+              type="submit"
+            >
+              Create account
             </Button>
           {/* </Link> */}
         </form>

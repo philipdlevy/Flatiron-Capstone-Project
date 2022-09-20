@@ -39,6 +39,7 @@ function AddGymMembership() {
     dispatch(fetchGyms())
   }, [dispatch])
 
+
   useEffect(() => {
     fetch("/gym_memberships")
     .then((resp) => resp.json())
@@ -113,7 +114,7 @@ function AddGymMembership() {
     })
     .catch((error) => alert(error))
   }
-
+console.log(currentUser)
 
   return (
     <Box>

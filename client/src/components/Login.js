@@ -16,7 +16,7 @@ function Login() {
   const [loginData, setLoginData] = useState({
     username: "",
     password: ""
-})
+  })
   
   const dispatch = useDispatch()
   const history = useHistory()
@@ -24,10 +24,10 @@ function Login() {
 
   function handleChange(e) {
     setLoginData({
-        ...loginData,
-        [e.target.name]: e.target.value
+      ...loginData,
+      [e.target.name]: e.target.value
     })
-}
+  }
 
   function handleSubmit(e) {
     e.preventDefault()

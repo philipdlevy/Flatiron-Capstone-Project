@@ -34,7 +34,7 @@ function MembershipPage() {
               </Box>
 
               <Link to="/signup">
-                <Button variant="contained" paddingY={5}>Purchase Membership</Button>
+                <Button variant="contained" >Purchase Membership</Button>
               </Link>
 
             </Box>
@@ -61,7 +61,7 @@ function MembershipPage() {
               </Box>
 
               <Link to="/signup">
-                <Button variant="contained" paddingY={5}>Purchase Membership</Button>
+                <Button variant="contained" >Purchase Membership</Button>
               </Link>
 
             </Box>
