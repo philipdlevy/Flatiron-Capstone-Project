@@ -28,8 +28,7 @@ const pagesLinks = [
 const settings = [
   {route: "/account", pageTitle: 'Account'}, 
   {route: "/", pageTitle: 'HomePage'}, 
-  {route: "/account/trainingappointments", pageTitle: 'My Training Appointments'}, 
-  {route: "/exercises", pageTitle: 'Logout'}
+  {route: "/account/trainingappointments", pageTitle: 'My Training Appointments'}
 ];
 
 function Navbar() {
@@ -76,20 +75,12 @@ function Navbar() {
   let logoutButton;
   if (!currentUser.id) {
     loginLink = 
-    <Link to="/login">
-      <Typography>
-        log in
+    <Link to="/login" style={{ textDecoration: 'none', color: "white" }}>
+      <Typography style={{ fontSize: "0.875rem" }}>
+        LOG IN
       </Typography>
     </Link>
   } else {
-    logoutButton = 
-    <Button 
-      sx={{ bgcolor: red[500] }}
-      onClick={onLogout}
-    >
-      Logout
-    </Button>;
-
     welcomeMessage =
     <Typography 
       paddingX={1}
@@ -97,7 +88,6 @@ function Navbar() {
       Welcome, {currentUser.username}!
     </Typography>
   } 
-
 
   return (
     <AppBar position="static">
@@ -230,6 +220,11 @@ function Navbar() {
                   <Typography textAlign="center">{setting.pageTitle}</Typography>
                 </MenuItem>
               ))}
+              <MenuItem
+                onClick={onLogout}
+              >
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           : null }

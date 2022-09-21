@@ -44,7 +44,6 @@ function SignupForm() {
     })
     .then((resp) => resp.json())
     .then((user) => {
-      console.log(user)
       dispatch(userAdded(user))
       dispatch(loginUser(user))
       console.log(user)
