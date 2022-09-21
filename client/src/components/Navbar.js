@@ -15,7 +15,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { red } from '@mui/material/colors';
 
 // const pages = ['Trainers', 'Exercise List', 'Open Gyms'];
@@ -26,7 +25,12 @@ const pagesLinks = [
   {route: "/memberships", pageName: "Memberships"}
 ]
 
-const settings = ['Account', 'HomePage', 'My Training Appointments', 'Logout'];
+const settings = [
+  {route: "/account", pageTitle: 'Account'}, 
+  {route: "/", pageTitle: 'HomePage'}, 
+  {route: "/account/trainingappointments", pageTitle: 'My Training Appointments'}, 
+  {route: "/exercises", pageTitle: 'Logout'}
+];
 
 function Navbar() {
   const [firstLetterOfName, setFirstLetterOfName] = useState("")
@@ -66,7 +70,7 @@ function Navbar() {
     dispatch(logoutUser())
   }
 
-  //
+
   let loginLink;
   let welcomeMessage;
   let logoutButton;
@@ -93,7 +97,7 @@ function Navbar() {
       Welcome, {currentUser.username}!
     </Typography>
   } 
-  //
+
 
   return (
     <AppBar position="static">
@@ -115,7 +119,7 @@ function Navbar() {
             }}
           >
             ❚█══█❚ Levy's LiftHouse
-          </Typography>
+          </Typography>          
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -147,17 +151,17 @@ function Navbar() {
               }}
             >
               {pagesLinks.map((page) => (
-                  <MenuItem 
-                    key={page.route} 
-                    onClick={handleCloseNavMenu}
-                    component={Link}
-                    to={page.route}>
-                    <Typography textAlign="center">{page.pageName}</Typography>
-                  </MenuItem>
+                <MenuItem 
+                  key={page.route} 
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                  to={page.route}>
+                  <Typography textAlign="center">{page.pageName}</Typography>
+                </MenuItem>
               ))}
             </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          </Box>         
+
           <Typography
             variant="h5"
             noWrap
@@ -176,6 +180,7 @@ function Navbar() {
           >
             Levy's LiftHouse
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pagesLinks.map((page) => (
               <Button
@@ -216,31 +221,24 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem 
+                  key={setting.route} 
+                  onClick={handleCloseUserMenu}
+                  component={Link}
+                  to={setting.route}
+                >
+                  <Typography textAlign="center">{setting.pageTitle}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           : null }
-          
-          {/* <Link to="/login">
-            <Typography>
-              log in
-            </Typography>
-          </Link> */}
+
           {loginLink}
-        {/* <Button 
-          sx={{ bgcolor: red[500] }}
-          onClick={onLogout}
-        >
-          Logout
-        </Button> */}
-        {logoutButton}
+          {logoutButton}
         </Toolbar>
       </Container>
       {welcomeMessage}
-      {/* <Typography paddingX={1}>Welcome, {currentUser.username}!</Typography> */}
     </AppBar>
   );
 }
