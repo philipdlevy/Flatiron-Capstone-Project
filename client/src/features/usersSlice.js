@@ -25,13 +25,19 @@ const usersSlice = createSlice({
             state.user = {}
         }, 
         userAddMembership(state, action) {
-            debugger
+            // debugger
             state.entities.find((user) => user.id == state.user.id)
             state.user.gym_membership = action.payload
+            // state.user.gym_membership.gym = action.payload.gym
+        },
+        userAddTrainingAppointments(state, action) {
+            // debugger
+            state.entities.find((user) => user.id == state.user.id)
+            state.user.training_appointments = action.payload
         }
     }
 })
 
-export const { userAdded, loginUser, logoutUser, userAddMembership } = usersSlice.actions;
+export const { userAdded, loginUser, logoutUser, userAddMembership, userAddTrainingAppointments } = usersSlice.actions;
 
 export default usersSlice.reducer;

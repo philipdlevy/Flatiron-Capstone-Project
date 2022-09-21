@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTrainers } from '../features/trainersSlice';
 import {useHistory} from "react-router-dom"
+import { userAddTrainingAppointments } from '../features/usersSlice';
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -75,6 +76,7 @@ function AddTrainingAppointment() {
       if (resp.ok) {
         setTrainingAppointments([...trainingAppointments, newTrainingAppointment])
         console.log(newTrainingAppointment)
+        dispatch(userAddTrainingAppointments(newTrainingAppointment))
         setTrainerData("")
         setDateData("")
         setTimeData("")
