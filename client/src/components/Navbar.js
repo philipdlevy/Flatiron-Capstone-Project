@@ -51,8 +51,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
+  const currentUser = useSelector((state) => state.users.user)
 
   useEffect(() => {
     if (!currentUser.username) {
@@ -87,7 +86,7 @@ function Navbar() {
     >
       Welcome, {currentUser.username}!
     </Typography>
-  } 
+  }; 
 
   return (
     <AppBar position="static">

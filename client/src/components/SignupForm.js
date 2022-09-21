@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { userAdded, loginUser } from '../features/usersSlice';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
@@ -56,21 +56,7 @@ function SignupForm() {
       })
       history.push("/memberships/new")
     })
-    .catch((error) => alert(error))
-    // .then((resp) => {
-    //   if (resp.ok) { 
-    //     dispatch(userAdded(newUserData))
-        // setNewUserData({
-        //   username: "",
-        //   password: "",
-        //   age: "",
-        //   email: "",
-        //   address: ""
-        // })
-    //     history.push("/memberships/new")
-    //   }
-    // })
-    // .catch((error) => alert(error))   
+    .catch((error) => alert(error))  
   }
 
   return (
@@ -145,7 +131,6 @@ function SignupForm() {
               value={newUserData.address}
               onChange={handleChange}
             />
-          {/* <Link to="/memberships/new"> */}
             <Button 
               sx={{
                 mt: 2
@@ -155,7 +140,6 @@ function SignupForm() {
             >
               Create account
             </Button>
-          {/* </Link> */}
         </form>
       </Paper>
     </Box>

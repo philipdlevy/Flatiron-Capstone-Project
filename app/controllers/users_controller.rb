@@ -26,6 +26,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        # binding.pry
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
 
     private
 

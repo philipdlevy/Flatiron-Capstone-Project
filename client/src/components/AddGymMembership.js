@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMemberships } from '../features/membershipsSlice';
+// import { fetchMemberships } from '../features/membershipsSlice';
 import {useHistory} from "react-router-dom"
 import { fetchGyms } from '../features/gymsSlice';
+import { userAddMembership } from '../features/usersSlice';
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -12,13 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
-
 import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { current } from '@reduxjs/toolkit';
-
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
 
@@ -61,28 +56,19 @@ function AddGymMembership() {
   const handleMembershipChange = (event) => {
     setMembershipData(event.target.value);
     console.log(membershipData)
-    // if (membershipData == "Monthly Membership") {
-    //   setPriceData(39.99)
-    // } else if (membershipData == "Yearly Membership") {
-    //   setPriceData(400.00)
-    // } else {
-    //   setPriceData("")
-    // }
   };
 
   useEffect(() => {
-    if (membershipData == "Monthly Membership") {
+    if (membershipData === "Monthly Membership") {
       setPriceData(39.99)
-    } else if (membershipData == "Yearly Membership") {
+    } else if (membershipData === "Yearly Membership") {
       setPriceData(400.00)
     } else {
       setPriceData("")
     }
   }, [membershipData, priceData])
 
-  const handlePriceChange = (event) => {
-    setPriceData(event.target.value);
-  };
+  
   const handleGymChange = (event) => {
     setGymData(event.target.value);
   };
@@ -109,6 +95,7 @@ function AddGymMembership() {
       if (resp.ok) {
         setAllMemberships([...allMemberships, newMembership])
         console.log(newMembership)
+        dispatch(userAddMembership(newMembership))
       }
       history.push("/")
     })

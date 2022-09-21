@@ -12,7 +12,6 @@ function GymLister() {
   const [editing, setEditing] = useState(false)
 
   const gymsArray = useSelector((state) => state.gyms.entities)
-  console.log(gymsArray)
 
   const dispatch = useDispatch()
 

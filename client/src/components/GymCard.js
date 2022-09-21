@@ -1,11 +1,10 @@
 import React from 'react'
 import { gymRemoved } from "../features/gymsSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -35,10 +34,10 @@ function GymCard({ gymObj }) {
             Levy's LiftHouse
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Phone number: {gymObj.phone_number}
+            Phone number: {phone_number}
           </Typography>
           <Typography variant="body2">
-              Address: {gymObj.address}
+              Address: {address}
           </Typography>
         </CardContent>
         <Button 
