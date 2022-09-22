@@ -33,6 +33,10 @@ function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
     const [trainingAppointmentsList, setTrainingAppointmentsList] = useState([])
 
+
+
+
+    
     useEffect(() => {
         if (!currentUser.training_appointments) {
             return []
