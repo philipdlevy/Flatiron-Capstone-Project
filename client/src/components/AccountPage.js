@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { styled } from "@mui/material/styles";
@@ -28,12 +28,23 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AccountPage() {
   const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
+  // debugger
+  // useEffect(() => {
+  //   if (!currentUser.gym_membership) {
+  //     return []
+  //   } else {
+  //     return currentUser
+  //   }
+  // }, [currentUser])
   
   const rows = [
     { rowName: "Username:", rowValue: currentUser.username },
     { rowName: "Email:", rowValue: currentUser.email },
     { rowName: "Address:", rowValue: currentUser.address },
-    { rowName: "Age:", rowValue: `${currentUser.age} years old`}
+    { rowName: "Age:", rowValue: `${currentUser.age} years old`},
+    // { rowName: "Membership Type:", rowValue: currentUser.gym_membership.membershipType},
+    // { rowName: "Membership Price:", rowValue: `$${currentUser.gym_membership.price}`}
   ];
 
   return (
