@@ -1,7 +1,7 @@
 require 'pry'
 
 class GymMembershipSerializer < ActiveModel::Serializer
-  attributes :id, :price, :gym
+  attributes :id, :price, :membershipType, :gym
 
   belongs_to :gym
   # belongs_to :user

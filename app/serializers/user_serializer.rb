@@ -1,7 +1,7 @@
 require 'pry'
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :age, :email, :address, :trainers
+  attributes :id, :username, :age, :email, :address
 
   belongs_to :role
 
@@ -11,10 +11,10 @@ class UserSerializer < ActiveModel::Serializer
   has_one :gym_membership
   # has_one :gym, through: :gym_membership
 
-  def trainers 
-    # binding.pry
-    trainers = object.trainers.uniq
-  end
+  # def trainers 
+  #   # binding.pry
+  #   trainers = object.trainers.uniq
+  # end
 end
 
 

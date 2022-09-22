@@ -72,16 +72,16 @@ function AddTrainingAppointment() {
       },
       body: JSON.stringify(newTrainingAppointment)
     })
-    .then((resp) => {
-      if (resp.ok) {
-        setTrainingAppointments([...trainingAppointments, newTrainingAppointment])
-        console.log(newTrainingAppointment)
-        dispatch(userAddTrainingAppointments(newTrainingAppointment))
-        setTrainerData("")
-        setDateData("")
-        setTimeData("")
-        history.push("/trainers")
-      }
+    .then((resp) => resp.json())
+    .then((appointmentData) => {
+      console.log("appointmentData", appointmentData)
+      setTrainingAppointments([...trainingAppointments, appointmentData])
+      console.log(appointmentData)
+      dispatch(userAddTrainingAppointments(appointmentData))
+      setTrainerData("")
+      setDateData("")
+      setTimeData("")
+      history.push("/trainers")
     })
     .catch((error) => alert(error))
   }

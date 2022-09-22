@@ -17,18 +17,14 @@ const usersSlice = createSlice({
             state.entities.push(action.payload)
         },
         loginUser(state, action) {
-            // console.log(state, action)
             state.user = action.payload
-            // console.log(state.user)
         },
         logoutUser(state, action) {
             state.user = {}
         }, 
         userAddMembership(state, action) {
-            // debugger
             state.entities.find((user) => user.id == state.user.id)
             state.user.gym_membership = action.payload
-            // state.user.gym_membership.gym = action.payload.gym
         },
         userAddTrainingAppointments(state, action) {
             // debugger

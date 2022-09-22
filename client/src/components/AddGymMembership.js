@@ -19,7 +19,7 @@ const memberships = ["Monthly Membership", "Yearly Membership"]
 
 function AddGymMembership() {
   const [allMemberships, setAllMemberships] = useState("")
-  const [membershipData, setMembershipData] = useState("")
+  const [membershipTypeData, setMembershipTypeData] = useState("")
   const [priceData, setPriceData] = useState("")
   const [gymData, setGymData] = useState("")
 
@@ -53,19 +53,19 @@ function AddGymMembership() {
 
   
   const handleMembershipChange = (event) => {
-    setMembershipData(event.target.value);
-    console.log(membershipData)
+    setMembershipTypeData(event.target.value);
+    console.log(membershipTypeData)
   };
 
   useEffect(() => {
-    if (membershipData === "Monthly Membership") {
+    if (membershipTypeData === "Monthly Membership") {
       setPriceData(39.99)
-    } else if (membershipData === "Yearly Membership") {
+    } else if (membershipTypeData === "Yearly Membership") {
       setPriceData(400.00)
     } else {
       setPriceData("")
     }
-  }, [membershipData, priceData])
+  }, [membershipTypeData, priceData])
 
   
   const handleGymChange = (event) => {
@@ -75,9 +75,10 @@ function AddGymMembership() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    debugger
 
     const newMembership = {
-      membershipType: membershipData,
+      membershipType: membershipTypeData,
       price: priceData,
       user_id: currentUser.id,
       gym_id: gymData.id
@@ -121,7 +122,7 @@ console.log(currentUser)
                 id="simple-select"
                 label="Membership"
                 onChange={handleMembershipChange}
-                value={membershipData}
+                value={membershipTypeData}
               >
                 {membershipMenuList}
               </Select>

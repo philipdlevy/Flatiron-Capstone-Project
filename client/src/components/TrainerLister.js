@@ -14,6 +14,8 @@ function TrainerLister() {
   const [editing, setEditing] = useState(false)
   
   const trainersArray = useSelector((state) => state.trainers.entities)
+  const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
 
   const dispatch = useDispatch()
 
