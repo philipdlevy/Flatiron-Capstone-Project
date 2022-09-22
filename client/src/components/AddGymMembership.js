@@ -34,7 +34,6 @@ function AddGymMembership() {
     dispatch(fetchGyms())
   }, [dispatch])
 
-
   useEffect(() => {
     fetch("/gym_memberships")
     .then((resp) => resp.json())
@@ -91,12 +90,13 @@ function AddGymMembership() {
       },
       body: JSON.stringify(newMembership)
     })
-    .then((resp) => {
-      if (resp.ok) {
-        setAllMemberships([...allMemberships, newMembership])
-        console.log(newMembership)
-        dispatch(userAddMembership(newMembership))
-      }
+    .then((resp) => resp.json())
+    .then((membershipData) => {
+      console.log("membershipData", membershipData)
+      // debugger
+      setAllMemberships([...allMemberships, membershipData])
+      console.log("membershipData", membershipData)
+      dispatch(userAddMembership(membershipData))
       history.push("/")
     })
     .catch((error) => alert(error))

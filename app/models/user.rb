@@ -5,9 +5,9 @@ class User < ApplicationRecord
 
     belongs_to :role
 
-    has_many :training_appointments
+    has_many :training_appointments, dependent: :destroy
     has_many :trainers, through: :training_appointments
 
-    has_one :gym_membership
+    has_one :gym_membership, dependent: :destroy
     has_one :gym, through: :gym_membership
 end

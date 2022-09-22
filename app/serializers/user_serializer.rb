@@ -9,7 +9,7 @@ class UserSerializer < ActiveModel::Serializer
   # has_many :trainers, through: :training_appointments
 
   has_one :gym_membership
-  has_one :gym, through: :gym_membership
+  # has_one :gym, through: :gym_membership
 
   def trainers 
     # binding.pry
