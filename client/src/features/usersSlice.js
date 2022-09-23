@@ -31,10 +31,7 @@ const usersSlice = createSlice({
             state.user.gym_membership = action.payload
         },
         userAddTrainingAppointments(state, action) {
-            // debugger
             state.entities.find((user) => user.id == state.user.id)
-            // state.user.training_appointments = action.payload
-            // push it into the array, don't set it
             state.user.training_appointments.push(action.payload)
         }
     }

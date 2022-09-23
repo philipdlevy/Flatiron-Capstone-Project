@@ -58,7 +58,7 @@ function MembershipPage() {
                   $39.99 USD
                 </Typography>
                 <Typography variant='body1' component="p">
-                  (Quit anytime!)
+                  (No Contract)
                 </Typography>
               </Box>
 

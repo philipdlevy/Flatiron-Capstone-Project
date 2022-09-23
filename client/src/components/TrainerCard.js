@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { trainerRemoved } from '../features/trainersSlice';
 
 import { styled } from '@mui/material/styles';
@@ -33,7 +33,9 @@ const ExpandMore = styled((props) => {
 
 
 function TrainerCard({ trainerObj }) {
+  const currentUser = useSelector((state) => state.users.user) 
   const {id, name, bio, email} = trainerObj
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -95,16 +97,22 @@ function TrainerCard({ trainerObj }) {
             <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
               <Button variant="contained">Book an appointment</Button>
             </Link>
-            <Button 
-              variant="contained"
-              size='small'
-              onClick={() => handleDelete(trainerObj.id)}
-            >
-              Delete trainer
-            </Button>
-            <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>
-              <Button variant='contained' size='small'>Edit Trainer</Button>
-            </Link>
+            
+            {currentUser.role.name === "admin" ?
+              <Button 
+                variant="contained"
+                size='small'
+                onClick={() => handleDelete(trainerObj.id)}
+              >
+                Delete trainer
+              </Button>
+            : null}
+
+            {currentUser.role.name === "admin" ?
+              <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>
+                <Button variant='contained' size='small'>Edit Trainer</Button>
+              </Link>
+            : null}
           </CardContent>
         </Collapse>
       </Card>

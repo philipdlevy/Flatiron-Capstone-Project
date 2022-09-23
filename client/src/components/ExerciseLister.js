@@ -11,10 +11,10 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 function ExerciseLister() {
+  const currentUser = useSelector((state) => state.users.user)
   const [editing, setEditing] = useState(false)
 
   const exercisesArray = useSelector((state) => state.exercises.entities)
-  console.log(exercisesArray)
 
   const dispatch = useDispatch()
 
@@ -33,9 +33,11 @@ function ExerciseLister() {
       <div>
 
         <Box paddingY={2}>
-          <Link to="exercises/new" style={{ textDecoration: 'none'}}>
-            <Button variant="contained">Add New Exercise</Button>
-          </Link>
+          {currentUser.role.name === "admin" ?
+            <Link to="exercises/new" style={{ textDecoration: 'none'}}>
+              <Button variant="contained">Add New Exercise</Button>
+            </Link>
+          : null}
         </Box>
 
         <Container>

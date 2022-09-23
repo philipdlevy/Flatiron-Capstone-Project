@@ -1,6 +1,6 @@
 import React from 'react'
 import { gymRemoved } from "../features/gymsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 
 function GymCard({ gymObj }) {
   const {id, address, phone_number} = gymObj
+  const currentUser = useSelector((state) => state.users.user)
 
   const dispatch = useDispatch()
 
@@ -40,6 +41,8 @@ function GymCard({ gymObj }) {
               Address: {address}
           </Typography>
         </CardContent>
+        
+        {currentUser.role.name === "admin" ?
         <Button 
           variant='contained' 
           size='small'
@@ -47,9 +50,14 @@ function GymCard({ gymObj }) {
         > 
           Delete Gym
         </Button>
+        : null}
+
+        {currentUser.role.name === "admin" ?
         <Link to={`/gyms/${id}`} style={{ textDecoration: 'none'}}>
           <Button variant='contained' size='small'> Edit Gym</Button>
         </Link>
+        : null}
+
       </Card>
     </Box>
   );

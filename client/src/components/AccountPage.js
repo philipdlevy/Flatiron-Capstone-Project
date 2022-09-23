@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { styled } from "@mui/material/styles";
@@ -27,25 +27,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function AccountPage() {
-  const [userData, setUserData] = useState("")
-
   const currentUser = useSelector((state) => state.users.user) 
-  
-  // const membership = currentUser ? currentUser.gym_membership : ""
-  console.log(currentUser)
-
-  // useEffect(() => {
-  //   setUserData(currentUser)
-  // }, [currentUser, userData])
-
-  // debugger
-  // useEffect(() => {
-  //   if (!currentUser) {
-  //     return {}
-  //   } else {
-  //     setUserData(currentUser)
-  //   }
-  // }, [currentUser])
+ 
   
   const rows = [
     { rowName: "Username:", rowValue: currentUser.username },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { exerciseRemoved } from '../features/exercisesSlice';
 import { Link } from 'react-router-dom';
 
@@ -32,6 +32,7 @@ const ExpandMore = styled((props) => {
 }));
 
 function ExerciseCard({ exerciseObj }) {
+  const currentUser = useSelector((state) => state.users.user)
   const {id, name, info, image_url} = exerciseObj
   const [expanded, setExpanded] = React.useState(false);
 
@@ -89,16 +90,22 @@ function ExerciseCard({ exerciseObj }) {
             </Typography>
           </CardContent>
         </Collapse>
-        <Button 
-          variant='contained' 
-          size='small'
-          onClick={() => handleDelete(exerciseObj.id)}
-        > 
-          Delete Exercise
-        </Button>
-        <Link to={`/exercises/${id}`} style={{ textDecoration: 'none'}}>
-          <Button variant='contained' size='small'> Edit Exercise</Button>
-        </Link>
+
+        {currentUser.role.name === "admin" ?
+          <Button 
+            variant='contained' 
+            size='small'
+            onClick={() => handleDelete(exerciseObj.id)}
+          > 
+            Delete Exercise
+          </Button>
+        : null}
+
+        {currentUser.role.name === "admin" ?
+          <Link to={`/exercises/${id}`} style={{ textDecoration: 'none'}}>
+            <Button variant='contained' size='small'> Edit Exercise</Button>
+          </Link>
+        : null}
       </Card>
     </Grid>
   );

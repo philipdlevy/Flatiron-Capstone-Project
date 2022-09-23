@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 function GymLister() {
+  const currentUser = useSelector((state) => state.users.user) 
   const [editing, setEditing] = useState(false)
 
   const gymsArray = useSelector((state) => state.gyms.entities)
@@ -29,9 +30,11 @@ function GymLister() {
   } else {
     return (   
       <Box paddingY={2}>
-        <Link to="/gyms/new" style={{ textDecoration: 'none'}}>
-          <Button variant="contained">Add new gym</Button>
-        </Link>
+        {currentUser.role.name === "admin" ?
+          <Link to="/gyms/new" style={{ textDecoration: 'none'}}>
+            <Button variant="contained">Add new gym</Button>
+          </Link>
+        : null}
         {gymArray}
       </Box>
     )

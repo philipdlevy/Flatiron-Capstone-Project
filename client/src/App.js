@@ -23,7 +23,6 @@ import MyTrainingAppointments from "./components/MyTrainingAppointments";
 
 function App() {
 
-
   return (
     <div 
       style={{ 
