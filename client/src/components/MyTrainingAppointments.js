@@ -17,48 +17,34 @@ import { Box } from '@mui/system';
             fontSize: 17
         }
     }));
-  
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover
+        backgroundColor: theme.palette.action.hover
     },
     // hide last border
     "&:last-child td, &:last-child th": {
-      border: 0
+        border: 0
     }
-  }));
+    }));
 
 
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
-    const [trainingAppointmentsList, setTrainingAppointmentsList] = useState([])
 
-
-
-
-    
-    useEffect(() => {
-        if (!currentUser.training_appointments) {
-            return []
-        } else {
-            const trainingAppointmentsArray = currentUser.training_appointments.map((appointment) => {
-                // debugger
-                console.log(appointment) 
-            })
-        }
-    }, [currentUser])
-
+    const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
+        console.log(appointment)
+    })
 
     const rows = [
-        { rowName: "Username:", rowValue: currentUser.username },
-        { rowName: "Date:", rowValue: currentUser.email },
-        { rowName: "Time:", rowValue: currentUser.address },
-        { rowName: "Trainer:", rowValue: `${currentUser.age} years old`}
+        { rowName: "Date:", rowValue: currentUser.username },
+        { rowName: "Time:", rowValue: currentUser.email },
+        { rowName: "Trainer:", rowValue: currentUser.address }
     ];
 
   return (
     <Box>
-        <Typography sx={{fontSize: "2rem"}}>My Training Appontments</Typography>
+        <Typography sx={{fontSize: "2rem", backgroundColor: "white"}}>My Training Appontments</Typography>
         <TableContainer component={Paper} sx={{ paddingY: 2}}>
             <Table aria-label="customized table">
                 <TableHead>

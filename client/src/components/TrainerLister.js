@@ -43,12 +43,11 @@ function TrainerLister() {
         </Box>
         
         <Container>
-
           <Grid container spacing={2} paddingY={1}>
             {trainerArray}
           </Grid>
-
         </Container>
+        
       </div>
     )
   }
