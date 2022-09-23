@@ -34,7 +34,7 @@ function TrainerLister() {
       <div>
 
         <Box paddingY={2}>
-          <Link to="/trainers/new">
+          <Link to="/trainers/new" style={{ textDecoration: 'none'}}>
             <Button variant="contained">Add new trainer</Button>
           </Link>
         </Box>

@@ -47,7 +47,7 @@ function GymCard({ gymObj }) {
         > 
           Delete Gym
         </Button>
-        <Link to={`/gyms/${id}`}>
+        <Link to={`/gyms/${id}`} style={{ textDecoration: 'none'}}>
           <Button variant='contained' size='small'> Edit Gym</Button>
         </Link>
       </Card>

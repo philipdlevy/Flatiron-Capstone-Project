@@ -92,7 +92,7 @@ function TrainerCard({ trainerObj }) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
-            <Link to="/trainingAppointment/new">
+            <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
               <Button variant="contained">Book an appointment</Button>
             </Link>
             <Button 
@@ -102,7 +102,7 @@ function TrainerCard({ trainerObj }) {
             >
               Delete trainer
             </Button>
-            <Link to={`/trainers/${id}`}>
+            <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>
               <Button variant='contained' size='small'>Edit Trainer</Button>
             </Link>
           </CardContent>

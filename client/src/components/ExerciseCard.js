@@ -96,7 +96,7 @@ function ExerciseCard({ exerciseObj }) {
         > 
           Delete Exercise
         </Button>
-        <Link to={`/exercises/${id}`}>
+        <Link to={`/exercises/${id}`} style={{ textDecoration: 'none'}}>
           <Button variant='contained' size='small'> Edit Exercise</Button>
         </Link>
       </Card>

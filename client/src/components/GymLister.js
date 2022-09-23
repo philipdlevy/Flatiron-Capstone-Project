@@ -29,7 +29,7 @@ function GymLister() {
   } else {
     return (   
       <Box paddingY={2}>
-        <Link to="/gyms/new">
+        <Link to="/gyms/new" style={{ textDecoration: 'none'}}>
           <Button variant="contained">Add new gym</Button>
         </Link>
         {gymArray}

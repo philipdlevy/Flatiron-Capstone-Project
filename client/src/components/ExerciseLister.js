@@ -33,7 +33,7 @@ function ExerciseLister() {
       <div>
 
         <Box paddingY={2}>
-          <Link to="exercises/new">
+          <Link to="exercises/new" style={{ textDecoration: 'none'}}>
             <Button variant="contained">Add New Exercise</Button>
           </Link>
         </Box>
