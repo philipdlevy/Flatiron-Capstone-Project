@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { styled } from "@mui/material/styles";
@@ -27,14 +27,23 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function AccountPage() {
+  const [userData, setUserData] = useState("")
+
   const currentUser = useSelector((state) => state.users.user) 
+  
+  // const membership = currentUser ? currentUser.gym_membership : ""
   console.log(currentUser)
+
+  // useEffect(() => {
+  //   setUserData(currentUser)
+  // }, [currentUser, userData])
+
   // debugger
   // useEffect(() => {
-  //   if (!currentUser.gym_membership) {
-  //     return []
+  //   if (!currentUser) {
+  //     return {}
   //   } else {
-  //     return currentUser
+  //     setUserData(currentUser)
   //   }
   // }, [currentUser])
   
@@ -43,8 +52,8 @@ function AccountPage() {
     { rowName: "Email:", rowValue: currentUser.email },
     { rowName: "Address:", rowValue: currentUser.address },
     { rowName: "Age:", rowValue: `${currentUser.age} years old`},
-    // { rowName: "Membership Type:", rowValue: currentUser.gym_membership.membershipType},
-    // { rowName: "Membership Price:", rowValue: `$${currentUser.gym_membership.price}`}
+    { rowName: "Membership Type:", rowValue: currentUser.gym_membership.membershipType},
+    { rowName: "Membership Price:", rowValue: `$${currentUser.gym_membership.price}`}
   ];
 
   return (
@@ -71,3 +80,6 @@ function AccountPage() {
 }
 
 export default AccountPage
+
+
+

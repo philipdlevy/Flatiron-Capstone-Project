@@ -17,6 +17,10 @@ function TrainerLister() {
   const currentUser = useSelector((state) => state.users.user) 
   console.log(currentUser)
 
+  // if (!currentUser.id) {
+  //   const currentUser = useSelector((state) => state.users.user)
+  // }
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,11 +37,13 @@ function TrainerLister() {
     return (
       <div>
 
-        <Box paddingY={2}>
-          <Link to="/trainers/new" style={{ textDecoration: 'none'}}>
-            <Button variant="contained">Add new trainer</Button>
-          </Link>
-        </Box>
+        {currentUser.role.name === "admin" ?
+          <Box paddingY={2}>
+            <Link to="/trainers/new" style={{ textDecoration: 'none'}}>
+              <Button variant="contained">Add new trainer</Button>
+            </Link>
+          </Box>
+        : null}
         
         <Container>
 

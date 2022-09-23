@@ -23,13 +23,16 @@ import MyTrainingAppointments from "./components/MyTrainingAppointments";
 
 function App() {
 
+
   return (
-    <div style={{ 
-      backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
-      height:'100vh',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-    }}>
+    <div 
+      style={{ 
+        backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
+        height:'100vh',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
 
       <Navbar />
 

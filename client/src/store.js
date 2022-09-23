@@ -17,6 +17,7 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+
 import thunk from 'redux-thunk';
 
 const persistConfig = {
@@ -49,6 +50,7 @@ const store = configureStore({
             //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             // },
             serializableCheck: false,
+            middleware: [thunk]
         }),
 })
 

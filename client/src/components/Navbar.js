@@ -35,7 +35,7 @@ function Navbar() {
   const [firstLetterOfName, setFirstLetterOfName] = useState("")
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -49,7 +49,7 @@ function Navbar() {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(false);
   };
 
   const currentUser = useSelector((state) => state.users.user)
@@ -170,7 +170,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            Levy's LiftHouse
+            ❚█══█❚ Levy's LiftHouse
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -224,7 +224,7 @@ function Navbar() {
               ))}
               <MenuItem
                 onClick={onLogout}
-              >
+              > 
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
