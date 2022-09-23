@@ -29,7 +29,9 @@ const usersSlice = createSlice({
         userAddTrainingAppointments(state, action) {
             // debugger
             state.entities.find((user) => user.id == state.user.id)
-            state.user.training_appointments = action.payload
+            // state.user.training_appointments = action.payload
+            // push it into the array, don't set it
+            state.user.training_appointments.push(action.payload)
         }
     }
 })
