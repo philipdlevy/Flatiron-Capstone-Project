@@ -28,15 +28,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AccountPage() {
   const currentUser = useSelector((state) => state.users.user) 
- 
-  
+
+
   const rows = [
     { rowName: "Username:", rowValue: currentUser.username },
     { rowName: "Email:", rowValue: currentUser.email },
     { rowName: "Address:", rowValue: currentUser.address },
     { rowName: "Age:", rowValue: `${currentUser.age} years old`},
-    { rowName: "Membership Type:", rowValue: currentUser.gym_membership.membershipType},
-    { rowName: "Membership Price:", rowValue: `$${currentUser.gym_membership.price}`}
+    { rowName: "Membership Type:", rowValue: currentUser.gym_membership?.membershipType},
+    { rowName: "Membership Price:", rowValue: `$${currentUser.gym_membership?.price}`}
   ];
 
   return (

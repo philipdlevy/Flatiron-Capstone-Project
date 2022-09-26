@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
+
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.body}`]: {
             fontSize: 17
@@ -32,24 +33,39 @@ import { Box } from '@mui/system';
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
 
+    
+    // if (!currentUser.training_appointments) {
+    //     return <p>No Training Appointments</p>
+    // } 
+
+    
     const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
-        console.log(appointment)
-    })
+        const rows = [
+            { rowName: "Date:", rowValue: appointment.date },
+            { rowName: "Time:", rowValue: appointment.time },
+            { rowName: "Trainer:", rowValue: appointment.trainer.name }
+        ];
 
-    const rows = [
-        { rowName: "Date:", rowValue: currentUser.username },
-        { rowName: "Time:", rowValue: currentUser.email },
-        { rowName: "Trainer:", rowValue: currentUser.address }
-    ];
-
+        return <TableBody key={appointment.date} component={Paper}>
+        {rows.map((row) => (
+            <StyledTableRow key={row.rowName}>
+            <StyledTableCell >
+                {row.rowName} {row.rowValue}
+            </StyledTableCell>
+            </StyledTableRow>
+        ))}
+        </TableBody>
+    })  
+    
   return (
     <Box>
         <Typography sx={{fontSize: "2rem", backgroundColor: "white"}}>My Training Appontments</Typography>
-        <TableContainer component={Paper} sx={{ paddingY: 2}}>
+        {currentUser.training_appointments ?
+        <TableContainer>
             <Table aria-label="customized table">
-                <TableHead>
-                </TableHead>
-                <TableBody>
+                {/* <TableHead>
+                </TableHead> */}
+                {/* <TableBody>
                 {rows.map((row) => (
                     <StyledTableRow key={row.rowName}>
                     <StyledTableCell >
@@ -57,9 +73,11 @@ function MyTrainingAppointments() {
                     </StyledTableCell>
                     </StyledTableRow>
                 ))}
-                </TableBody>
+                </TableBody> */}
+                {trainingAppointmentArray}
             </Table>
         </TableContainer>
+        : <Typography>Hello</Typography>}
     </Box>
   )
 }

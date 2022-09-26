@@ -10,12 +10,12 @@ import sessionStorage from 'redux-persist/lib/storage/session';
 import { 
     persistReducer, 
     persistStore, 
-    FLUSH, 
-    REHYDRATE, 
-    PAUSE, 
-    PERSIST,
-    PURGE,
-    REGISTER,
+    // FLUSH, 
+    // REHYDRATE, 
+    // PAUSE, 
+    // PERSIST,
+    // PURGE,
+    // REGISTER,
 } from 'redux-persist';
 
 import thunk from 'redux-thunk';
