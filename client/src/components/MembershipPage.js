@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 
 
 function MembershipPage() {
+  const currentUser = useSelector((state) => state.users.user)
   const classes = useStyles();
 
   return (
@@ -62,9 +64,15 @@ function MembershipPage() {
                 </Typography>
               </Box>
 
-              <Link to="/signup" style={{ textDecoration: 'none'}}>
-                <Button className={classes.root}>Purchase Membership</Button>
-              </Link>
+              {!currentUser.id ?
+                <Link to="/signup" style={{ textDecoration: 'none'}}>
+                  <Button className={classes.root}>Purchase Membership</Button>
+                </Link>
+                : 
+                <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
+                  <Button className={classes.root}>Purchase Membership</Button>
+                </Link>
+              }
 
             </Box>
           </Paper>
@@ -95,9 +103,15 @@ function MembershipPage() {
                 </Typography>
               </Box>
 
-              <Link to="/signup" style={{ textDecoration: 'none'}}>
+              {!currentUser.id ?
+                <Link to="/signup" style={{ textDecoration: 'none'}}>
                   <Button className={classes.root}>Purchase Membership</Button>
-              </Link>
+                </Link>
+                : 
+                <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
+                  <Button className={classes.root}>Purchase Membership</Button>
+                </Link>
+              }
 
             </Box>
           </Paper>
