@@ -10,9 +10,13 @@ const usersSlice = createSlice({
     name: "users",
     initialState: {
         user: {
-            gym_membership: {}, 
+            gym_membership: {
+                gym: {}
+            }, 
             role: {},
-            training_appointments: []
+            training_appointments: [{
+                trainer: {}
+        }]
         },
         entities: [],
     },

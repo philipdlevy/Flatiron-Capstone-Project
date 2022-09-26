@@ -60,6 +60,7 @@ function MyTrainingAppointments() {
   return (
     <Box>
         <Typography sx={{fontSize: "2rem", backgroundColor: "white"}}>My Training Appontments</Typography>
+        
         {currentUser.training_appointments ?
         <TableContainer>
             <Table aria-label="customized table">

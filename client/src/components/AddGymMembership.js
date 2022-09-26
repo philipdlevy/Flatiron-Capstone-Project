@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchMemberships } from '../features/membershipsSlice';
 import {useHistory} from "react-router-dom"
 import { fetchGyms } from '../features/gymsSlice';
 import { userAddMembership } from '../features/usersSlice';
@@ -14,6 +13,7 @@ import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
 
@@ -22,7 +22,7 @@ function AddGymMembership() {
   const [membershipTypeData, setMembershipTypeData] = useState("")
   const [priceData, setPriceData] = useState("")
   const [gymData, setGymData] = useState("")
-
+  console.log(gymData.id)
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -66,7 +66,6 @@ function AddGymMembership() {
       setPriceData("")
     }
   }, [membershipTypeData, priceData])
-
   
   const handleGymChange = (event) => {
     setGymData(event.target.value);
@@ -75,7 +74,6 @@ function AddGymMembership() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    debugger
 
     const newMembership = {
       membershipType: membershipTypeData,
@@ -94,18 +92,19 @@ function AddGymMembership() {
     .then((resp) => resp.json())
     .then((membershipData) => {
       console.log("membershipData", membershipData)
-      // debugger
       setAllMemberships([...allMemberships, membershipData])
       console.log("membershipData", membershipData)
       dispatch(userAddMembership(membershipData))
+      setGymData("")
       history.push("/")
     })
     .catch((error) => alert(error))
   }
-console.log(currentUser)
 
   return (
     <Box>
+      {currentUser.gym_membership.gym?.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+      
       <Paper sx={{
         width: 350,
         height: 410,
