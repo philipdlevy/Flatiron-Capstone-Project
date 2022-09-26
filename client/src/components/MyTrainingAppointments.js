@@ -32,11 +32,7 @@ import { Box } from '@mui/system';
 
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
-
-    
-    // if (!currentUser.training_appointments) {
-    //     return <p>No Training Appointments</p>
-    // } 
+ 
 
     
     const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
@@ -49,7 +45,7 @@ function MyTrainingAppointments() {
         return <TableBody key={appointment.date} component={Paper}>
         {rows.map((row) => (
             <StyledTableRow key={row.rowName}>
-            <StyledTableCell >
+            <StyledTableCell>
                 {row.rowName} {row.rowValue}
             </StyledTableCell>
             </StyledTableRow>

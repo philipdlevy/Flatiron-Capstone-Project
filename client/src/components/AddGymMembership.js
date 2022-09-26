@@ -160,6 +160,8 @@ function AddGymMembership() {
           </Box>
 
           <Box paddingY={3}>
+          {currentUser.gym_membership.gym?.id === gymData.id ?
+            null :
             <Button
               sx={{ ml: 1}}
               variant="contained"
@@ -167,6 +169,7 @@ function AddGymMembership() {
             >
               Purchase Membership
             </Button>
+          }  
           </Box>
         </form>
       </Paper>

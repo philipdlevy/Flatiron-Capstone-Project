@@ -14,9 +14,7 @@ const usersSlice = createSlice({
                 gym: {}
             }, 
             role: {},
-            training_appointments: [{
-                trainer: {}
-        }]
+            training_appointments: []
         },
         entities: [],
     },
