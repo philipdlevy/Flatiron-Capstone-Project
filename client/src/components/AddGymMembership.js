@@ -14,6 +14,8 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
+import { makeStyles } from '@material-ui/core/styles'
+
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
 
@@ -103,76 +105,86 @@ function AddGymMembership() {
 
   return (
     <Box>
-      {currentUser.gym_membership.gym?.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
-      
-      <Paper sx={{
-        width: 350,
-        height: 410,
-        ml: 3,
-      }}
-      > 
-        <form onSubmit={handleSubmit}>
-        <Box sx={{ minWidth: 120 }}>
-            <Typography padding={1}>Select Membership:</Typography>
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="select-labels">Membership</InputLabel>
-              <Select
-                labelId="select-labels"
-                id="simple-select"
-                label="Membership"
-                onChange={handleMembershipChange}
-                value={membershipTypeData}
-              >
-                {membershipMenuList}
-              </Select>
-            </FormControl>
-          </Box>
-
+        {currentUser.gym_membership.gym?.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+      <Box
+        paddingY={5}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        
+        <Paper sx={{
+          width: 340,
+          height: 410
+        }}
+        > 
+          <form onSubmit={handleSubmit}>
           <Box sx={{ minWidth: 120 }}>
-            <Typography padding={1}>Price:</Typography>
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="select-label"></InputLabel>
-              <TextField
-                id="outlined-read-only-input"
-                label="Price"
-                value={priceData}
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-            </FormControl>
-          </Box>
+              <Typography padding={1}>Select Membership:</Typography>
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="select-labels"
+                >Membership</InputLabel>
+                <Select
+                  labelId="select-labels"
+                  id="simple-select"
+                  label="Membership"
+                  onChange={handleMembershipChange}
+                  value={membershipTypeData}
+                >
+                  {membershipMenuList}
+                </Select>
+              </FormControl>
+            </Box>
 
-          <Box sx={{ minWidth: 120 }}>
-            <Typography padding={1}>Select Gym:</Typography>
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="select-label">Gym</InputLabel>
-              <Select
-                labelId="select-label"
-                id="simple-select"
-                value={gymData}
-                label="Gym"
-                onChange={handleGymChange}
-              >
-                {gymsList}
-              </Select>
-            </FormControl>
-          </Box>
+            <Box sx={{ minWidth: 120 }}>
+              <Typography padding={1}>Price:</Typography>
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="select-label"></InputLabel>
+                <TextField
+                  id="outlined-read-only-input"
+                  label="Price"
+                  value={priceData}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </FormControl>
+            </Box>
 
-          <Box paddingY={3}>
-          {currentUser.gym_membership.gym?.id === gymData.id ?
-            null :
-            <Button
-              sx={{ ml: 1}}
-              variant="contained"
-              type="submit"
+            <Box sx={{ minWidth: 120 }}>
+              <Typography padding={1}>Select Gym:</Typography>
+              <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="select-label">Gym</InputLabel>
+                <Select
+                  labelId="select-label"
+                  id="simple-select"
+                  value={gymData}
+                  label="Gym"
+                  onChange={handleGymChange}
+                >
+                  {gymsList}
+                </Select>
+              </FormControl>
+            </Box>
+
+            <Box paddingY={3}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
             >
-              Purchase Membership
-            </Button>
-          }  
-          </Box>
-        </form>
-      </Paper>
+            {currentUser.gym_membership.gym?.id === gymData.id ?
+              null :
+              <Button
+                variant="contained"
+                type="submit"
+              >
+                Purchase Membership
+              </Button>
+            }  
+            </Box>
+          </form>
+        </Paper>
+      </Box>
     </Box>
   )
 }

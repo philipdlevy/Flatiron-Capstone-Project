@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button'; 
+import Box from '@mui/material/Box';
 
 import Grid from '@mui/material/Grid';
 
@@ -94,9 +95,16 @@ function TrainerCard({ trainerObj }) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
-            <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
-              <Button variant="contained">Book an appointment</Button>
-            </Link>
+
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
+                <Button variant="contained">Book an appointment</Button>
+              </Link>
+            </Box>
             
             {currentUser.role.name === "admin" ?
               <Button 
