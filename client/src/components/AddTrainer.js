@@ -72,17 +72,33 @@ function AddTrainer() {
   }
 
   return (
-    <Box>
+    <Box 
+      paddingY={5}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+
       <Paper sx={{
         width: 350,
-        height: 500,
-        ml: 3,
+        height: 500
       }}
       >
-        <Typography variant='h5' component="h2">Add New Trainer</Typography>
+        <Typography 
+          sx={{ paddingY: 1}}
+          variant='h5' 
+          component="h2"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >            
+          Add New Trainer
+        </Typography>
+
         <form onSubmit={handleSubmit}>
           <Typography padding={1}>Name:</Typography>
           <TextField
+            sx={{ ml: 1, width: 333}}
             required
             id="outlined-required"
             label="Required"
@@ -94,6 +110,7 @@ function AddTrainer() {
           />
           <Typography padding={1}>Bio:</Typography>
           <TextField
+            sx={{ ml: 1, width: 333}}
             required
             id="outlined-password-input"
             label="required"
@@ -104,6 +121,7 @@ function AddTrainer() {
           />
           <Typography padding={1}>Email:</Typography>
           <TextField
+            sx={{ ml: 1, width: 333}}
             required
             id="outlined-password-input"
             label="required"
@@ -113,9 +131,9 @@ function AddTrainer() {
             onChange={handleEmailChange}
           />
 
+          <Typography sx={{ padding: 1}}>Select Gym:</Typography>
           <Box sx={{ minWidth: 120 }}>
-            <Typography >Select Gym:</Typography>
-            <FormControl sx={{ m: 1, width: 185 }}>
+            <FormControl sx={{ ml: 1, width: 333 }}>
               <InputLabel id="select-label">Gym</InputLabel>
               <Select
                 required
@@ -130,8 +148,14 @@ function AddTrainer() {
             </FormControl>
           </Box>
 
-          <Box paddingY={2}>
+          <Box 
+            paddingY={2}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"  
+          >
             <Button
+              sx={{ width: 300}}
               variant="contained"
               type="submit"
             >

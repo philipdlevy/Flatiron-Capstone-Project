@@ -30,7 +30,7 @@ function GymLister() {
     return <EditGymForm />
   } else {
     return (   
-      <Box paddingY={2}>
+      <Box padding={2}>
         {currentUser.role && currentUser.role.name === "admin" ?
           <Link to="/gyms/new" style={{ textDecoration: 'none'}}>
             <Button variant="contained">Add new gym</Button>

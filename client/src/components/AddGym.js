@@ -51,37 +51,64 @@ function AddGym() {
   }
 
   return (
-    <Box>
+    <Box
+      paddingY={5}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+
       <Paper sx={{
         width: 350,
-        height: 450,
-        ml: 3,
+        height: 400
       }}
       >
-        <Typography variant='h5' component="h2">Add New Gym</Typography>
+        <Typography 
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          variant='h5' 
+          component="h2"         
+        >
+          Add New Gym
+        </Typography>
+
         <form onSubmit={handleSubmit}>
-          <Typography padding={1}>Gym Address:</Typography>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            placeholder='Gym Address'
-            type="text"
-            name="address"
-            value={newGymData.address}
-            onChange={handleChange}
-          />
-          <Typography padding={1}>Gym Phone Nmber:</Typography>
-          <TextField
-            required
-            id="outlined-password-input"
-            label="required"
-            type="integer"
-            name="phone_number"
-            value={newGymData.phone_number}
-            onChange={handleChange}
-          />
           <Box paddingY={1}>
+            <Typography padding={1}>Gym Address:</Typography>
+            <TextField
+              sx={{ ml: 1, width: 333}}
+              required
+              id="outlined-required"
+              label="Required"
+              placeholder='Gym Address'
+              type="text"
+              name="address"
+              value={newGymData.address}
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box paddingY={1}>
+            <Typography padding={1}>Gym Phone Nmber:</Typography>
+            <TextField
+              sx={{ ml: 1, width: 333}}
+              required
+              id="outlined-password-input"
+              label="required"
+              type="integer"
+              name="phone_number"
+              value={newGymData.phone_number}
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box 
+            paddingY={10}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
             <Button
               variant="contained"
               type="submit"
