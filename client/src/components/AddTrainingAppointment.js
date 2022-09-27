@@ -87,36 +87,38 @@ function AddTrainingAppointment() {
   }
 
   return (
-    <Box>
+    <Box
+      paddingY={5}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+
       <Paper sx={{
-        width: 350,
-        height: 450,
-        ml: 3,
+        width: 250,
+        height: 380
       }}
       >
         <form onSubmit={handleSubmit}>
+          <Typography padding={1}>Select Trainer:</Typography>
           <Box sx={{ minWidth: 120 }}>
-            <Typography padding={1}>Select Trainer:</Typography>
-            <FormControl sx={{ m: 1, width: 230 }}>
+            <FormControl sx={{ ml: 1, width: 230 }}>
               <InputLabel id="select-label">Trainer</InputLabel>
               <Select
                 labelId="select-label"
                 id="demo-simple-select"
                 value={trainerData}
                 label="Trainer"
-                // onChange={(e) => setTrainer(e.target.value)}
                 onChange={handleChange}
               >
-                {/* <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem> */}
                 {trainerArray}
               </Select>
             </FormControl>
           </Box>
 
+          <Typography padding={1}>Select Date:</Typography>
           <Box sx={{ minWidth: 120, marginLeft: 1 }}>
-            <Typography padding={1}>Select Date:</Typography>
-            <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="Date"
                 value={dateData}
@@ -128,9 +130,9 @@ function AddTrainingAppointment() {
             </LocalizationProvider>
           </Box>
 
-          <Box sx={{ minWidth: 120, marginLeft: 1 }}>
-            <Typography padding={1}>Select Time:</Typography>
-            <LocalizationProvider dateAdapter={AdapterDayjs} sx={{ m: 1, width: 250 }}>
+          <Typography padding={1}>Select Time:</Typography>
+          <Box sx={{ minWidth: 120, marginLeft: 1, }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <TimePicker
                 label="Time"
                 // inputFormat='hh:mm tt'
@@ -144,7 +146,12 @@ function AddTrainingAppointment() {
             </LocalizationProvider>
           </Box>
 
-            <Box paddingY={3}>
+            <Box 
+              paddingY={3}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Button
                 variant="contained"
                 type="submit"
