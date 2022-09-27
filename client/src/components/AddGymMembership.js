@@ -14,7 +14,6 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
-import { makeStyles } from '@material-ui/core/styles'
 
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
@@ -24,7 +23,6 @@ function AddGymMembership() {
   const [membershipTypeData, setMembershipTypeData] = useState("")
   const [priceData, setPriceData] = useState("")
   const [gymData, setGymData] = useState("")
-  console.log(gymData.id)
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -56,7 +54,6 @@ function AddGymMembership() {
   
   const handleMembershipChange = (event) => {
     setMembershipTypeData(event.target.value);
-    console.log(membershipTypeData)
   };
 
   useEffect(() => {
@@ -93,9 +90,9 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
-      console.log("membershipData", membershipData)
+      // console.log("membershipData", membershipData)
       setAllMemberships([...allMemberships, membershipData])
-      console.log("membershipData", membershipData)
+      // console.log("membershipData", membershipData)
       dispatch(userAddMembership(membershipData))
       setGymData("")
       history.push("/")
@@ -105,7 +102,8 @@ function AddGymMembership() {
 
   return (
     <Box>
-        {currentUser.gym_membership.gym?.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+        {currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+      
       <Box
         paddingY={5}
         display="flex"
@@ -172,7 +170,7 @@ function AddGymMembership() {
               alignItems="center"
               justifyContent="center"
             >
-            {currentUser.gym_membership.gym?.id === gymData.id ?
+            {currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id ?
               null :
               <Button
                 variant="contained"
@@ -180,7 +178,7 @@ function AddGymMembership() {
               >
                 Purchase Membership
               </Button>
-            }  
+            }
             </Box>
           </form>
         </Paper>

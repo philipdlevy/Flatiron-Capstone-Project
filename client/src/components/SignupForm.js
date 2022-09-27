@@ -44,7 +44,13 @@ function SignupForm() {
     })
     .then((resp) => resp.json())
     .then((user) => {
+      if (!user.gym_membership) {
+        user.gym_membership = {
+          gym: {}
+        }
+      }
       dispatch(userAdded(user))
+      console.log(user)
       dispatch(loginUser(user))
       console.log(user)
       setNewUserData({
