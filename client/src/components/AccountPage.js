@@ -29,6 +29,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 function AccountPage() {
   const currentUser = useSelector((state) => state.users.user) 
 
+  // debugger
   const rows = [
     { rowName: "Username:", rowValue: currentUser.username },
     { rowName: "Email:", rowValue: currentUser.email },
@@ -39,7 +40,7 @@ function AccountPage() {
   ];
 
   return (
-      <TableContainer component={Paper} sx={{ paddingY: 2}}>
+      <TableContainer component={Paper} sx={{ paddingY: 1}}>
         <Table aria-label="customized table">
           <TableHead>
             <TableRow>

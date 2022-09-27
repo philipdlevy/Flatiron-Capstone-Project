@@ -102,7 +102,6 @@ function AddGymMembership() {
 
   function membershipDuplicationCheck() {
     const checker = currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id
-
     return checker
   }
 
