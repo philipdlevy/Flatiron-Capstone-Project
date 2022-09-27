@@ -106,7 +106,7 @@ function TrainerCard({ trainerObj }) {
               </Link>
             </Box>
             
-            {currentUser.role.name === "admin" ?
+            {currentUser.role && currentUser.role.name === "admin" ?
               <Button 
                 variant="contained"
                 size='small'
@@ -116,7 +116,7 @@ function TrainerCard({ trainerObj }) {
               </Button>
             : null}
 
-            {currentUser.role.name === "admin" ?
+            {currentUser.role && currentUser.role.name === "admin" ?
               <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>
                 <Button variant='contained' size='small'>Edit Trainer</Button>
               </Link>

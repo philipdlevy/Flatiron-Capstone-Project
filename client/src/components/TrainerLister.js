@@ -34,7 +34,7 @@ function TrainerLister() {
       <div>
 
         <Box paddingY={2}>
-          {currentUser.role.name === "admin" ?
+          {currentUser.role && currentUser.role.name === "admin" ?
             <Link to="/trainers/new" style={{ textDecoration: 'none'}}>
               <Button variant="contained">Add new trainer</Button>
             </Link>

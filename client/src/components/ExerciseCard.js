@@ -91,7 +91,7 @@ function ExerciseCard({ exerciseObj }) {
           </CardContent>
         </Collapse>
 
-        {currentUser.role.name === "admin" ?
+        {currentUser.role && currentUser.role.name === "admin" ?
           <Button 
             variant='contained' 
             size='small'
@@ -101,7 +101,7 @@ function ExerciseCard({ exerciseObj }) {
           </Button>
         : null}
 
-        {currentUser.role.name === "admin" ?
+        {currentUser.role && currentUser.role.name === "admin" ?
           <Link to={`/exercises/${id}`} style={{ textDecoration: 'none'}}>
             <Button variant='contained' size='small'> Edit Exercise</Button>
           </Link>

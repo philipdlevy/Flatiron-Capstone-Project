@@ -125,7 +125,7 @@ function AddGymMembership() {
           <form onSubmit={handleSubmit}>
           <Box sx={{ minWidth: 120 }}>
               <Typography padding={1}>Select Membership:</Typography>
-              <FormControl sx={{ m: 1, width: 300 }}>
+              <FormControl sx={{ m: 1, width: 323 }}>
                 <InputLabel id="select-labels"
                 >Membership</InputLabel>
                 <Select
@@ -142,7 +142,7 @@ function AddGymMembership() {
 
             <Box sx={{ minWidth: 120 }}>
               <Typography padding={1}>Price:</Typography>
-              <FormControl sx={{ m: 1, width: 300 }}>
+              <FormControl sx={{ m: 1, width: 323 }}>
                 <InputLabel id="select-label"></InputLabel>
                 <TextField
                   id="outlined-read-only-input"
@@ -157,7 +157,7 @@ function AddGymMembership() {
 
             <Box sx={{ minWidth: 120 }}>
               <Typography padding={1}>Select Gym:</Typography>
-              <FormControl sx={{ m: 1, width: 300 }}>
+              <FormControl sx={{ m: 1, width: 323 }}>
                 <InputLabel id="select-label">Gym</InputLabel>
                 <Select
                   labelId="select-label"

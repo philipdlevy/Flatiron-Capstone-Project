@@ -72,7 +72,7 @@ function SignupForm() {
     >
 
       <Paper sx={{
-        width: 350,
+        width: 400,
         height: 600
       }}
       >
@@ -90,7 +90,7 @@ function SignupForm() {
           <Typography padding={1}>Username:</Typography>
           <Box sx={{ ml: 1 }}>
             <TextField
-              sx={{width: 333 }}
+              sx={{width: 383 }}
               required
               id="required_outline"
               label="Required"
@@ -105,7 +105,7 @@ function SignupForm() {
           <Typography padding={1}>Password:</Typography>
           <Box sx={{ ml: 1 }}>
             <TextField
-              sx={{width: 333 }}
+              sx={{width: 383 }}
               required
               id="outlined-password-input"
               label="Password"
@@ -120,7 +120,7 @@ function SignupForm() {
           <Typography padding={1}>Age:</Typography>
           <Box sx={{ ml: 1 }}>
             <TextField
-              sx={{width: 333 }}
+              sx={{width: 383 }}
               required
               id="outlined-require"
               label="Required"
@@ -135,7 +135,7 @@ function SignupForm() {
           <Typography padding={1}>Email:</Typography>
           <Box sx={{ ml: 1 }}>
             <TextField
-              sx={{width: 333 }}
+              sx={{width: 383 }}
               required
               id="outlined"
               label="Required"
@@ -150,7 +150,7 @@ function SignupForm() {
           <Typography padding={1}>Address:</Typography>
           <Box sx={{ ml: 1 }}>
             <TextField
-              sx={{width: 333 }}
+              sx={{width: 383 }}
               required
               id="required"
               label="Required"
