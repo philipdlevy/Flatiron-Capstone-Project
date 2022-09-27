@@ -90,19 +90,25 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
-      // console.log("membershipData", membershipData)
       setAllMemberships([...allMemberships, membershipData])
-      // console.log("membershipData", membershipData)
       dispatch(userAddMembership(membershipData))
       setGymData("")
+      setMembershipTypeData("")
+      setPriceData("")
       history.push("/")
     })
     .catch((error) => alert(error))
   }
 
+  function membershipDuplicationCheck() {
+    const checker = currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id
+
+    return checker
+  }
+
   return (
     <Box>
-        {currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+        {membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
       
       <Box
         paddingY={5}
@@ -170,7 +176,7 @@ function AddGymMembership() {
               alignItems="center"
               justifyContent="center"
             >
-            {currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id ?
+            {membershipDuplicationCheck() ?
               null :
               <Button
                 variant="contained"

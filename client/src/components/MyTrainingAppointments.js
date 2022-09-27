@@ -59,22 +59,14 @@ function MyTrainingAppointments() {
         
         {currentUser.training_appointments ?
         <TableContainer>
-            <Table aria-label="customized table">
+            <Table aria-label="customized table" >
                 {/* <TableHead>
                 </TableHead> */}
-                {/* <TableBody>
-                {rows.map((row) => (
-                    <StyledTableRow key={row.rowName}>
-                    <StyledTableCell >
-                        {row.rowName} {row.rowValue}
-                    </StyledTableCell>
-                    </StyledTableRow>
-                ))}
-                </TableBody> */}
                 {trainingAppointmentArray}
             </Table>
         </TableContainer>
         : <Typography>Hello</Typography>}
+
     </Box>
   )
 }
