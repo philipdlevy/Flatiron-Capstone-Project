@@ -20,7 +20,7 @@ const usersSlice = createSlice({
     },
     reducers: {
         userAdded(state, action) {
-            debugger
+            // debugger
             state.entities.push(action.payload)
         },
         loginUser(state, action) {

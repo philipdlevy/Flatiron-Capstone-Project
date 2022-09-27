@@ -28,6 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AccountPage() {
   const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
 
   // debugger
   const rows = [
@@ -36,7 +37,7 @@ function AccountPage() {
     { rowName: "Address:", rowValue: currentUser.address },
     { rowName: "Age:", rowValue: `${currentUser.age} years old`},
     { rowName: "Membership Type:", rowValue: currentUser.gym_membership.membershipType},
-    { rowName: "Membership Price:", rowValue: `$${(currentUser.gym_membership.price == null) ? "" : currentUser.gym_membership.price}`}
+    { rowName: "Membership Price:", rowValue: `$${(currentUser.gym_membership.price == null) ? "0" : currentUser.gym_membership.price}`}
   ];
 
   return (

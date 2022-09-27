@@ -64,6 +64,7 @@ function AddGym() {
       }}
       >
         <Typography 
+          sx={{paddingY: 1 }}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -104,7 +105,7 @@ function AddGym() {
           </Box>
 
           <Box 
-            paddingY={10}
+            paddingY={8}
             display="flex"
             alignItems="center"
             justifyContent="center"

@@ -32,7 +32,7 @@ function ExerciseLister() {
     return (
       <div>
 
-        <Box paddingY={2}>
+        <Box padding={2}>
           {currentUser.role && currentUser.role.name === "admin" ?
             <Link to="exercises/new" style={{ textDecoration: 'none'}}>
               <Button variant="contained">Add New Exercise</Button>

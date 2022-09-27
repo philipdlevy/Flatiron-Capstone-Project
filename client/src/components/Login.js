@@ -41,6 +41,11 @@ function Login() {
     })
     .then((resp) => resp.json())
     .then((user) => {
+      if (!user.gym_membership) {
+        user.gym_membership = {
+          gym: {}
+        }
+      }
       console.log(user)
       dispatch(loginUser(user))
       setLoginData({
