@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -84,83 +85,87 @@ function AddTrainingAppointment() {
       history.push("/trainers")
     })
     .catch((error) => alert(error))
-  }
+  }  
+  
 
   return (
-    <Box
-      paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Box>
 
-      <Paper sx={{
-        width: 250,
-        height: 380
-      }}
+      <Box
+        paddingY={5}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        <form onSubmit={handleSubmit}>
-          <Typography padding={1}>Select Trainer:</Typography>
-          <Box sx={{ minWidth: 120 }}>
-            <FormControl sx={{ ml: 1, width: 230 }}>
-              <InputLabel id="select-label">Trainer</InputLabel>
-              <Select
-                labelId="select-label"
-                id="demo-simple-select"
-                value={trainerData}
-                label="Trainer"
-                onChange={handleChange}
-              >
-                {trainerArray}
-              </Select>
-            </FormControl>
-          </Box>
 
-          <Typography padding={1}>Select Date:</Typography>
-          <Box sx={{ minWidth: 120, marginLeft: 1 }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                label="Date"
-                value={dateData}
-                onChange={(newDate) => {
-                  setDateData(newDate);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </Box>
-
-          <Typography padding={1}>Select Time:</Typography>
-          <Box sx={{ minWidth: 120, marginLeft: 1, }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <TimePicker
-                label="Time"
-                // inputFormat='hh:mm tt'
-                value={timeData}
-                onChange={(newTime) => {
-                  setTimeData(newTime);
-                  console.log(newTime)
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </Box>
-
-            <Box 
-              paddingY={3}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Button
-                variant="contained"
-                type="submit"
-              >
-                Add Appointment
-              </Button>
+        <Paper sx={{
+          width: 250,
+          height: 380
+        }}
+        >
+          <form onSubmit={handleSubmit}>
+            <Typography padding={1}>Select Trainer:</Typography>
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl sx={{ ml: 1, width: 230 }}>
+                <InputLabel id="select-label">Trainer</InputLabel>
+                <Select
+                  labelId="select-label"
+                  id="demo-simple-select"
+                  value={trainerData}
+                  label="Trainer"
+                  onChange={handleChange}
+                >
+                  {trainerArray}
+                </Select>
+              </FormControl>
             </Box>
-        </form>
-      </Paper>
+
+            <Typography padding={1}>Select Date:</Typography>
+            <Box sx={{ minWidth: 120, marginLeft: 1 }}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Date"
+                  value={dateData}
+                  onChange={(newDate) => {
+                    setDateData(newDate);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </Box>
+
+            <Typography padding={1}>Select Time:</Typography>
+            <Box sx={{ minWidth: 120, marginLeft: 1, }}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <TimePicker
+                  label="Time"
+                  // inputFormat='hh:mm tt'
+                  value={timeData}
+                  onChange={(newTime) => {
+                    setTimeData(newTime);
+                    console.log(newTime)
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </Box>
+
+              <Box 
+                paddingY={3}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Button
+                  variant="contained"
+                  type="submit"
+                >
+                  Add Appointment
+                </Button>
+              </Box>
+          </form>
+        </Paper>
+      </Box>
     </Box>
   )
 }

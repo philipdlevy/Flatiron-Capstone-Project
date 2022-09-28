@@ -26,10 +26,32 @@ function App() {
   return (
     <div 
       style={{ 
+        // margin: "auto",
+        // backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
+        // height:'100vh',
+        // backgroundSize: 'cover',
+        // backgroundRepeat: 'no-repeat',
+        // backgroundAttachment: "scrollable"
         backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
-        height:'100vh',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
+
+        // minHeight: "100%",
+        // minWidth: "1024px",
+        // backgroundRepeat: "no-repeat",
+        // width: "100%",
+        // height: "auto",
+        // backgroundAttachment: "fixed",
+        // top: "0",
+        // left: "0",
+
+        margin: "auto",
+        minWidth: "50%",
+        minHeight: "50%",
+        height: "auto",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        height: "100%"
       }}
     >
 
