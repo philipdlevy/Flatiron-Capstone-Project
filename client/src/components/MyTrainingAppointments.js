@@ -33,8 +33,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
-    console.log(currentUser)
-
+    console.log(currentUser.training_appointments)
+    // debugger
     
     const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
         const rows = [
@@ -56,7 +56,11 @@ function MyTrainingAppointments() {
     
   return (
     <Box>
-        <Typography sx={{fontSize: "2rem", backgroundColor: "white", paddingX: 1}}>My Training Appontments</Typography>
+        <Typography 
+            sx={{fontSize: "2rem", backgroundColor: "white", paddingX: 1}}
+        >
+            My Training Appontments
+        </Typography>
         
         {currentUser.training_appointments && currentUser.training_appointments === [] ?
         <Alert severity="info">You do not have any training sessions. Visit the trainers tab to purchase a training session.</Alert>

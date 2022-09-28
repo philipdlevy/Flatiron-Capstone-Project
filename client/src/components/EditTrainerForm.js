@@ -4,6 +4,16 @@ import {useHistory, useParams} from "react-router-dom"
 import { trainerUpdated } from '../features/trainersSlice';
 import { fetchTrainers } from "../features/trainersSlice"
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 function EditTrainerForm() {
     const [pickedObj, setPickedObj] = useState({
         name: "",
@@ -69,32 +79,108 @@ function EditTrainerForm() {
       }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-            <label><strong>Name</strong></label>
-            <input 
-            value={pickedObj.name}
-            type="text" 
+    // <div>
+    //     <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+    //         <label><strong>Name</strong></label>
+    //         <input 
+    //         value={pickedObj.name}
+    //         type="text" 
+    //         name="name"
+    //         onChange={handleChange}
+    //         /><br/>
+    //         <label><strong>Bio</strong></label>
+    //         <input 
+    //         value={pickedObj.bio}
+    //         type="text" 
+    //         name="bio"
+    //         onChange={handleChange}
+    //         /><br/>
+    //         <label><strong>Email</strong></label>
+    //         <input 
+    //         value={pickedObj.email}
+    //         type="text" 
+    //         name="email"
+    //         onChange={handleChange}
+    //         /><br/>
+    //         <input type="submit"></input>
+    //     </form>
+    // </div>
+
+    <Box 
+      paddingY={5}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+
+      <Paper sx={{
+        width: 350,
+        height: 500
+      }}
+      >
+        <Typography 
+          sx={{ paddingY: 1}}
+          variant='h5' 
+          component="h2"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >            
+          Edit Trainer
+        </Typography>
+
+        <form onSubmit={handleSubmit}>
+          <Typography padding={1}>Name:</Typography>
+          <TextField
+            sx={{ ml: 1, width: 333}}
+            required
+            id="outlined-required"
+            label="Required"
+            placeholder='name'
+            type="text"
             name="name"
+            value={pickedObj.name}
             onChange={handleChange}
-            /><br/>
-            <label><strong>Bio</strong></label>
-            <input 
-            value={pickedObj.bio}
-            type="text" 
+          />
+          <Typography padding={1}>Bio:</Typography>
+          <TextField
+            sx={{ ml: 1, width: 333}}
+            required
+            id="outlined-password-input"
+            label="required"
+            type="text"
             name="bio"
+            value={pickedObj.bio}
             onChange={handleChange}
-            /><br/>
-            <label><strong>Email</strong></label>
-            <input 
-            value={pickedObj.email}
-            type="text" 
+          />
+          <Typography padding={1}>Email:</Typography>
+          <TextField
+            sx={{ ml: 1, width: 333}}
+            required
+            id="outlined-password-input"
+            label="required"
+            type="text"
             name="email"
+            value={pickedObj.email}
             onChange={handleChange}
-            /><br/>
-            <input type="submit"></input>
+          />
+          <Box 
+            paddingY={12}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"  
+          >
+            <Button
+              sx={{ width: 300}}
+              variant="contained"
+              type="submit"
+            >
+              Submit Edited Trainer
+            </Button>
+          </Box>
         </form>
-    </div>
+      </Paper>
+    </Box>
   )
 }
 

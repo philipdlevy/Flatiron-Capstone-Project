@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {useHistory, useParams} from "react-router-dom"
 import { gymUpdated, fetchGyms } from '../features/gymsSlice';
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
 
 function EditGymForm() {
     const [pickedObj, setPickedObj] = useState({
@@ -61,25 +66,94 @@ function EditGymForm() {
       }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-            <label><strong>Address</strong></label>
-            <input 
-            value={pickedObj.address}
-            type="text" 
-            name="address"
-            onChange={handleChange}
-            /><br/>
-            <label><strong>Phone Number</strong></label>
-            <input 
-            value={pickedObj.phone_number}
-            type="text" 
-            name="phone_number"
-            onChange={handleChange}
-            /><br/>
-            <input type="submit"></input>
+    // <div>
+    //     <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
+    //         <label><strong>Address</strong></label>
+    //         <input 
+    //         value={pickedObj.address}
+    //         type="text" 
+    //         name="address"
+    //         onChange={handleChange}
+    //         /><br/>
+    //         <label><strong>Phone Number</strong></label>
+    //         <input 
+    //         value={pickedObj.phone_number}
+    //         type="text" 
+    //         name="phone_number"
+    //         onChange={handleChange}
+    //         /><br/>
+    //         <input type="submit"></input>
+    //     </form>
+    //   </div>
+    <Box
+      paddingY={5}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+
+      <Paper sx={{
+        width: 350,
+        height: 400
+      }}
+      >
+        <Typography 
+          sx={{paddingY: 1 }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          variant='h5' 
+          component="h2"         
+        >
+          Edit Gym
+        </Typography>
+
+        <form onSubmit={handleSubmit}>
+          <Box paddingY={1}>
+            <Typography padding={1}>Gym Address:</Typography>
+            <TextField
+              sx={{ ml: 1, width: 333}}
+              required
+              id="outlined-required"
+              label="Required"
+              placeholder='Gym Address'
+              type="text"
+              name="address"
+              value={pickedObj.address}
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box paddingY={1}>
+            <Typography padding={1}>Gym Phone Nmber:</Typography>
+            <TextField
+              sx={{ ml: 1, width: 333}}
+              required
+              id="outlined-password-input"
+              label="required"
+              type="integer"
+              name="phone_number"
+              value={pickedObj.phone_number}
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box 
+            paddingY={8}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Button
+              variant="contained"
+              type="submit"
+            >
+              Submit Edited gym
+            </Button>
+          </Box>
         </form>
-      </div>
+      </Paper>
+    </Box>
   )
 }
 
