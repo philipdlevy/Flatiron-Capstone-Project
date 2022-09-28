@@ -106,6 +106,11 @@ function TrainerCard({ trainerObj }) {
               </Link>
             </Box>
             
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
             {currentUser.role && currentUser.role.name === "admin" ?
               <Button 
                 variant="contained"
@@ -115,12 +120,20 @@ function TrainerCard({ trainerObj }) {
                 Delete trainer
               </Button>
             : null}
+            </Box>
 
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
             {currentUser.role && currentUser.role.name === "admin" ?
               <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>
                 <Button variant='contained' size='small'>Edit Trainer</Button>
               </Link>
             : null}
+            </Box>
+            
           </CardContent>
         </Collapse>
       </Card>
