@@ -1,6 +1,7 @@
 require 'pry'
 
 class RolesController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index 
         # binding.pry
@@ -10,13 +11,19 @@ class RolesController < ApplicationController
 
     def show
         role = Role.find(params[:id])
-        render json: role
+        if role
+            render json: role
+        else
+            render json: {error: "Role not found"}, status: :not_found
+        end
     end
 
     def create
         # binding.pry
-        role = Role.create(role_params)
+        role = Role.create!(role_params)
         render json: role, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid 
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def destroy

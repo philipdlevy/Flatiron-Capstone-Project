@@ -1,6 +1,7 @@
 require 'pry'
 
 class TrainersController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
         trainers = Trainer.all
@@ -9,21 +10,26 @@ class TrainersController < ApplicationController
 
     def show
         trainer = Trainer.find(params[:id])
-        render json: trainer
+        if trainer
+            render json: trainer
+        else 
+            render json: {error: "Trainer not found"}, status: :not_found
+        end
     end
 
     def create
-        # binding.pry
-        # gym = Gym.find(params[:id])
-
-        trainer = Trainer.create(trainer_params)
+        trainer = Trainer.create!(trainer_params)
         render json: trainer, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid 
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def update
         trainer = Trainer.find(params[:id])
-        trainer.update(trainer_params)
+        trainer.update!(trainer_params)
         render json: trainer
+    rescue ActiveRecord::RecordInvalid => invalid 
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def destroy

@@ -1,6 +1,7 @@
 require 'pry'
 
 class GymMembershipsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
         gym_memberships = GymMembership.all 
@@ -9,8 +10,10 @@ class GymMembershipsController < ApplicationController
 
     def create
         # binding.pry
-        membership = GymMembership.create(gym_membership_params)
+        membership = GymMembership.create!(gym_membership_params)
         render json: membership
+    rescue ActiveRecord::RecordInvalid => invalid 
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def destroy

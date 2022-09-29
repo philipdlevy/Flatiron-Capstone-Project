@@ -10,13 +10,19 @@ class TrainingAppointmentsController < ApplicationController
 
     def show
         training_appointment = TrainingAppointment.find(params[:id])
-        render json: training_appointment
+        if training_appointment
+            render json: training_appointment
+        else
+            render json: {error: "Training_appointment not found"}, status: not_found
+        end
     end
 
     def create 
         # binding.pry
-        training_appointment = TrainingAppointment.create(training_appointment_params)
+        training_appointment = TrainingAppointment.create!(training_appointment_params)
         render json: training_appointment, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid 
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def destroy

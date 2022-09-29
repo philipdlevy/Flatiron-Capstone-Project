@@ -13,7 +13,11 @@ class UsersController < ApplicationController
         # only gets the user who is signed in or was. fix this
         # binding.pry
         user = User.find_by(id: session[:user_id])
-        render json: user
+        if user
+            render json: user
+        else
+            render json: {error: "Not Authorized"}, status: :unauthorized
+        end
     end
 
     def create
