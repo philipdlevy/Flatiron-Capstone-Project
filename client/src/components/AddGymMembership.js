@@ -128,9 +128,12 @@ function AddGymMembership() {
                 <InputLabel id="select-labels"
                 >Membership</InputLabel>
                 <Select
+                  required
+                  id="outlined-required"
+                  label="Required"
                   labelId="select-labels"
-                  id="simple-select"
-                  label="Membership"
+                  // id="simple-select"
+                  // label="Membership"
                   onChange={handleMembershipChange}
                   value={membershipTypeData}
                 >
@@ -159,10 +162,13 @@ function AddGymMembership() {
               <FormControl sx={{ m: 1, width: 323 }}>
                 <InputLabel id="select-label">Gym</InputLabel>
                 <Select
+                  required
+                  id="outlined-required"
+                  label="Required"
                   labelId="select-label"
-                  id="simple-select"
+                  // id="simple-select"
                   value={gymData}
-                  label="Gym"
+                  // label="Gym"
                   onChange={handleGymChange}
                 >
                   {gymsList}

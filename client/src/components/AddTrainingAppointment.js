@@ -109,10 +109,13 @@ function AddTrainingAppointment() {
               <FormControl sx={{ ml: 1, width: 230 }}>
                 <InputLabel id="select-label">Trainer</InputLabel>
                 <Select
+                  required
+                  id="outlined-required"
+                  label="Required"
                   labelId="select-label"
-                  id="demo-simple-select"
+                  // id="demo-simple-select"
                   value={trainerData}
-                  label="Trainer"
+                  // label="Trainer"
                   onChange={handleChange}
                 >
                   {trainerArray}
@@ -124,7 +127,10 @@ function AddTrainingAppointment() {
             <Box sx={{ minWidth: 120, marginLeft: 1 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="Date"
+                  required
+                  id="outlined-required"
+                  label="Required"
+                  // label="Date"
                   value={dateData}
                   onChange={(newDate) => {
                     setDateData(newDate);
@@ -156,12 +162,14 @@ function AddTrainingAppointment() {
                 alignItems="center"
                 justifyContent="center"
               >
+                {dateData === null || timeData === null ? null :
                 <Button
                   variant="contained"
                   type="submit"
                 >
                   Add Appointment
                 </Button>
+                }
               </Box>
           </form>
         </Paper>

@@ -32,8 +32,9 @@ function App() {
         // backgroundSize: 'cover',
         // backgroundRepeat: 'no-repeat',
         // backgroundAttachment: "scrollable"
-        backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
+        
 
+        // backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
         // minHeight: "100%",
         // minWidth: "1024px",
         // backgroundRepeat: "no-repeat",
@@ -43,6 +44,7 @@ function App() {
         // top: "0",
         // left: "0",
 
+        backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
         margin: "auto",
         minWidth: "50%",
         minHeight: "50%",
