@@ -19,6 +19,7 @@ import EditGymForm from "./components/EditGymForm";
 import EditTrainerForm from "./components/EditTrainerForm";
 import AccountPage from "./components/AccountPage"
 import MyTrainingAppointments from "./components/MyTrainingAppointments";
+import AdminSignupForm from "./components/AdminSignupForm";
 
 
 function App() {
@@ -117,8 +118,12 @@ function App() {
           <Login />
         </Route>
 
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignupForm />
+        </Route>
+
+        <Route path="/signup/admin">
+          <AdminSignupForm />
         </Route>
 
         <Route exact path="/account">

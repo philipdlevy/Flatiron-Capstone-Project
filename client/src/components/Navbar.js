@@ -89,7 +89,7 @@ function Navbar() {
     >
       Welcome, {currentUser.username}!
     </Typography>
-  }; 
+  };
 
   return (
     <AppBar position="static">
@@ -227,6 +227,14 @@ function Navbar() {
               > 
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
+
+              {currentUser.role.name === "admin" ? 
+              <MenuItem> 
+                <Link to="/signup/admin" style={{ textDecoration: 'none', color: "black" }}>
+                  <Typography textAlign="center">Create Admin Account</Typography>
+                </Link>
+              </MenuItem> : null }
+              
             </Menu>
           </Box>
           : null }
