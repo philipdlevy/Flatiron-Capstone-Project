@@ -17,7 +17,7 @@ import { blue } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button'; 
 import Box from '@mui/material/Box';
-
+import Alert from '@mui/material/Alert';
 import Grid from '@mui/material/Grid';
 
 
@@ -101,9 +101,11 @@ function TrainerCard({ trainerObj }) {
               alignItems="center"
               justifyContent="center"
             >
+              {!currentUser.gym_membership.gym.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
               <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
                 <Button variant="contained">Book an appointment</Button>
               </Link>
+              }
             </Box>
             
             <Box
