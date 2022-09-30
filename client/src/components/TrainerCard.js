@@ -43,7 +43,7 @@ const ExpandMore = styled((props) => {
 
 function TrainerCard({ trainerObj }) {
   const currentUser = useSelector((state) => state.users.user) 
-  const {id, name, bio, email} = trainerObj
+  const {id, name, bio, email, image_url} = trainerObj
   const classes = useStyles()
 
   const [expanded, setExpanded] = React.useState(false);
@@ -70,7 +70,7 @@ function TrainerCard({ trainerObj }) {
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: blue[500] }}>
               ❚█══█❚
             </Avatar>
           }
@@ -108,7 +108,7 @@ function TrainerCard({ trainerObj }) {
             <Box
               className={classes.displays}
             >
-              {!currentUser.gym_membership.gym.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
+              {!currentUser.gym_membership?.gym.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
               <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
                 <Button variant="contained">Book an appointment</Button>
               </Link>

@@ -26,6 +26,11 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center"
   },
+  colorBox: {
+    width: "284px",
+    height: "80px",
+    background: grey[500]
+  },
 });
 
 
@@ -54,8 +59,9 @@ function MembershipPage() {
               bgcolor: grey[300],
               m: 2
             }}
+            
           >
-            <Box padding={1}>
+            <Box padding={1} className={classes.colorBox}>
               <Typography 
                 className={classes.displays}
                 variant='h5' 
@@ -131,7 +137,7 @@ function MembershipPage() {
               bgcolor: grey[300],
             }}
           >
-            <Box padding={1}>
+            <Box padding={1} className={classes.colorBox}>
               <Typography 
                 className={classes.displays}
                 variant='h5' 

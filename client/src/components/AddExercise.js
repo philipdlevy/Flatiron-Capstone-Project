@@ -62,33 +62,6 @@ function AddExercise() {
   }
   
   return (
-    // <div>
-    //   <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-    //     <label><strong>name</strong></label>
-    //     <input 
-    //     value={newExerciseData.name}
-    //     type="text" 
-    //     name="name"
-    //     onChange={handleChange}
-    //     /><br/>
-    //     <label><strong>image</strong></label>
-    //     <input 
-    //     value={newExerciseData.image_url}
-    //     type="text" 
-    //     name="image_url"
-    //     onChange={handleChange}
-    //     /><br/>
-    //     <label><strong>info</strong></label>
-    //     <textarea 
-    //     value={newExerciseData.info}
-    //     type="text" 
-    //     name="info"
-    //     onChange={handleChange}
-    //     /><br/>
-    //     <input type="submit"></input>
-    //   </form>
-    // </div>
-
     <Box
       paddingY={5}
       className={classes.displays}

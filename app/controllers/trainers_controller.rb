@@ -18,10 +18,14 @@ class TrainersController < ApplicationController
     end
 
     def create
-        trainer = Trainer.create!(trainer_params)
-        render json: trainer, status: :created
-    rescue ActiveRecord::RecordInvalid => invalid 
-        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+        trainer = Trainer.create(trainer_params)
+        if trainer.valid?
+            render json: trainer, status: :created
+        else
+            render json: {errors: trainer.errors.full_messages}, status: :unprocessable_entity
+        end
+    # rescue ActiveRecord::RecordInvalid => invalid 
+    #     render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def update
@@ -42,6 +46,6 @@ class TrainersController < ApplicationController
     private 
 
     def trainer_params
-        params.permit(:name, :bio, :email, :gym_id)
+        params.permit(:name, :bio, :email, :image_url, :gym_id)
     end
 end

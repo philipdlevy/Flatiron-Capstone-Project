@@ -18,6 +18,7 @@ const trainersSlice = createSlice({
         },
         trainerRemoved(state, action) {
             state.entities = state.entities.filter((trainer) => trainer.id !== action.payload);
+            debugger
         },
         trainerUpdated(state, action) {
             const selectedTrainer = state.entities.find((trainer) => trainer.id === action.payload.id)

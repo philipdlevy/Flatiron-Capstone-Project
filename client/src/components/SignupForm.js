@@ -64,8 +64,8 @@ function SignupForm() {
           gym: {}
         }
       }
-      dispatch(userAdded(user))
       console.log(user)
+      dispatch(userAdded(user))
       dispatch(loginUser(user))
       console.log(user)
       setNewUserData({

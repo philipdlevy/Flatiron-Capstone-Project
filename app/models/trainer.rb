@@ -5,6 +5,6 @@ class Trainer < ApplicationRecord
     validates :email, uniqueness: true
     validates :bio, length: {minimum: 10, maximum: 250}
 
-    has_many :training_appointments
+    has_many :training_appointments, dependent: :destroy
     has_many :users, through: :training_appointments
 end

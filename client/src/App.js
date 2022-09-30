@@ -54,7 +54,7 @@ function App() {
         backgroundPosition: "center center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
-        height: "100%"
+        height: "100%",
       }}
     >
 
