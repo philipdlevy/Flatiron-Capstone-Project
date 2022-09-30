@@ -8,16 +8,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function AdminSignupForm() {
-    const [newUserData, setNewUserData] = useState({
-        username: "",
-        password: "",
-        age: "",
-        email: "",
-        address: "",
-        role_id: 4
-    })
+  const [newUserData, setNewUserData] = useState({
+      username: "",
+      password: "",
+      age: "",
+      email: "",
+      address: "",
+      role_id: 4
+  })
+  const classes = useStyles()
 
   const dispatch = useDispatch();
   const history = useHistory()
@@ -63,9 +73,7 @@ function AdminSignupForm() {
   return (
     <Box
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -76,9 +84,7 @@ function AdminSignupForm() {
         <Typography 
           variant='h4' 
           component="h2"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
         >
           Create Admin Account
         </Typography>
@@ -160,9 +166,7 @@ function AdminSignupForm() {
           </Box>
 
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
+              className={classes.displays}
             >
               <Button 
                 sx={{

@@ -17,7 +17,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { red } from '@mui/material/colors';
 
-// const pages = ['Trainers', 'Exercise List', 'Open Gyms'];
+
 const pagesLinks = [
   {route: "/trainers", pageName: "Trainers"},
   {route: "/exercises", pageName: "Exercise List"},
@@ -55,6 +55,7 @@ function Navbar() {
   const currentUser = useSelector((state) => state.users.user)
   const history = useHistory()
 
+  // For first letter of name in settings circle
   useEffect(() => {
     if (!currentUser.username) {
       return ""
@@ -70,7 +71,6 @@ function Navbar() {
     dispatch(logoutUser())
     history.push("/")
   }
-
 
   let loginLink;
   let welcomeMessage;

@@ -9,14 +9,24 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
+import { makeStyles } from '@mui/styles';
 
 // const color = grey[800]
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function Login() {
   const [loginData, setLoginData] = useState({
     username: "",
     password: ""
   })
+  const classes = useStyles()
   
   const dispatch = useDispatch()
   const history = useHistory()
@@ -59,10 +69,8 @@ function Login() {
 
   return (
     <Box
+      className={classes.displays}
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
     >
       <Paper sx={{
         width: 350,
@@ -70,11 +78,9 @@ function Login() {
       }}
     >
         <Typography 
+          className={classes.displays}
           variant='h3' 
           component="h2"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
         >
           Sign In
         </Typography>
@@ -110,9 +116,7 @@ function Login() {
           </Box>
 
           <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+            className={classes.displays}
           >
             <Button 
               sx={{

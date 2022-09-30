@@ -13,12 +13,22 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function AddTrainer() {
   const [nameData, setNameData] = useState("")
   const [bioData, setBioData] = useState("");
   const [emailData, setEmailData] = useState("")
   const [gymData, setGymData] = useState("")
+  const classes = useStyles()
 
   const gymArray = useSelector((state) => state.gyms.entities)
   const dispatch = useDispatch()
@@ -74,9 +84,7 @@ function AddTrainer() {
   return (
     <Box 
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -88,9 +96,7 @@ function AddTrainer() {
           sx={{ paddingY: 1}}
           variant='h5' 
           component="h2"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
         >            
           Add New Trainer
         </Typography>
@@ -150,9 +156,7 @@ function AddTrainer() {
 
           <Box 
             paddingY={2}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"  
+            className={classes.displays}  
           >
             <Button
               sx={{ width: 300}}

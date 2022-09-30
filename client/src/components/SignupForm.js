@@ -10,6 +10,16 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Alert from '@mui/material/Alert';
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 
 function SignupForm() {
@@ -21,6 +31,8 @@ function SignupForm() {
     address: "",
     role_id: 3
   })
+  // State for all classes. Acces them by classes.whichclass
+  const classes = useStyles()
 
   const dispatch = useDispatch();
   const history = useHistory()
@@ -68,7 +80,7 @@ function SignupForm() {
     .catch((error) => alert(error))  
   }
 
-  const duplicateUsernameError = usersArray.filter(user => {
+  const duplicateUsernameError = usersArray.find(user => {
     return user.username === newUserData.username
   })
   console.log(duplicateUsernameError)
@@ -80,9 +92,10 @@ function SignupForm() {
 
       <Box
         paddingY={5}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+        className={classes.displays}
+        // display="flex"
+        // alignItems="center"
+        // justifyContent="center"
       >
 
         <Paper sx={{
@@ -91,11 +104,12 @@ function SignupForm() {
         }}
         >
           <Typography 
+            className={classes.displays}
             variant='h3' 
             component="h2"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+            // display="flex"
+            // alignItems="center"
+            // justifyContent="center"
           >
             Create Account
           </Typography>
@@ -177,9 +191,10 @@ function SignupForm() {
             </Box>
 
               <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                className={classes.displays}
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
               >
                 <Button 
                   sx={{

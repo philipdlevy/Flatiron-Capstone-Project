@@ -11,7 +11,7 @@ import { Button } from '@mui/material';
 import { grey, blue } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles';
 
-
+// styling classes to use wherever. can add a new class when needed.
 const useStyles = makeStyles({
   root: {
     background: blue[700],
@@ -21,21 +21,28 @@ const useStyles = makeStyles({
     height: 48,
     padding: '0 30px'
   },
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
 });
 
 
 function MembershipPage() {
   const currentUser = useSelector((state) => state.users.user)
-  const classes = useStyles();
+  // State for all classes. Acces them by classes.whichclass
+  const classes = useStyles()
 
   return (
     <Container>
       <Grid 
+        className={classes.displays}
         container spacing={5} 
         padding={0}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+        // display="flex"
+        // alignItems="center"
+        // justifyContent="center"
         marginTop={10}
       >
 
@@ -50,50 +57,55 @@ function MembershipPage() {
           >
             <Box padding={1}>
               <Typography 
+                className={classes.displays}
                 variant='h5' 
                 component="h2" 
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
               >
                 Monthly Gym Membership
               </Typography>
 
               <Typography 
+                className={classes.displays}
                 variant='body2' 
                 component="p"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
               >
                 (Monthly charge until stopped)
               </Typography>
 
               <Box paddingY={7}>
                 <Typography 
+                  className={classes.displays}
                   variant='h5' 
                   component="h2"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
+                  // display="flex"
+                  // alignItems="center"
+                  // justifyContent="center"
                 >
                   $39.99 USD
                 </Typography>
                 <Typography 
+                  className={classes.displays}
                   variant='body1' 
                   component="p"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
+                  // display="flex"
+                  // alignItems="center"
+                  // justifyContent="center"
                 >
                   (No Contract)
                 </Typography>
               </Box>
 
               <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                className={classes.displays}
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
                 sx={{ paddingY: 13}}
               >
                 {!currentUser.id ?
@@ -121,50 +133,55 @@ function MembershipPage() {
           >
             <Box padding={1}>
               <Typography 
+                className={classes.displays}
                 variant='h5' 
                 component="h2"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
               >
                 1 Year Gym Membership
               </Typography>
 
               <Typography 
+                className={classes.displays}
                 variant='body2' 
                 component="p"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
               >
                 (Paid in full)
               </Typography>
 
               <Box paddingY={7}>
                 <Typography 
+                  className={classes.displays}
                   variant='h5' 
                   component="h2"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
+                  // display="flex"
+                  // alignItems="center"
+                  // justifyContent="center"
                 >
                   $400.00 USD
                 </Typography>
                 <Typography 
+                  className={classes.displays}
                   variant='body1' 
                   component="p"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
+                  // display="flex"
+                  // alignItems="center"
+                  // justifyContent="center"
                 >
                   (Save over 10%!)
                 </Typography>
               </Box>
 
               <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                className={classes.displays}
+                // display="flex"
+                // alignItems="center"
+                // justifyContent="center"
                 sx={{ paddingY: 13}}
               >
                 {!currentUser.id ?

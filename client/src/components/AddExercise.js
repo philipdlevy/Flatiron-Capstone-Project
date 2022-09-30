@@ -9,6 +9,15 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function AddExercise() {
   const [newExerciseData, setNewExerciseData] = useState({
@@ -16,6 +25,7 @@ function AddExercise() {
     info: "", 
     image_url: ""
   })
+  const classes = useStyles()
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -80,10 +90,8 @@ function AddExercise() {
     // </div>
 
     <Box
-    paddingY={5}
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
+      paddingY={5}
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -96,9 +104,7 @@ function AddExercise() {
           sx={{ paddingY: 1}}
           variant='h5' 
           component="h2"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
         >            
           Add New Exercise
         </Typography>
@@ -158,9 +164,7 @@ function AddExercise() {
 
           <Box 
             paddingY={4}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"  
+            className={classes.displays} 
           >
             <Button
               sx={{ width: 300}}

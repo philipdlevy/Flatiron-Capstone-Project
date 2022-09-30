@@ -19,7 +19,15 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import Grid from '@mui/material/Grid';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -36,6 +44,7 @@ const ExpandMore = styled((props) => {
 function TrainerCard({ trainerObj }) {
   const currentUser = useSelector((state) => state.users.user) 
   const {id, name, bio, email} = trainerObj
+  const classes = useStyles()
 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -97,9 +106,7 @@ function TrainerCard({ trainerObj }) {
             <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
 
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
+              className={classes.displays}
             >
               {!currentUser.gym_membership.gym.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
               <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
@@ -109,9 +116,7 @@ function TrainerCard({ trainerObj }) {
             </Box>
             
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
+              className={classes.displays}
             >
             {currentUser.role && currentUser.role.name === "admin" ?
               <Button 
@@ -125,9 +130,7 @@ function TrainerCard({ trainerObj }) {
             </Box>
 
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
+              className={classes.displays}
             >
             {currentUser.role && currentUser.role.name === "admin" ?
               <Link to={`/trainers/${id}`} style={{ textDecoration: 'none'}}>

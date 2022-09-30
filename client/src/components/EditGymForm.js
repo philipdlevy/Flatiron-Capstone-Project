@@ -8,62 +8,72 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function EditGymForm() {
-    const [pickedObj, setPickedObj] = useState({
-        address: "",
-        phone_number: ""
-    })
+  const [pickedObj, setPickedObj] = useState({
+      address: "",
+      phone_number: ""
+  })
+  const classes = useStyles()
 
-    let {id} = useParams();
-    const dispatch = useDispatch();
-    const history = useHistory();
+  let {id} = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    const gymArray = useSelector((state) => state.gyms.entities)
+  const gymArray = useSelector((state) => state.gyms.entities)
 
-    useEffect(() => {
-      if (!gymArray.length) {
-        dispatch(fetchGyms())
-      } else {
-        const pickedGym = gymArray.find((gym) => gym.id == id)
-        setPickedObj(pickedGym)
-      }
-    }, [id, gymArray, dispatch])
-
-    function handleChange(e) {
-        setPickedObj({
-            ...pickedObj,
-            [e.target.name]: e.target.value
-        })
+  useEffect(() => {
+    if (!gymArray.length) {
+      dispatch(fetchGyms())
+    } else {
+      const pickedGym = gymArray.find((gym) => gym.id == id)
+      setPickedObj(pickedGym)
     }
+  }, [id, gymArray, dispatch])
 
-    function handleSubmit(e) {
-        e.preventDefault()
+  function handleChange(e) {
+      setPickedObj({
+          ...pickedObj,
+          [e.target.name]: e.target.value
+      })
+  }
 
-        const updatedGymObj = {
-            address: pickedObj.address,
-            phone_number: pickedObj.phone_number
-        }
-    
-        fetch(`/gyms/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json", 
-          },
-          body: JSON.stringify(updatedGymObj)
-        })
-        .then((resp) => {
-          if (resp.ok) {
-            dispatch(gymUpdated(updatedGymObj))
-            setPickedObj({
-                address: "",
-                phone_number: ""
-            })
-            history.push("/gyms")
-          }
-        })
-        .catch((error) => alert(error))
+  function handleSubmit(e) {
+      e.preventDefault()
+
+      const updatedGymObj = {
+          address: pickedObj.address,
+          phone_number: pickedObj.phone_number
       }
+  
+      fetch(`/gyms/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json", 
+        },
+        body: JSON.stringify(updatedGymObj)
+      })
+      .then((resp) => {
+        if (resp.ok) {
+          dispatch(gymUpdated(updatedGymObj))
+          setPickedObj({
+              address: "",
+              phone_number: ""
+          })
+          history.push("/gyms")
+        }
+      })
+      .catch((error) => alert(error))
+    }
 
   return (
     // <div>
@@ -87,9 +97,7 @@ function EditGymForm() {
     //   </div>
     <Box
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -99,9 +107,7 @@ function EditGymForm() {
       >
         <Typography 
           sx={{paddingY: 1 }}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
           variant='h5' 
           component="h2"         
         >
@@ -140,9 +146,7 @@ function EditGymForm() {
 
           <Box 
             paddingY={8}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+            className={classes.displays}
           >
             <Button
               variant="contained"

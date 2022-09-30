@@ -9,12 +9,22 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function AddGym() {
   const [newGymData, setNewGymData] = useState({
     address: "",
     phone_number: ""
   })
+  const classes = useStyles()
 
   const dispatch = useDispatch()
 
@@ -53,9 +63,7 @@ function AddGym() {
   return (
     <Box
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -65,9 +73,7 @@ function AddGym() {
       >
         <Typography 
           sx={{paddingY: 1 }}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
           variant='h5' 
           component="h2"         
         >
@@ -106,9 +112,7 @@ function AddGym() {
 
           <Box 
             paddingY={8}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+            className={classes.displays}
           >
             <Button
               variant="contained"

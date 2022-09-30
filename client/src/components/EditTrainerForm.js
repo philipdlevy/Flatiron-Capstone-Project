@@ -13,70 +13,80 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  displays: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+});
 
 function EditTrainerForm() {
-    const [pickedObj, setPickedObj] = useState({
-        name: "",
-        bio: "",
-        email: "",
-        gym_id: ""
-    })
+  const [pickedObj, setPickedObj] = useState({
+      name: "",
+      bio: "",
+      email: "",
+      gym_id: ""
+  })
+  const classes = useStyles()
 
-    let {id} = useParams();
-    const dispatch = useDispatch();
-    const history = useHistory();
+  let {id} = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
 
-    const trainerArray = useSelector((state) => state.trainers.entities)
+  const trainerArray = useSelector((state) => state.trainers.entities)
 
-    useEffect(() => {
-        if (!trainerArray.length) {
-            dispatch(fetchTrainers())
-        } else {
-            const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
-            setPickedObj(pickedTrainer)
-            console.log(pickedTrainer)
-        }
-    }, [id, trainerArray, dispatch])
-
-    function handleChange(e) {
-        setPickedObj({
-            ...pickedObj,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        const updatedTrainerObj = {
-            name: pickedObj.name,
-            bio: pickedObj.bio,
-            email: pickedObj.email,
-            gym_id: pickedObj.gym.id
-        }
-    
-        fetch(`/trainers/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json", 
-          },
-          body: JSON.stringify(updatedTrainerObj)
-        })
-        .then((resp) => {
-          if (resp.ok) {
-            dispatch(trainerUpdated(updatedTrainerObj))
-            setPickedObj({
-                name: "",
-                bio: "",
-                email: "",
-                gym_id: ""
-            })
-            history.push("/trainers")
-          }
-        })
-        .catch((error) => alert(error))
+  useEffect(() => {
+      if (!trainerArray.length) {
+          dispatch(fetchTrainers())
+      } else {
+          const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
+          setPickedObj(pickedTrainer)
+          console.log(pickedTrainer)
       }
+  }, [id, trainerArray, dispatch])
+
+  function handleChange(e) {
+      setPickedObj({
+          ...pickedObj,
+          [e.target.name]: e.target.value
+      })
+  }
+
+  function handleSubmit(e) {
+      e.preventDefault()
+
+      const updatedTrainerObj = {
+          name: pickedObj.name,
+          bio: pickedObj.bio,
+          email: pickedObj.email,
+          gym_id: pickedObj.gym.id
+      }
+  
+      fetch(`/trainers/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json", 
+        },
+        body: JSON.stringify(updatedTrainerObj)
+      })
+      .then((resp) => {
+        if (resp.ok) {
+          dispatch(trainerUpdated(updatedTrainerObj))
+          setPickedObj({
+              name: "",
+              bio: "",
+              email: "",
+              gym_id: ""
+          })
+          history.push("/trainers")
+        }
+      })
+      .catch((error) => alert(error))
+    }
 
   return (
     // <div>
@@ -108,9 +118,7 @@ function EditTrainerForm() {
 
     <Box 
       paddingY={5}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      className={classes.displays}
     >
 
       <Paper sx={{
@@ -122,9 +130,7 @@ function EditTrainerForm() {
           sx={{ paddingY: 1}}
           variant='h5' 
           component="h2"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
+          className={classes.displays}
         >            
           Edit Trainer
         </Typography>
@@ -166,9 +172,7 @@ function EditTrainerForm() {
           />
           <Box 
             paddingY={12}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"  
+            className={classes.displays}  
           >
             <Button
               sx={{ width: 300}}
