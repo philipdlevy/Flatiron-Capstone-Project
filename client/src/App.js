@@ -22,29 +22,12 @@ import MyTrainingAppointments from "./components/MyTrainingAppointments";
 import AdminSignupForm from "./components/AdminSignupForm";
 
 
+
 function App() {
 
   return (
     <div 
-      style={{ 
-        // margin: "auto",
-        // backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
-        // height:'100vh',
-        // backgroundSize: 'cover',
-        // backgroundRepeat: 'no-repeat',
-        // backgroundAttachment: "scrollable"
-        
-
-        // backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
-        // minHeight: "100%",
-        // minWidth: "1024px",
-        // backgroundRepeat: "no-repeat",
-        // width: "100%",
-        // height: "auto",
-        // backgroundAttachment: "fixed",
-        // top: "0",
-        // left: "0",
-
+      style={{
         backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
         margin: "auto",
         minWidth: "50%",
@@ -132,6 +115,13 @@ function App() {
 
         <Route exact path="/account/trainingappointments">
           <MyTrainingAppointments />
+        </Route>
+
+        <Route>
+          <h1 style={{textAlign: "center", color: "white"}} >
+            <strong>404</strong>
+            <h3><strong>ERROR! PAGE NOT FOUND!</strong></h3>
+          </h1>
         </Route>
 
 

@@ -90,7 +90,6 @@ function TrainerCard({ trainerObj }) {
         <CardActions disableSpacing>
           <Typography>
             Contact info:
-            
           </Typography>
           <ExpandMore
             expand={expanded}
