@@ -131,9 +131,9 @@ function AddTrainer() {
               value={nameData}
               onChange={handleNameChange}
             />
-            <Typography padding={1}>Bio: 10-250 characters</Typography>
+            <Typography padding={1}>Bio: 100-250 characters</Typography>
             <TextField
-              inputProps={{ minLength: 10, maxLength: 250 }}
+              inputProps={{ minLength: 100, maxLength: 250 }}
               sx={{ ml: 1, width: 333}}
               required
               id="outlined-password-input"
