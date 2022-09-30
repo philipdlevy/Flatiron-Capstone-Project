@@ -48,7 +48,7 @@ function App() {
         backgroundImage: `url("https://thumbs.dreamstime.com/b/gym-24699087.jpg")`,
         margin: "auto",
         minWidth: "50%",
-        minHeight: "50%",
+        minHeight: "100vh",
         height: "auto",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",

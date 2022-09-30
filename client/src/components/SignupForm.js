@@ -85,7 +85,6 @@ function SignupForm() {
   })
   console.log(duplicateUsernameError)
   
-  
   return (
     <Box>
       {duplicateUsernameError && duplicateUsernameError != "" ? <Alert severity="error">That username already exists, please choose another. </Alert> : null}

@@ -27,6 +27,7 @@ function AddTrainingAppointment() {
   const [dateData, setDateData] = useState(null);
   const [timeData, setTimeData] = useState(null)
   console.log(dateData)
+  console.log(timeData)
 
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
@@ -43,6 +44,10 @@ function AddTrainingAppointment() {
     fetch("/training_appointments")
     .then((resp) => resp.json())
     .then((appointments) => {
+      appointments.forEach(appointment => {
+        let date = new Date(appointment.time)
+        appointment.time = date.toTimeString().slice(0, 5)
+      })
       setTrainingAppointments(appointments)
     })
     .catch((error) => alert(error))
@@ -60,14 +65,20 @@ function AddTrainingAppointment() {
   function handleSubmit(e) {
     e.preventDefault()
 
+    const date = timeData
+    date.setMilliseconds(0)
+
     const newTrainingAppointment = {
       trainer_id: trainerData.id,
       date: dateData,
-      time: timeData,
+      time: date,
       user_id: currentUser.id
     }
     console.log(newTrainingAppointment)
-    console.log(trainingAppointments)
+    console.log(typeof newTrainingAppointment.time)
+    // console.log(trainingAppointments)
+    // console.log(dateData)
+    // console.log(timeData)
 
     fetch("/training_appointments", {
       method: "POST",
@@ -79,20 +90,33 @@ function AddTrainingAppointment() {
     .then((resp) => resp.json())
     .then((appointmentData) => {
       console.log("appointmentData", appointmentData)
+
+      let date = new Date(appointmentData.time)
+      appointmentData.time = date.toTimeString().slice(0, 5)
+
       setTrainingAppointments([...trainingAppointments, appointmentData])
       console.log(appointmentData)
       dispatch(userAddTrainingAppointments(appointmentData))
       setTrainerData("")
-      setDateData("")
-      setTimeData("")
+      setDateData(null)
+      setTimeData(null)
       history.push("/trainers")
     })
     .catch((error) => alert(error))
   }  
-  
+
+  function duplicateAppointmentCheck() {
+    if (!timeData || !dateData || !trainerData) {
+      return null
+    }
+    const foundAppointment = trainingAppointments.find(appt => {
+      return appt.time === timeData.toTimeString().slice(0, 5) && appt.date === dateData.toISOString().slice(0, 10) && appt.trainer.name === trainerData.name
+    })
+  }
 
   return (
     <Box>
+      {duplicateAppointmentCheck() ? <Alert severity="error">Already has an appointment.</Alert> : null}
 
       <Box
         paddingY={5}
@@ -134,7 +158,7 @@ function AddTrainingAppointment() {
                   inputFormat="MM/DD/YYYY"
                   value={dateData}
                   onChange={(newDate) => {
-                    setDateData(newDate);
+                    setDateData(newDate.$d);
                   }}
                   renderInput={(params) => <TextField {...params} />}
                 />
@@ -149,7 +173,7 @@ function AddTrainingAppointment() {
                   // inputFormat='hh:mm tt'
                   value={timeData}
                   onChange={(newTime) => {
-                    setTimeData(newTime);
+                    setTimeData(newTime.$d);
                   }}
                   renderInput={(params) => <TextField {...params} />}
                 />
