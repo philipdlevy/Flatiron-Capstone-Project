@@ -26,6 +26,7 @@ function AddTrainingAppointment() {
   const [trainerData, setTrainerData] = useState("")
   const [dateData, setDateData] = useState(null);
   const [timeData, setTimeData] = useState(null)
+  console.log(dateData)
 
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
@@ -46,6 +47,7 @@ function AddTrainingAppointment() {
     })
     .catch((error) => alert(error))
   }, [])
+  console.log(trainingAppointments)
 
   const trainerArray = trainersArray.map((trainer) => {
     return <MenuItem key={trainer.id} value={trainer}>{trainer.name}</MenuItem>
@@ -65,6 +67,7 @@ function AddTrainingAppointment() {
       user_id: currentUser.id
     }
     console.log(newTrainingAppointment)
+    console.log(trainingAppointments)
 
     fetch("/training_appointments", {
       method: "POST",
@@ -127,10 +130,8 @@ function AddTrainingAppointment() {
             <Box sx={{ minWidth: 120, marginLeft: 1 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  required
-                  id="outlined-required"
-                  label="Required"
-                  // label="Date"
+                  label="Date"
+                  inputFormat="MM/DD/YYYY"
                   value={dateData}
                   onChange={(newDate) => {
                     setDateData(newDate);
@@ -149,7 +150,6 @@ function AddTrainingAppointment() {
                   value={timeData}
                   onChange={(newTime) => {
                     setTimeData(newTime);
-                    console.log(newTime)
                   }}
                   renderInput={(params) => <TextField {...params} />}
                 />

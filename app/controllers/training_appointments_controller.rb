@@ -18,7 +18,7 @@ class TrainingAppointmentsController < ApplicationController
     end
 
     def create 
-        # binding.pry
+        binding.pry
         training_appointment = TrainingAppointment.create!(training_appointment_params)
         render json: training_appointment, status: :created
     rescue ActiveRecord::RecordInvalid => invalid 
