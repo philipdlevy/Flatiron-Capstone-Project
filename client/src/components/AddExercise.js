@@ -47,16 +47,15 @@ function AddExercise() {
       }, 
       body: JSON.stringify(newExerciseData), 
     })
-    .then((resp) => {
-      if (resp.ok) {
-        dispatch(exerciseAdded(newExerciseData))
-        setNewExerciseData({
-          name: "",
-          info: "",
-          image_url: ""
-        })
-        history.push("/exercises")
-      }
+    .then((resp) => resp.json())
+    .then((exercise) => {
+      dispatch(exerciseAdded(exercise))
+      setNewExerciseData({
+        name: "",
+        info: "",
+        image_url: ""
+      })
+      history.push("/exercises")
     })
     .catch((error) => alert(error));
   }
@@ -106,7 +105,7 @@ function AddExercise() {
             value={newExerciseData.image_url}
             onChange={handleChange}
           />
-          <Typography padding={1}>How To Perform:</Typography>
+          <Typography padding={1}>How To Perform: 10-150 characters</Typography>
           {/* <TextField
             sx={{ ml: 1, width: 333}}
             required
@@ -121,7 +120,6 @@ function AddExercise() {
             sx={{ ml: 1}}
           >
             <TextareaAutosize
-              // sx={{ ml: 1, width: 333}}
               required
               id="outlined-password-input"
               label="required"

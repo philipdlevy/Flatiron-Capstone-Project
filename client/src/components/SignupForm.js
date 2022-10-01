@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { userAdded, loginUser } from '../features/usersSlice';
 import { useHistory } from 'react-router-dom';
-import { fetchUser } from '../features/usersSlice';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -38,7 +37,6 @@ function SignupForm() {
   const history = useHistory()
 
   const usersArray = useSelector((state) => state.users.entities)
-  console.log(usersArray)
 
   function handleChange(e) {
     setNewUserData({
@@ -64,10 +62,8 @@ function SignupForm() {
           gym: {}
         }
       }
-      console.log(user)
       dispatch(userAdded(user))
       dispatch(loginUser(user))
-      console.log(user)
       setNewUserData({
         username: "",
         password: "",
@@ -83,7 +79,6 @@ function SignupForm() {
   const duplicateUsernameError = usersArray.find(user => {
     return user.username === newUserData.username
   })
-  console.log(duplicateUsernameError)
   
   return (
     <Box>
@@ -106,9 +101,6 @@ function SignupForm() {
             className={classes.displays}
             variant='h3' 
             component="h2"
-            // display="flex"
-            // alignItems="center"
-            // justifyContent="center"
           >
             Create Account
           </Typography>
@@ -191,9 +183,6 @@ function SignupForm() {
 
               <Box
                 className={classes.displays}
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
               >
                 <Button 
                   sx={{

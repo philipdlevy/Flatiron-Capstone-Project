@@ -62,39 +62,19 @@ function EditGymForm() {
         },
         body: JSON.stringify(updatedGymObj)
       })
-      .then((resp) => {
-        if (resp.ok) {
-          dispatch(gymUpdated(updatedGymObj))
-          setPickedObj({
-              address: "",
-              phone_number: ""
-          })
-          history.push("/gyms")
-        }
+      .then((resp) => resp.json())
+      .then((gym) => {
+        dispatch(gymUpdated(gym))
+        setPickedObj({
+          address: "",
+          phone_number: ""
+        })
+        history.push("/gyms")
       })
       .catch((error) => alert(error))
     }
 
   return (
-    // <div>
-    //     <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-    //         <label><strong>Address</strong></label>
-    //         <input 
-    //         value={pickedObj.address}
-    //         type="text" 
-    //         name="address"
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <label><strong>Phone Number</strong></label>
-    //         <input 
-    //         value={pickedObj.phone_number}
-    //         type="text" 
-    //         name="phone_number"
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <input type="submit"></input>
-    //     </form>
-    //   </div>
     <Box
       paddingY={5}
       className={classes.displays}

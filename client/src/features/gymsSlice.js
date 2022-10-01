@@ -9,6 +9,7 @@ export const fetchGyms = createAsyncThunk("gyms/fetchGyms", () => {
 const gymsSlice = createSlice({
     name: "gyms",
     initialState: {
+        gym: {},
         entities: [],
     },
     reducers: {
@@ -19,7 +20,7 @@ const gymsSlice = createSlice({
             state.entities = state.entities.filter((gym) => gym.id !== action.payload);
         },
         gymUpdated(state, action) {
-            const selectedGym = state.entities.find((gym) => gym.id === action.payload.id)
+            state.gym = state.entities.find((gym) => gym.id === action.payload.id)
         }
     },
     extraReducers: {

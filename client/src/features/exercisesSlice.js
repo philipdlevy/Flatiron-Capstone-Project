@@ -9,6 +9,7 @@ export const fetchExercises = createAsyncThunk("exercises/fetchExercises", () =>
 const exercisesSlice = createSlice({
     name: "exercises",
     initialState: {
+        exercise: {},
         entities: [],
     },
     reducers: {
@@ -19,7 +20,8 @@ const exercisesSlice = createSlice({
             state.entities = state.entities.filter((exercise) => exercise.id !== action.payload);
         },
         exerciseUpdated(state, action) {
-            const selectedExercise = state.entities.find((exercise) => exercise.id === action.payload.id)
+            // debugger
+            state.exercise = state.entities.find((exercise) => exercise.id === action.payload.id)
         }
     },
     extraReducers: {

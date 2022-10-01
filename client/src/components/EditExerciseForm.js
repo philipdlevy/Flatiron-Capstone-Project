@@ -66,47 +66,20 @@ function EditExerciseForm() {
         },
         body: JSON.stringify(updatedExerciseObj)
       })
-      .then((resp) => {
-        if (resp.ok) {
-          dispatch(exerciseUpdated(updatedExerciseObj))
-          setPickedObj({
-              name: "",
-              info: "",
-              image_url: ""
-          })
-          history.push("/exercises")
-        }
+      .then((resp) => resp.json())
+      .then((exercise) => {
+        dispatch(exerciseUpdated(exercise))
+        setPickedObj({
+          name: "",
+          info: "",
+          image_url: ""
+        })
+        history.push("/exercises")
       })
       .catch((error) => alert(error))
     }
     
   return (
-    // <div>
-    //   <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-    //       <label><strong>name</strong></label>
-    //       <input 
-    //       value={pickedObj.name}
-    //       type="text" 
-    //       name="name"
-    //       onChange={handleChange}
-    //       /><br/>
-    //       <label><strong>image</strong></label>
-    //       <input 
-    //       value={pickedObj.image_url}
-    //       type="text" 
-    //       name="image_url"
-    //       onChange={handleChange}
-    //       /><br/>
-    //       <label><strong>info</strong></label>
-    //       <textarea 
-    //       value={pickedObj.info}
-    //       type="text" 
-    //       name="info"
-    //       onChange={handleChange}
-    //       /><br/>
-    //       <input type="submit"></input>
-    //   </form>
-    // </div>
     <Box
       paddingY={5}
       className={classes.displays}

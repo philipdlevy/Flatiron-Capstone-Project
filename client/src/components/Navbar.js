@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch  } from "react-redux";
 import { loginUser, logoutUser } from '../features/usersSlice';
-import {NavLink, Link, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,7 +15,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { red } from '@mui/material/colors';
 
 
 const pagesLinks = [

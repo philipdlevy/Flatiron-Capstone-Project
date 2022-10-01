@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch  } from "react-redux";
 import { trainersAppointmentDeleted, fetchTrainers } from '../features/trainersSlice';
 import { userDeleteTrainingAppointments, fetchUser } from '../features/usersSlice';
@@ -9,16 +9,13 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
+// import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Alert from '@mui/material/Alert';
 import Checkbox from '@mui/material/Checkbox';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import CardContent from '@mui/material/CardContent';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -42,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
-    const trainersArray = useSelector((state) => state.trainers.entities)
+    // const trainersArray = useSelector((state) => state.trainers.entities)
     const dispatch = useDispatch()
 
     useEffect(() => {

@@ -47,15 +47,14 @@ function AddGym() {
       },
       body: JSON.stringify(newGymData)
     })
-    .then((resp) => {
-      if (resp.ok) {
-        dispatch(gymAdded(newGymData))
-        setNewGymData({
-          address: "",
-          phone_number: ""
-        })
-        history.push("/gyms")
-      }
+    .then((resp) => resp.json())
+    .then((gym) => {
+      dispatch(gymAdded(gym))
+      setNewGymData({
+        address: "",
+        phone_number: ""
+      })
+      history.push("/gyms")
     })
     .catch((error) => alert(error))
   }
