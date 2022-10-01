@@ -34,8 +34,8 @@ const settings = [
 function Navbar() {
   const [firstLetterOfName, setFirstLetterOfName] = useState("")
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(false);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -49,7 +49,7 @@ function Navbar() {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(false);
+    setAnchorElUser(null);
   };
 
   const currentUser = useSelector((state) => state.users.user)
@@ -69,6 +69,7 @@ function Navbar() {
 
   function onLogout() {
     dispatch(logoutUser())
+    setAnchorElUser(null)
     history.push("/")
   }
 

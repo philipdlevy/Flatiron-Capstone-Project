@@ -21,8 +21,6 @@ import AccountPage from "./components/AccountPage"
 import MyTrainingAppointments from "./components/MyTrainingAppointments";
 import AdminSignupForm from "./components/AdminSignupForm";
 
-
-
 function App() {
 
   return (

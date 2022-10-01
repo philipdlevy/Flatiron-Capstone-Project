@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import {useHistory, useParams} from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { trainerUpdated } from '../features/trainersSlice';
 import { fetchTrainers } from "../features/trainersSlice"
 
@@ -25,14 +25,14 @@ const useStyles = makeStyles({
 
 function EditTrainerForm() {
   const [pickedObj, setPickedObj] = useState({
-      name: "",
-      bio: "",
-      email: "",
-      gym_id: ""
+    name: "",
+    bio: "",
+    email: "",
+    gym_id: ""
   })
   const classes = useStyles()
 
-  let {id} = useParams();
+  let { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -40,83 +40,55 @@ function EditTrainerForm() {
   const trainerArray = useSelector((state) => state.trainers.entities)
 
   useEffect(() => {
-      if (!trainerArray.length) {
-          dispatch(fetchTrainers())
-      } else {
-          const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
-          setPickedObj(pickedTrainer)
-          console.log(pickedTrainer)
-      }
+    if (!trainerArray.length) {
+      dispatch(fetchTrainers())
+    } else {
+      const pickedTrainer = trainerArray.find((trainer) => trainer.id == id)
+      setPickedObj(pickedTrainer)
+      console.log(pickedTrainer)
+    }
   }, [id, trainerArray, dispatch])
 
   function handleChange(e) {
-      setPickedObj({
-          ...pickedObj,
-          [e.target.name]: e.target.value
-      })
+    setPickedObj({
+      ...pickedObj,
+      [e.target.name]: e.target.value
+    })
   }
 
   function handleSubmit(e) {
-      e.preventDefault()
+    e.preventDefault()
 
-      const updatedTrainerObj = {
-          name: pickedObj.name,
-          bio: pickedObj.bio,
-          email: pickedObj.email,
-          gym_id: pickedObj.gym.id
-      }
-  
-      fetch(`/trainers/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json", 
-        },
-        body: JSON.stringify(updatedTrainerObj)
-      })
-      .then((resp) => {
-        if (resp.ok) {
-          dispatch(trainerUpdated(updatedTrainerObj))
-          setPickedObj({
-              name: "",
-              bio: "",
-              email: "",
-              gym_id: ""
-          })
-          history.push("/trainers")
-        }
-      })
-      .catch((error) => alert(error))
+    const updatedTrainerObj = {
+      name: pickedObj.name,
+      bio: pickedObj.bio,
+      email: pickedObj.email,
+      gym_id: pickedObj.gym.id
     }
 
-  return (
-    // <div>
-    //     <form onSubmit={handleSubmit} style={{display:"flex", flexDirection:"column", width:"500px", margin:"auto"}}>
-    //         <label><strong>Name</strong></label>
-    //         <input 
-    //         value={pickedObj.name}
-    //         type="text" 
-    //         name="name"
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <label><strong>Bio</strong></label>
-    //         <input 
-    //         value={pickedObj.bio}
-    //         type="text" 
-    //         name="bio"
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <label><strong>Email</strong></label>
-    //         <input 
-    //         value={pickedObj.email}
-    //         type="text" 
-    //         name="email"
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <input type="submit"></input>
-    //     </form>
-    // </div>
+    fetch(`/trainers/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedTrainerObj)
+    })
+      .then((resp) => resp.json())
+      .then((trainer) => {
+        dispatch(trainerUpdated(trainer))
+        setPickedObj({
+          name: "",
+          bio: "",
+          email: "",
+          gym_id: ""
+        })
+        history.push("/trainers")
+      })
+      .catch((error) => alert(error))
+  }
 
-    <Box 
+  return (
+    <Box
       paddingY={5}
       className={classes.displays}
     >
@@ -126,19 +98,19 @@ function EditTrainerForm() {
         height: 500
       }}
       >
-        <Typography 
-          sx={{ paddingY: 1}}
-          variant='h5' 
+        <Typography
+          sx={{ paddingY: 1 }}
+          variant='h5'
           component="h2"
           className={classes.displays}
-        >            
+        >
           Edit Trainer
         </Typography>
 
         <form onSubmit={handleSubmit}>
           <Typography padding={1}>Name:</Typography>
           <TextField
-            sx={{ ml: 1, width: 333}}
+            sx={{ ml: 1, width: 333 }}
             required
             id="outlined-required"
             label="Required"
@@ -150,7 +122,7 @@ function EditTrainerForm() {
           />
           <Typography padding={1}>Bio:</Typography>
           <TextField
-            sx={{ ml: 1, width: 333}}
+            sx={{ ml: 1, width: 333 }}
             required
             id="outlined-password-input"
             label="required"
@@ -161,7 +133,7 @@ function EditTrainerForm() {
           />
           <Typography padding={1}>Email:</Typography>
           <TextField
-            sx={{ ml: 1, width: 333}}
+            sx={{ ml: 1, width: 333 }}
             required
             id="outlined-password-input"
             label="required"
@@ -170,12 +142,12 @@ function EditTrainerForm() {
             value={pickedObj.email}
             onChange={handleChange}
           />
-          <Box 
+          <Box
             paddingY={12}
-            className={classes.displays}  
+            className={classes.displays}
           >
             <Button
-              sx={{ width: 300}}
+              sx={{ width: 300 }}
               variant="contained"
               type="submit"
             >

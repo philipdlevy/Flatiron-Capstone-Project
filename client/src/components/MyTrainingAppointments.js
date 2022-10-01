@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch  } from "react-redux";
+import { trainersAppointmentDeleted, fetchTrainers } from '../features/trainersSlice';
+import { userDeleteTrainingAppointments, fetchUser } from '../features/usersSlice';
+
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -12,7 +15,13 @@ import Paper from "@mui/material/Paper";
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Alert from '@mui/material/Alert';
+import Checkbox from '@mui/material/Checkbox';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import CardContent from '@mui/material/CardContent';
 
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
@@ -33,8 +42,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
-    console.log(currentUser)
-    // debugger
+    const trainersArray = useSelector((state) => state.trainers.entities)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchTrainers())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(fetchUser())
+    }, [dispatch])
+
+    function handleDelete(appointment) {
+        fetch(`/training_appointments/${appointment.id}`, {
+            method: "DELETE"
+            })
+            .then(() => {
+                console.log(appointment)
+                dispatch(trainersAppointmentDeleted(appointment))
+                dispatch(userDeleteTrainingAppointments(appointment))
+        })
+        .catch((error) => alert(error))
+    }
     
     const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
         const rows = [
@@ -44,15 +73,23 @@ function MyTrainingAppointments() {
         ];
 
         return <TableBody key={appointment.date} component={Paper}>
+        <Typography paddingX={2}>
+            Completed? 
+            <Checkbox {...label}
+            onClick={() => handleDelete(appointment)}
+            />
+        </Typography>
         {rows.map((row) => (
-            <StyledTableRow key={row.rowName} >
+            <StyledTableRow key={row.rowName}>
             <StyledTableCell >
-                {row.rowName} {row.rowValue}
+                {row.rowName} {row.rowValue} 
             </StyledTableCell>
             </StyledTableRow>
         ))}
         </TableBody>
     })  
+
+    
     
   return (
     <Box>
@@ -69,7 +106,7 @@ function MyTrainingAppointments() {
             <Table aria-label="customized table">
                 {/* <TableHead>
                 </TableHead> */}
-                {trainingAppointmentArray}
+                {trainingAppointmentArray} 
             </Table>
         </TableContainer>}
     </Box>

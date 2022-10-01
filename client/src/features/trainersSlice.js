@@ -9,6 +9,10 @@ export const fetchTrainers = createAsyncThunk("trainers/fetchTrainers", () => {
 const trainersSlice = createSlice({
     name: "trainers",
     initialState: {
+        trainer: {
+            gym: {},
+            training_appointments: []
+        },
         entities: [],
     },
     reducers: {
@@ -18,10 +22,13 @@ const trainersSlice = createSlice({
         },
         trainerRemoved(state, action) {
             state.entities = state.entities.filter((trainer) => trainer.id !== action.payload);
-            debugger
         },
         trainerUpdated(state, action) {
-            const selectedTrainer = state.entities.find((trainer) => trainer.id === action.payload.id)
+            state.trainer = state.entities.find((trainer) => trainer.id === action.payload.id)
+            console.log(action.payload)
+        },
+        trainersAppointmentDeleted(state, action) {
+            state.trainer.training_appointments = state.trainer.training_appointments.filter(appt => appt.id !== action.payload.id)          
         }
     },
     extraReducers: {
@@ -35,6 +42,6 @@ const trainersSlice = createSlice({
     }
 })
 
-export const { trainerAdded, trainerRemoved, trainerUpdated } = trainersSlice.actions;
+export const { trainerAdded, trainerRemoved, trainerUpdated, trainersAppointmentDeleted } = trainersSlice.actions;
 
 export default trainersSlice.reducer;
