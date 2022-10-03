@@ -161,7 +161,7 @@ function AddTrainingAppointment() {
       return box
       // 👇️ hides element (still takes up space on page)
       // box.style.visibility = 'hidden';
-    }, 3000);
+    }, 9000);
 
   return (
     <Box>
