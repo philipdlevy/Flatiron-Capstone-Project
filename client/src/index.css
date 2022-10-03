@@ -9,4 +9,6 @@
     height: 5rem;
 }
 
-
+.wordWrap {
+    word-wrap: normal;
+}

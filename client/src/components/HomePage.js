@@ -8,8 +8,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 function HomePage() {
-  const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
+  const currentUser = useSelector((state) => state.users.user)
 
   return (
     <Container>

@@ -83,7 +83,10 @@ function TrainerCard({ trainerObj }) {
         />
         <CardContent>
           Bio:
-          <Typography variant="body2" color="text.secondary">
+          <Typography 
+            variant="body2" 
+            color="text.secondary"
+            >
             {bio}
           </Typography>
         </CardContent>

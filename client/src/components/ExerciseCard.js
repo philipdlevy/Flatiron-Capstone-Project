@@ -84,7 +84,8 @@ function ExerciseCard({ exerciseObj }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph color="text.secondary">
+            <Typography 
+              paragraph color="text.secondary" className='wordWrap'>
               {info}
             </Typography>
           </CardContent>
