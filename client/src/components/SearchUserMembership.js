@@ -25,13 +25,11 @@ function SearchUserMembership() {
         e.preventDefault()
 
         const foundUser = usersArray.find((user) => {
-            return user.username === searchBar
+            if (user.username === searchBar) {
+                return user
+            }
         })
-        if (foundUser) {
-            setFoundUserData(foundUser)
-        } else {
-            return null
-        }
+        setFoundUserData(foundUser)
         console.log(foundUser)
     }
     console.log(foundUserData)
@@ -51,6 +49,8 @@ function SearchUserMembership() {
 
   return (
     <Box>
+
+        {!foundUserData ? <Alert severity="error">Cannot find matching Username, please try again.</Alert> : null }
         <Box
         sx={{
             display: 'flex',
@@ -73,6 +73,7 @@ function SearchUserMembership() {
                     
                     <Typography paddingY={1}>Username:</Typography>
                     <TextField 
+                        autoComplete="off"
                         required
                         id="standard-basic"
                         variant="standard" 

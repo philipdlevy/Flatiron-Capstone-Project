@@ -29,7 +29,9 @@ const usersSlice = createSlice({
             state.user = {}
         }, 
         userAddMembership(state, action) {
-            state.entities.find((user) => user.id == state.user.id)
+            // debugger
+            // state.entities.find((user) => user.id == state.user.id)
+            state.entities.find((user) => user.id == state.user.id).gym_membership = action.payload
             state.user.gym_membership = action.payload
         },
         userAddTrainingAppointments(state, action) {

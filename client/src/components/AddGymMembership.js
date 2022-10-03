@@ -90,6 +90,7 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
+      // debugger
       setAllMemberships([...allMemberships, membershipData])
       dispatch(userAddMembership(membershipData))
       setGymData("")
