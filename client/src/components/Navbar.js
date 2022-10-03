@@ -234,6 +234,13 @@ function Navbar() {
                   <Typography textAlign="center">Create Admin Account</Typography>
                 </Link>
               </MenuItem> : null }
+
+              {currentUser.role.name === "admin" ? 
+              <MenuItem> 
+                <Link to="/memberships/search" style={{ textDecoration: 'none', color: "black" }}>
+                  <Typography textAlign="center">Search User Membership</Typography>
+                </Link>
+              </MenuItem> : null }
               
             </Menu>
           </Box>

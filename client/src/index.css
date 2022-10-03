@@ -12,3 +12,7 @@
 .wordWrap {
     word-wrap: normal;
 }
+
+.whiteBackground {
+    background-color: white;
+}

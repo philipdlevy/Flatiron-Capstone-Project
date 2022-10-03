@@ -20,6 +20,7 @@ import EditTrainerForm from "./components/EditTrainerForm";
 import AccountPage from "./components/AccountPage"
 import MyTrainingAppointments from "./components/MyTrainingAppointments";
 import AdminSignupForm from "./components/AdminSignupForm";
+import SearchUserMembership from "./components/SearchUserMembership";
 
 function App() {
 
@@ -113,6 +114,10 @@ function App() {
 
         <Route exact path="/account/trainingappointments">
           <MyTrainingAppointments />
+        </Route>
+
+        <Route exact path="/memberships/search">
+          <SearchUserMembership />
         </Route>
 
         <Route>
