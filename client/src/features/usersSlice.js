@@ -40,10 +40,16 @@ const usersSlice = createSlice({
         },
         userDeleteTrainingAppointments(state, action) {
             state.user.training_appointments = state.user.training_appointments.filter((appt) => appt.id !== action.payload.id)
-        }
+        },
+        userDeleteMembership(state, action) {
+            // debugger
+            // state.entities.find((user) => user.id == state.user.id).gym_membership = {}
+            state.entities.find((user) => user.id == action.payload.id).gym_membership = {}
+            // state.user.gym_membership = {}
+        },
     }
 })
 
-export const { userAdded, loginUser, logoutUser, userAddMembership, userAddTrainingAppointments, userDeleteTrainingAppointments } = usersSlice.actions;
+export const { userAdded, loginUser, logoutUser, userAddMembership, userAddTrainingAppointments, userDeleteTrainingAppointments, userDeleteMembership } = usersSlice.actions;
 
 export default usersSlice.reducer;

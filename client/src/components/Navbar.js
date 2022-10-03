@@ -236,7 +236,9 @@ function Navbar() {
               </MenuItem> : null }
 
               {currentUser.role.name === "admin" ? 
-              <MenuItem> 
+              <MenuItem
+                onClick={handleCloseUserMenu}
+              > 
                 <Link to="/memberships/search" style={{ textDecoration: 'none', color: "black" }}>
                   <Typography textAlign="center">Search User Membership</Typography>
                 </Link>
