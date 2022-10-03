@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
 function SearchUserMembership() {
+    const [foundUserData, setFoundUserData] = useState({})
     const [searchBar, setSearchBar] = useState("")
 
     const dispatch = useDispatch();
@@ -19,6 +20,21 @@ function SearchUserMembership() {
     function handleChange(e) {
         setSearchBar(e.target.value)
     }
+
+    function findUser(e) {
+        e.preventDefault()
+
+        const foundUser = usersArray.find((user) => {
+            return user.username === searchBar
+        })
+        if (foundUser) {
+            setFoundUserData(foundUser)
+        } else {
+            return null
+        }
+        console.log(foundUser)
+    }
+    console.log(foundUserData)
 
     // function handleDelete() {
     //     fetch(`/gym_memberships/${id}`, {
@@ -46,8 +62,8 @@ function SearchUserMembership() {
         }}
         >
             <Paper elevation={3}>
+            <form onSubmit={findUser}>
                 <Box
-                    component="form"
                     sx={{
                         '& > :not(style)': { ml: 2, width: '25ch' },
                     }}
@@ -76,12 +92,45 @@ function SearchUserMembership() {
                         width: "200px"
                     }}
                     variant="contained"
-                    type="onClick"
-                    // onClick={() => handleDelete()}
+                    // type="onClick"
+                    // onClick={() => findUser()}
+                    type="submit"
                     >
                     Find User
                     </Button>
                 </Box>
+
+                {foundUserData ?
+                <Box sx={{m: 1, border: 1}}>
+                    <ul>
+                        <li>Username: {foundUserData.username}</li>
+                        <li>Age: {foundUserData.age}</li>
+                        <li>Email: {foundUserData.email}</li>
+                        <li>Address: {foundUserData.address}</li>
+                        <li>MembershipType: {(foundUserData.gym_membership?.membershipType == null) ?
+                        "None" : foundUserData.gym_membership.membershipType}</li>
+                        <li>Membership Price: {(foundUserData.gym_membership?.price == null) ?
+                        "None" : foundUserData.gym_membership.price}</li>
+                        <li>Gym Address: {(foundUserData.gym_membership?.gym.address == null) ?
+                        "None" : foundUserData.gym_membership.gym.address}</li>
+                    </ul>
+
+                    <Box>
+                        <Button 
+                        sx={{ 
+                            width: "200px"
+                        }}
+                        variant="contained"
+                        type="onClick"
+                        // onClick={() => DeleteMembership()}
+                        >
+                        Delete Membership
+                        </Button>
+                    </Box>
+                </Box>
+                : null }
+            </form>
+
             </Paper>
         </Box>      
     </Box>
