@@ -95,6 +95,18 @@ function AddTrainingAppointment() {
       // debugger
       console.log("appointmentData", appointmentData)
 
+      if (appointmentData.errors) {
+        return document.getElementById("error-alert2").hidden = false
+      } else {
+        setTrainingAppointments([...trainingAppointments, appointmentData])
+        console.log(appointmentData)
+        dispatch(userAddTrainingAppointments(appointmentData))
+        setTrainerData("")
+        setDateTimeData(null)
+        document.getElementById("error-alert2").hidden = true
+        return document.getElementById("success-alert").hidden = false
+      }
+
       // const foundAppointment = trainingAppointments.find(appt => {
       //   return appt.date_time === appointmentData
       // })
@@ -103,22 +115,26 @@ function AddTrainingAppointment() {
       // const foundAppointment = trainingAppointments.find(appt => appt.date_time == appointmentData.date_time)
       // console.log(foundAppointment)
 
-      const foundAppointment = trainingAppointments.find((appt) => {
-        return appt.date_time == appointmentData.date_time
-      })
+      // const foundAppointment = trainingAppointments.find((appt) => {
+      //   return appt.date_time == appointmentData.date_time
+      // })
 
-      if (foundAppointment) {
-        return null
-      } else {
-        setTrainingAppointments([...trainingAppointments, appointmentData])
-        console.log(appointmentData)
-        dispatch(userAddTrainingAppointments(appointmentData))
-        setTrainerData("")
-      }
+      // if (foundAppointment) {
+      //   return null
+      // } else {
+      //   setTrainingAppointments([...trainingAppointments, appointmentData])
+      //   console.log(appointmentData)
+      //   dispatch(userAddTrainingAppointments(appointmentData))
+      //   setTrainerData("")
+      // }
       // let date = new Date(appointmentData.time)
       // appointmentData.time = date.toTimeString().slice(0, 5)
 
       // dispatch and set go here
+        // setTrainingAppointments([...trainingAppointments, appointmentData])
+        // console.log(appointmentData)
+        // dispatch(userAddTrainingAppointments(appointmentData))
+        // setTrainerData("")
       
       // setDateData(null)
       // setTimeData(null)
@@ -139,10 +155,24 @@ function AddTrainingAppointment() {
   //   console.log(foundAppointment)
   // }
 
+    setTimeout(() => {
+      const box = document.getElementById("success-alert").hidden = true;
+    
+      return box
+      // 👇️ hides element (still takes up space on page)
+      // box.style.visibility = 'hidden';
+    }, 3000);
 
   return (
     <Box>
       {/* {duplicateAppointmentCheck() ? <Alert severity="error">Already has an appointment.</Alert> : null} */}
+      <Box id="error-alert2" hidden>
+        <Alert severity="error">That time and date are already picked. Please choose another date and time with your trainer.</Alert>
+      </Box>
+      <Box id="success-alert" hidden>
+        <Alert severity="success">Training session booked!</Alert>
+        {() => setTimeout()}
+      </Box>
 
       <Box
         paddingY={5}
