@@ -14,23 +14,31 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
 function AddTrainingAppointment() {
   const [trainingAppointments, setTrainingAppointments] = useState([])
   const [trainerData, setTrainerData] = useState("")
-  const [dateData, setDateData] = useState(null);
-  const [timeData, setTimeData] = useState(null)
-  console.log(dateData)
-  console.log(timeData)
+  // const [dateData, setDateData] = useState(null);
+  // const [timeData, setTimeData] = useState(null)
+  // const [dateTime, setDateTime] = React.useState(dayjs('2014-08-18T21:11:54'));
+  const [dateTimeData, setDateTimeData] = React.useState(null);
+
+  const handleDateAndTimeChange = (newValue) => {
+    setDateTimeData(newValue);
+  };
 
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
+  console.log(trainingAppointments)
   
 
   const dispatch = useDispatch()
@@ -52,7 +60,6 @@ function AddTrainingAppointment() {
     })
     .catch((error) => alert(error))
   }, [])
-  console.log(trainingAppointments)
 
   const trainerArray = trainersArray.map((trainer) => {
     return <MenuItem key={trainer.id} value={trainer}>{trainer.name}</MenuItem>
@@ -65,20 +72,16 @@ function AddTrainingAppointment() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    const date = timeData
-    date.setMilliseconds(0)
+    // const date = timeData
+    // date.setMilliseconds(0)
 
     const newTrainingAppointment = {
       trainer_id: trainerData.id,
-      date: dateData,
-      time: date,
+      date_time: dateTimeData,
       user_id: currentUser.id
     }
     console.log(newTrainingAppointment)
-    console.log(typeof newTrainingAppointment.time)
-    // console.log(trainingAppointments)
-    // console.log(dateData)
-    // console.log(timeData)
+    // console.log(typeof newTrainingAppointment.time)
 
     fetch("/training_appointments", {
       method: "POST",
@@ -89,34 +92,57 @@ function AddTrainingAppointment() {
     })
     .then((resp) => resp.json())
     .then((appointmentData) => {
+      // debugger
       console.log("appointmentData", appointmentData)
 
-      let date = new Date(appointmentData.time)
-      appointmentData.time = date.toTimeString().slice(0, 5)
+      // const foundAppointment = trainingAppointments.find(appt => {
+      //   return appt.date_time === appointmentData
+      // })
+      // console.log(foundAppointment)
 
-      setTrainingAppointments([...trainingAppointments, appointmentData])
-      console.log(appointmentData)
-      dispatch(userAddTrainingAppointments(appointmentData))
-      setTrainerData("")
-      setDateData(null)
-      setTimeData(null)
-      history.push("/trainers")
+      // const foundAppointment = trainingAppointments.find(appt => appt.date_time == appointmentData.date_time)
+      // console.log(foundAppointment)
+
+      const foundAppointment = trainingAppointments.find((appt) => {
+        return appt.date_time == appointmentData.date_time
+      })
+
+      if (foundAppointment) {
+        return null
+      } else {
+        setTrainingAppointments([...trainingAppointments, appointmentData])
+        console.log(appointmentData)
+        dispatch(userAddTrainingAppointments(appointmentData))
+        setTrainerData("")
+      }
+      // let date = new Date(appointmentData.time)
+      // appointmentData.time = date.toTimeString().slice(0, 5)
+
+      // dispatch and set go here
+      
+      // setDateData(null)
+      // setTimeData(null)
+      // history.push("/trainers")
     })
     .catch((error) => alert(error))
   }  
 
-  function duplicateAppointmentCheck() {
-    if (!timeData || !dateData || !trainerData) {
-      return null
-    }
-    const foundAppointment = trainingAppointments.find(appt => {
-      return appt.time === timeData.toTimeString().slice(0, 5) && appt.date === dateData.toISOString().slice(0, 10) && appt.trainer.name === trainerData.name
-    })
-  }
+  // function duplicateAppointmentCheck() {
+  //   // debugger
+  //   if (!dateTimeData || !trainerData) {
+  //     return null
+  //   }
+  //   const foundAppointment = trainingAppointments.find(appt => {
+  //     // return appt.time === timeData.toTimeString().slice(0, 5) && appt.date === dateData.toISOString().slice(0, 10) && appt.trainer.name === trainerData.name
+  //     return appt.dateTime === dateTimeData
+  //   })
+  //   console.log(foundAppointment)
+  // }
+
 
   return (
     <Box>
-      {duplicateAppointmentCheck() ? <Alert severity="error">Already has an appointment.</Alert> : null}
+      {/* {duplicateAppointmentCheck() ? <Alert severity="error">Already has an appointment.</Alert> : null} */}
 
       <Box
         paddingY={5}
@@ -127,12 +153,13 @@ function AddTrainingAppointment() {
 
         <Paper sx={{
           width: 250,
-          height: 380
+          height: 330
         }}
         >
           <form onSubmit={handleSubmit}>
+            
+            <Box sx={{ minWidth: 120, mt: 2 }}>
             <Typography padding={1}>Select Trainer:</Typography>
-            <Box sx={{ minWidth: 120 }}>
               <FormControl sx={{ ml: 1, width: 230 }}>
                 <InputLabel id="select-label">Trainer</InputLabel>
                 <Select
@@ -150,7 +177,7 @@ function AddTrainingAppointment() {
               </FormControl>
             </Box>
 
-            <Typography padding={1}>Select Date:</Typography>
+            {/* <Typography padding={1}>Select Date:</Typography>
             <Box sx={{ minWidth: 120, marginLeft: 1 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
@@ -163,18 +190,19 @@ function AddTrainingAppointment() {
                   renderInput={(params) => <TextField {...params} />}
                 />
               </LocalizationProvider>
-            </Box>
+            </Box> */}
 
-            <Typography padding={1}>Select Time:</Typography>
-            <Box sx={{ minWidth: 120, marginLeft: 1, }}>
+            
+            <Box sx={{ minWidth: 120, marginLeft: 1, paddingY: 2}}>
+            <Typography sx={{mb: 1}}>Select Date and Time:</Typography>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <TimePicker
-                  label="Time"
-                  // inputFormat='hh:mm tt'
-                  value={timeData}
-                  onChange={(newTime) => {
-                    setTimeData(newTime.$d);
-                  }}
+                <DateTimePicker
+                  label="DateAndTimePicker"
+                  value={dateTimeData}
+                  onChange={handleDateAndTimeChange}
+                  // onChange={(newTime) => {
+                  //   setTimeData(newTime.$d);
+                  // }}
                   renderInput={(params) => <TextField {...params} />}
                 />
               </LocalizationProvider>
@@ -186,7 +214,7 @@ function AddTrainingAppointment() {
                 alignItems="center"
                 justifyContent="center"
               >
-                {dateData === null || timeData === null ? null :
+                {dateTimeData === null ? null :
                 <Button
                   variant="contained"
                   type="submit"

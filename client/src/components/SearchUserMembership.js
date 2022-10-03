@@ -97,7 +97,6 @@ function SearchUserMembership() {
                             width: "200px"
                         }}
                         variant="contained"
-                        // onClick={() => findUser()}
                         type="submit"
                     >
                         Find User
@@ -123,6 +122,7 @@ function SearchUserMembership() {
                     </ul>
 
                     <Box>
+                        {!foundUserData.id ? null :
                         <Button 
                             sx={{ 
                                 width: "200px"
@@ -132,6 +132,7 @@ function SearchUserMembership() {
                         >
                             Delete Membership
                         </Button>
+                        }
                     </Box>
                 </Box>
                 : null }

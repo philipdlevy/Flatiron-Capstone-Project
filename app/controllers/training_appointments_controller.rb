@@ -34,7 +34,8 @@ class TrainingAppointmentsController < ApplicationController
     private
 
     def training_appointment_params
-        params.require(:training_appointment).permit(:date, :time, :user_id, :trainer_id)
+        params.require(:training_appointment).permit(:date_time, :user_id, :trainer_id)
+        
     end
 end
 

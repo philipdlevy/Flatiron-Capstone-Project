@@ -1,7 +1,7 @@
 require 'pry'
 
 class TrainingAppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :date, :time, :trainer
+  attributes :id, :date_time, :trainer
 
   # belongs_to :user
   belongs_to :trainer

@@ -229,7 +229,9 @@ function Navbar() {
               </MenuItem>
 
               {currentUser.role.name === "admin" ? 
-              <MenuItem> 
+              <MenuItem
+                onClick={handleCloseUserMenu}
+              > 
                 <Link to="/signup/admin" style={{ textDecoration: 'none', color: "black" }}>
                   <Typography textAlign="center">Create Admin Account</Typography>
                 </Link>
