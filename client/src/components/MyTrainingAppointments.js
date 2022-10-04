@@ -64,12 +64,11 @@ function MyTrainingAppointments() {
     
     const trainingAppointmentArray = currentUser.training_appointments.map((appointment) => {
         const rows = [
-            { rowName: "Date:", rowValue: appointment.date },
-            { rowName: "Time:", rowValue: appointment.time },
-            { rowName: "Trainer:", rowValue: appointment.trainer.name }
+            { rowName: "Date and Time:", rowValue: appointment.date_time },
+            { rowName: "Trainer:", rowValue: appointment.trainer?.name },
         ];
 
-        return <TableBody key={appointment.date} component={Paper}>
+        return <TableBody key={appointment.id} component={Paper}>
         <Typography paddingX={2}>
             Completed? 
             <Checkbox {...label}
