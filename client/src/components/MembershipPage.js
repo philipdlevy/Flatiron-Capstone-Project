@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import { grey, blue } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles';
+import Alert from '@mui/material/Alert';
 
 // styling classes to use wherever. can add a new class when needed.
 const useStyles = makeStyles({
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
 
 function MembershipPage() {
   const currentUser = useSelector((state) => state.users.user)
-  // State for all classes. Acces them by classes.whichclass
+  // State for all classes. Access them by classes.whichclass
   const classes = useStyles()
 
   return (
@@ -112,16 +113,17 @@ function MembershipPage() {
                 // display="flex"
                 // alignItems="center"
                 // justifyContent="center"
-                sx={{ paddingY: 13}}
+                sx={{ paddingY: 9}}
               >
                 {!currentUser.id ?
                   <Link to="/signup" style={{ textDecoration: 'none'}}>
                     <Button className={classes.root}>Purchase Membership</Button>
                   </Link>
                   : 
-                  <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
-                    <Button className={classes.root}>Purchase Membership</Button>
-                  </Link>
+                  // <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
+                  //   <Button className={classes.root}>Purchase Membership</Button>
+                  // </Link>
+                  <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
                 }
               </Box>
 
@@ -188,7 +190,7 @@ function MembershipPage() {
                 // display="flex"
                 // alignItems="center"
                 // justifyContent="center"
-                sx={{ paddingY: 13}}
+                sx={{ paddingY: 9}}
               >
                 {!currentUser.id ?
                 <Link to="/signup" style={{ textDecoration: 'none'}}>
@@ -196,9 +198,10 @@ function MembershipPage() {
                     className={classes.root}>Purchase Membership</Button>
                 </Link>
                 : 
-                <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
-                  <Button className={classes.root}>Purchase Membership</Button>
-                </Link>
+                // <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
+                //   <Button className={classes.root}>Purchase Membership</Button>
+                // </Link>
+                <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
                 }
               </Box>
 

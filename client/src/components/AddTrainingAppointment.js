@@ -105,6 +105,7 @@ function AddTrainingAppointment() {
         setDateTimeData(null)
         document.getElementById("error-alert2").hidden = true
         return document.getElementById("success-alert").hidden = false
+        // setTimeout(e)
       }
 
       // const foundAppointment = trainingAppointments.find(appt => {
@@ -155,11 +156,12 @@ function AddTrainingAppointment() {
   //   console.log(foundAppointment)
   // }
 
-    // setTimeout(() => {
-    //   const box = document.getElementById("success-alert").hidden = true;
+    // setTimeout((e) => {
+    //   // const box = document.getElementById("success-alert").hidden = true;
     
-    //   return box
+    //   // return box
     //   // box.style.visibility = 'hidden';
+    //   document.getElementById("success-alert").hidden = true
     // }, 9000);
 
   return (
