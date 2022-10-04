@@ -55,14 +55,14 @@ function SearchUserMembership() {
         {!foundUserData ? <Alert severity="error">Cannot find matching Username, please try again.</Alert> : null }
 
         <Box
-        sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            '& > :not(style)': {
-            width: 2000,
-            height: 780,
-            },
-        }}
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                '& > :not(style)': {
+                width: 2000,
+                height: 780,
+                },
+            }}
         >
             <Paper elevation={3}>
             <Typography sx={{fontSize: "2rem", m: 1}}>Search User:</Typography>

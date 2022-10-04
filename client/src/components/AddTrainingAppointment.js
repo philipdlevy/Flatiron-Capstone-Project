@@ -155,23 +155,21 @@ function AddTrainingAppointment() {
   //   console.log(foundAppointment)
   // }
 
-    setTimeout(() => {
-      const box = document.getElementById("success-alert").hidden = true;
+    // setTimeout(() => {
+    //   const box = document.getElementById("success-alert").hidden = true;
     
-      return box
-      // 👇️ hides element (still takes up space on page)
-      // box.style.visibility = 'hidden';
-    }, 9000);
+    //   return box
+    //   // box.style.visibility = 'hidden';
+    // }, 9000);
 
   return (
     <Box>
-      {/* {duplicateAppointmentCheck() ? <Alert severity="error">Already has an appointment.</Alert> : null} */}
       <Box id="error-alert2" hidden>
         <Alert severity="error">That time and date are already picked. Please choose another date and time with your trainer.</Alert>
       </Box>
       <Box id="success-alert" hidden>
         <Alert severity="success">Training session booked!</Alert>
-        {() => setTimeout()}
+        {/* {() => setTimeout()} */}
       </Box>
 
       <Box

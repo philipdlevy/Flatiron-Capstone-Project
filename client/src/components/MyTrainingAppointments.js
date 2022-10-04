@@ -69,23 +69,21 @@ function MyTrainingAppointments() {
         ];
 
         return <TableBody key={appointment.id} component={Paper}>
-        <Typography paddingX={2}>
-            Completed? 
-            <Checkbox {...label}
-            onClick={() => handleDelete(appointment)}
-            />
-        </Typography>
-        {rows.map((row) => (
-            <StyledTableRow key={row.rowName}>
-            <StyledTableCell >
-                {row.rowName} {row.rowValue} 
-            </StyledTableCell>
-            </StyledTableRow>
-        ))}
+            <Typography paddingX={2}>
+                Completed? 
+                <Checkbox {...label}
+                onClick={() => handleDelete(appointment)}
+                />
+            </Typography>
+            {rows.map((row) => (
+                <StyledTableRow key={row.rowName}>
+                    <StyledTableCell >
+                        {row.rowName} {row.rowValue} 
+                    </StyledTableCell>
+                </StyledTableRow>
+            ))}
         </TableBody>
     })  
-
-    
     
   return (
     <Box>
