@@ -14,11 +14,9 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
-import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
@@ -151,9 +149,6 @@ function AddTrainingAppointment() {
                   label="DateAndTimePicker"
                   value={dateTimeData}
                   onChange={handleDateAndTimeChange}
-                  // onChange={(newTime) => {
-                  //   setTimeData(newTime.$d);
-                  // }}
                   renderInput={(params) => <TextField {...params} />}
                 />
               </LocalizationProvider>

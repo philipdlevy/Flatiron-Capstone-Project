@@ -116,12 +116,12 @@ function SearchUserMembership() {
                         <li>Membership Price: {(foundUserData.gym_membership?.price == null) ?
                         "None" : foundUserData.gym_membership.price}</li>
 
-                        <li>Gym Address: {(foundUserData && foundUserData.gym_membership?.gym == null) ?
+                        <li>Gym Address: {(foundUserData && foundUserData.gym_membership?.gym == null || foundUserData.gym_membership?.gym) ?
                         "None" : foundUserData.gym_membership?.gym.address}</li>
                     </ul>
 
                     <Box>
-                        {!foundUserData.id || foundUserData.gym_membership === null ? null :
+                        {!foundUserData.id || foundUserData.gym_membership === null || !foundUserData.gym_membership.id ? null :
                         <Button 
                             sx={{ 
                                 width: "200px"
