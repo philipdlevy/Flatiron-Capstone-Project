@@ -36,7 +36,6 @@ function SearchUserMembership() {
     }
 
     function handleDeleteMembership(foundUserData) {
-        console.log(foundUserData)
         fetch(`/gym_memberships/${foundUserData.gym_membership.id}`, {
             method: "DELETE"
         })
@@ -122,7 +121,7 @@ function SearchUserMembership() {
                     </ul>
 
                     <Box>
-                        {!foundUserData.id ? null :
+                        {!foundUserData.id || foundUserData.gym_membership === null ? null :
                         <Button 
                             sx={{ 
                                 width: "200px"

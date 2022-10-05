@@ -84,6 +84,7 @@ function TrainerCard({ trainerObj }) {
         <CardContent>
           Bio:
           <Typography 
+            sx={{height: "65px", overflowY: "scroll"}}
             variant="body2" 
             color="text.secondary"
             >

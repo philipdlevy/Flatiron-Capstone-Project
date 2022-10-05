@@ -25,9 +25,6 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 function AddTrainingAppointment() {
   const [trainingAppointments, setTrainingAppointments] = useState([])
   const [trainerData, setTrainerData] = useState("")
-  // const [dateData, setDateData] = useState(null);
-  // const [timeData, setTimeData] = useState(null)
-  // const [dateTime, setDateTime] = React.useState(dayjs('2014-08-18T21:11:54'));
   const [dateTimeData, setDateTimeData] = React.useState(null);
 
   const handleDateAndTimeChange = (newValue) => {
@@ -36,8 +33,6 @@ function AddTrainingAppointment() {
 
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
-  console.log(trainingAppointments)
   
 
   const dispatch = useDispatch()
@@ -51,10 +46,6 @@ function AddTrainingAppointment() {
     fetch("/training_appointments")
     .then((resp) => resp.json())
     .then((appointments) => {
-      // appointments.forEach(appointment => {
-      //   let date = new Date(appointment.time)
-      //   appointment.time = date.toTimeString().slice(0, 5)
-      // })
       setTrainingAppointments(appointments)
     })
     .catch((error) => alert(error))
@@ -71,16 +62,11 @@ function AddTrainingAppointment() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    // const date = timeData
-    // date.setMilliseconds(0)
-
     const newTrainingAppointment = {
       trainer_id: trainerData.id,
       date_time: dateTimeData,
       user_id: currentUser.id
     }
-    console.log(newTrainingAppointment)
-    // console.log(typeof newTrainingAppointment.time)
 
     fetch("/training_appointments", {
       method: "POST",
@@ -91,14 +77,11 @@ function AddTrainingAppointment() {
     })
     .then((resp) => resp.json())
     .then((appointmentData) => {
-      // debugger
-      console.log("appointmentData", appointmentData)
 
       if (appointmentData.errors) {
         return document.getElementById("error-alert2").hidden = false
       } else {
         setTrainingAppointments([...trainingAppointments, appointmentData])
-        console.log(appointmentData)
         dispatch(userAddTrainingAppointments(appointmentData))
         setTrainerData("")
         setDateTimeData(null)
@@ -106,54 +89,10 @@ function AddTrainingAppointment() {
         return document.getElementById("success-alert").hidden = false
         // setTimeout(e)
       }
-
-      // const foundAppointment = trainingAppointments.find(appt => {
-      //   return appt.date_time === appointmentData
-      // })
-      // console.log(foundAppointment)
-
-      // const foundAppointment = trainingAppointments.find(appt => appt.date_time == appointmentData.date_time)
-      // console.log(foundAppointment)
-
-      // const foundAppointment = trainingAppointments.find((appt) => {
-      //   return appt.date_time == appointmentData.date_time
-      // })
-
-      // if (foundAppointment) {
-      //   return null
-      // } else {
-      //   setTrainingAppointments([...trainingAppointments, appointmentData])
-      //   console.log(appointmentData)
-      //   dispatch(userAddTrainingAppointments(appointmentData))
-      //   setTrainerData("")
-      // }
-      // let date = new Date(appointmentData.time)
-      // appointmentData.time = date.toTimeString().slice(0, 5)
-
-      // dispatch and set go here
-        // setTrainingAppointments([...trainingAppointments, appointmentData])
-        // console.log(appointmentData)
-        // dispatch(userAddTrainingAppointments(appointmentData))
-        // setTrainerData("")
-      
-      // setDateData(null)
-      // setTimeData(null)
       // history.push("/trainers")
     })
     .catch((error) => alert(error))
   }  
-
-  // function duplicateAppointmentCheck() {
-  //   // debugger
-  //   if (!dateTimeData || !trainerData) {
-  //     return null
-  //   }
-  //   const foundAppointment = trainingAppointments.find(appt => {
-  //     // return appt.time === timeData.toTimeString().slice(0, 5) && appt.date === dateData.toISOString().slice(0, 10) && appt.trainer.name === trainerData.name
-  //     return appt.dateTime === dateTimeData
-  //   })
-  //   console.log(foundAppointment)
-  // }
 
     setTimeout(() => {
       // const box = document.getElementById("success-alert").hidden = true;
@@ -204,22 +143,6 @@ function AddTrainingAppointment() {
                 </Select>
               </FormControl>
             </Box>
-
-            {/* <Typography padding={1}>Select Date:</Typography>
-            <Box sx={{ minWidth: 120, marginLeft: 1 }}>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
-                  label="Date"
-                  inputFormat="MM/DD/YYYY"
-                  value={dateData}
-                  onChange={(newDate) => {
-                    setDateData(newDate.$d);
-                  }}
-                  renderInput={(params) => <TextField {...params} />}
-                />
-              </LocalizationProvider>
-            </Box> */}
-
             
             <Box sx={{ minWidth: 120, marginLeft: 1, paddingY: 2}}>
             <Typography sx={{mb: 1}}>Select Date and Time:</Typography>
