@@ -57,6 +57,15 @@ function AddTrainingAppointment() {
     setTrainerData(event.target.value);
   };
 
+  // sets success alert off after 6 seconds
+  function alertTimer() {
+    const box = document.getElementById("success-alert").hidden = true;
+    return box
+  }
+  function tester() {
+    const turnOffAlert = setTimeout(alertTimer, 4000)
+  }
+
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -84,31 +93,22 @@ function AddTrainingAppointment() {
         setTrainerData("")
         setDateTimeData(null)
         document.getElementById("error-alert2").hidden = true
-        return document.getElementById("success-alert").hidden = false
+        document.getElementById("success-alert").hidden = false
+        tester()
       }
-      history.push("/trainers")
+      // history.push("/trainers")
     })
     .catch((error) => alert(error))
   }  
-
-    // setTimeout(() => {
-    //   // const box = document.getElementById("success-alert").hidden = true;
-    
-    //   // return box
-    //   document.getElementById("success-alert").hidden = true
-      
-    //   // box.style.visibility = 'hidden';
-    // }, 1000);
 
   return (
     <Box>
       <Box id="error-alert2" hidden>
         <Alert severity="error">That time and date are already picked. Please choose another date and time with your trainer.</Alert>
       </Box>
-      {/* <Box id="success-alert" hidden>
+      <Box id="success-alert" hidden>
         <Alert severity="success">Training session booked!</Alert>
-        {() => setTimeout()}
-      </Box> */}
+      </Box>
 
       <Box
         paddingY={5}
