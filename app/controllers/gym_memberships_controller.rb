@@ -9,7 +9,6 @@ class GymMembershipsController < ApplicationController
     end
 
     def create
-        # binding.pry
         membership = GymMembership.create!(gym_membership_params)
         render json: membership
     rescue ActiveRecord::RecordInvalid => invalid 

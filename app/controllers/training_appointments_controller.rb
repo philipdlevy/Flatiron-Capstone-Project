@@ -3,7 +3,6 @@ require 'pry'
 class TrainingAppointmentsController < ApplicationController
 
     def index
-        # binding.pry
         training_appointments = TrainingAppointment.all
         render json: training_appointments
     end
@@ -18,7 +17,6 @@ class TrainingAppointmentsController < ApplicationController
     end
 
     def create 
-        # binding.pry
         training_appointment = TrainingAppointment.create!(training_appointment_params)
         render json: training_appointment, status: :created
     rescue ActiveRecord::RecordInvalid => invalid 

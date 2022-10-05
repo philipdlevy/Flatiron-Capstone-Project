@@ -7,7 +7,6 @@ class GymMembershipSerializer < ActiveModel::Serializer
   # belongs_to :user
 
   def gym
-    # binding.pry
     usersGym = self.object.gym
   end
 end

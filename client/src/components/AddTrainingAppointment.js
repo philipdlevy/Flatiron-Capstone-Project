@@ -57,12 +57,12 @@ function AddTrainingAppointment() {
     setTrainerData(event.target.value);
   };
 
-  // sets success alert off after 6 seconds
+  // sets success alert off after 4 seconds
   function alertTimer() {
     const box = document.getElementById("success-alert").hidden = true;
     return box
   }
-  function tester() {
+  function successAlertOff() {
     const turnOffAlert = setTimeout(alertTimer, 4000)
   }
 
@@ -94,7 +94,7 @@ function AddTrainingAppointment() {
         setDateTimeData(null)
         document.getElementById("error-alert2").hidden = true
         document.getElementById("success-alert").hidden = false
-        tester()
+        successAlertOff()
       }
       // history.push("/trainers")
     })

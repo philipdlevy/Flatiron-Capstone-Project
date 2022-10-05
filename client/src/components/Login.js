@@ -29,8 +29,6 @@ function Login() {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const allUsers = useSelector((state) => state.users.entities)
-  console.log(allUsers)
 
   function handleChange(e) {
     setLoginData({

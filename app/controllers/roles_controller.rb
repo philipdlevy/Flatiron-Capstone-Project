@@ -4,7 +4,6 @@ class RolesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index 
-        # binding.pry
         roles = Role.all
         render json: roles
     end 
@@ -19,7 +18,6 @@ class RolesController < ApplicationController
     end
 
     def create
-        # binding.pry
         role = Role.create!(role_params)
         render json: role, status: :created
     rescue ActiveRecord::RecordInvalid => invalid 

@@ -24,8 +24,6 @@ class TrainersController < ApplicationController
         else
             render json: {errors: trainer.errors.full_messages}, status: :unprocessable_entity
         end
-    # rescue ActiveRecord::RecordInvalid => invalid 
-    #     render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def update

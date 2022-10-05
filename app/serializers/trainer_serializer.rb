@@ -6,7 +6,6 @@ class TrainerSerializer < ActiveModel::Serializer
     # has_many :users, through: :training_appointments
 
     def users 
-      # binding.pry
       users = object.users.uniq
     end
 end

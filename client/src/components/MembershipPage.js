@@ -37,7 +37,6 @@ const useStyles = makeStyles({
 
 function MembershipPage() {
   const currentUser = useSelector((state) => state.users.user)
-  console.log(currentUser)
 
   // State for all classes. Access them by classes.whichclass
   const classes = useStyles()

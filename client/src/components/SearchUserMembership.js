@@ -113,7 +113,7 @@ function SearchUserMembership() {
                         <li>Membership Price: {(foundUserData.gym_membership?.price == null) ?
                         "None" : foundUserData.gym_membership.price}</li>
 
-                        <li>Gym Address: {(foundUserData && foundUserData.gym_membership?.gym == null || foundUserData.gym_membership?.gym) ?
+                        <li>Gym Address: {(foundUserData && foundUserData.gym_membership?.gym == null || !foundUserData.gym_membership?.gym.id) ?
                         "None" : foundUserData.gym_membership?.gym.address}</li>
                     </ul>
 
