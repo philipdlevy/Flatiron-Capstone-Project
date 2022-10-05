@@ -15,7 +15,6 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
 import dayjs from 'dayjs';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -52,10 +51,10 @@ function AddTrainingAppointment() {
     fetch("/training_appointments")
     .then((resp) => resp.json())
     .then((appointments) => {
-      appointments.forEach(appointment => {
-        let date = new Date(appointment.time)
-        appointment.time = date.toTimeString().slice(0, 5)
-      })
+      // appointments.forEach(appointment => {
+      //   let date = new Date(appointment.time)
+      //   appointment.time = date.toTimeString().slice(0, 5)
+      // })
       setTrainingAppointments(appointments)
     })
     .catch((error) => alert(error))
@@ -156,13 +155,13 @@ function AddTrainingAppointment() {
   //   console.log(foundAppointment)
   // }
 
-    // setTimeout((e) => {
-    //   // const box = document.getElementById("success-alert").hidden = true;
+    setTimeout(() => {
+      // const box = document.getElementById("success-alert").hidden = true;
     
-    //   // return box
-    //   // box.style.visibility = 'hidden';
-    //   document.getElementById("success-alert").hidden = true
-    // }, 9000);
+      // return box
+      // box.style.visibility = 'hidden';
+      return document.getElementById("success-alert").hidden = true
+    }, 9000);
 
   return (
     <Box>
@@ -171,7 +170,7 @@ function AddTrainingAppointment() {
       </Box>
       <Box id="success-alert" hidden>
         <Alert severity="success">Training session booked!</Alert>
-        {/* {() => setTimeout()} */}
+        {() => setTimeout()}
       </Box>
 
       <Box
@@ -186,8 +185,7 @@ function AddTrainingAppointment() {
           height: 330
         }}
         >
-          <form onSubmit={handleSubmit}>
-            
+          <form onSubmit={handleSubmit}>           
             <Box sx={{ minWidth: 120, mt: 2 }}>
             <Typography padding={1}>Select Trainer:</Typography>
               <FormControl sx={{ ml: 1, width: 230 }}>

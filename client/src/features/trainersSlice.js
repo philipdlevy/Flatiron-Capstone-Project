@@ -13,7 +13,7 @@ const trainersSlice = createSlice({
             gym: {},
             training_appointments: []
         },
-        entities: [],
+        entities: [],   
     },
     reducers: {
         trainerAdded(state, action) {
@@ -45,3 +45,4 @@ const trainersSlice = createSlice({
 export const { trainerAdded, trainerRemoved, trainerUpdated, trainersAppointmentDeleted } = trainersSlice.actions;
 
 export default trainersSlice.reducer;
+

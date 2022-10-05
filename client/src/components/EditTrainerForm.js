@@ -34,7 +34,7 @@ function EditTrainerForm() {
 
 
   const trainerArray = useSelector((state) => state.trainers.entities)
-
+  
   useEffect(() => {
     if (!trainerArray.length) {
       dispatch(fetchTrainers())
