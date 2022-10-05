@@ -105,7 +105,7 @@ function AddExercise() {
             value={newExerciseData.image_url}
             onChange={handleChange}
           />
-          <Typography padding={1}>How To Perform: 10-150 characters</Typography>\
+          <Typography padding={1}>How To Perform: 10-350 characters</Typography>\
           <Box
             sx={{ ml: 1}}
           >

@@ -106,7 +106,12 @@ function TrainerCard({ trainerObj }) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph color="text.secondary">Email: {trainerObj.email}</Typography>
+            <Typography 
+              paragraph color="text.secondary" 
+              sx={{overflowY: "scroll"}}
+            >
+              Email: {trainerObj.email}
+            </Typography>
 
             <Box
               className={classes.displays}

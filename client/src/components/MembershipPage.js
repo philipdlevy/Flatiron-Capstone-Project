@@ -42,6 +42,22 @@ function MembershipPage() {
   // State for all classes. Access them by classes.whichclass
   const classes = useStyles()
 
+  function membershipDisplay() {
+    if (!currentUser.id) {
+      return <Link to="/signup" style={{ textDecoration: 'none'}}>
+        <Button className={classes.root}>Purchase Membership</Button>
+      </Link>
+    }
+    if (currentUser.id && !currentUser.gym_membership?.gym.id) {
+      return <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
+        <Button className={classes.root}>Purchase Membership</Button>
+      </Link>
+    } 
+    if (currentUser.id && currentUser.gym_membership?.gym.id) {
+       return <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
+    }
+  }
+
   return (
     <Container>
       <Grid 
@@ -102,7 +118,8 @@ function MembershipPage() {
                 className={classes.displays}
                 sx={{ paddingY: 9}}
               >
-                {!currentUser.id || !currentUser.gym_membership?.gym.id ?
+                {membershipDisplay()}
+                {/* {!currentUser.id || !currentUser.gym_membership?.gym.id ?
                   <Link to="/signup" style={{ textDecoration: 'none'}}>
                     <Button className={classes.root}>Purchase Membership</Button>
                   </Link>
@@ -111,7 +128,7 @@ function MembershipPage() {
                   //   <Button className={classes.root}>Purchase Membership</Button>
                   // </Link>
                   <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
-                }
+                } */}
               </Box>
 
             </Box>
@@ -164,7 +181,10 @@ function MembershipPage() {
                 className={classes.displays}
                 sx={{ paddingY: 9}}
               >
-                {!currentUser.id || !currentUser.gym_membership?.gym.id ?
+              
+
+                {membershipDisplay()}
+                {/* {!currentUser.id || !currentUser.gym_membership?.gym.id ?
                 <Link to="/signup" style={{ textDecoration: 'none'}}>
                   <Button 
                     className={classes.root}>Purchase Membership</Button>
@@ -174,7 +194,7 @@ function MembershipPage() {
                 //   <Button className={classes.root}>Purchase Membership</Button>
                 // </Link>
                 <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
-                }
+                } */}
               </Box>
 
             </Box>

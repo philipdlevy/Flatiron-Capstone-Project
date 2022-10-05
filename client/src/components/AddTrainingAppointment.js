@@ -86,28 +86,29 @@ function AddTrainingAppointment() {
         document.getElementById("error-alert2").hidden = true
         return document.getElementById("success-alert").hidden = false
       }
-      // history.push("/trainers")
+      history.push("/trainers")
     })
     .catch((error) => alert(error))
   }  
 
-    setTimeout(() => {
-      // const box = document.getElementById("success-alert").hidden = true;
+    // setTimeout(() => {
+    //   // const box = document.getElementById("success-alert").hidden = true;
     
-      // return box
-      // box.style.visibility = 'hidden';
-      return document.getElementById("success-alert").hidden = true
-    }, 9000);
+    //   // return box
+    //   document.getElementById("success-alert").hidden = true
+      
+    //   // box.style.visibility = 'hidden';
+    // }, 1000);
 
   return (
     <Box>
       <Box id="error-alert2" hidden>
         <Alert severity="error">That time and date are already picked. Please choose another date and time with your trainer.</Alert>
       </Box>
-      <Box id="success-alert" hidden>
+      {/* <Box id="success-alert" hidden>
         <Alert severity="success">Training session booked!</Alert>
         {() => setTimeout()}
-      </Box>
+      </Box> */}
 
       <Box
         paddingY={5}

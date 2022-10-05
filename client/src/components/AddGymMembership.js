@@ -29,7 +29,6 @@ function AddGymMembership() {
 
   const gymArray = useSelector((state) => state.gyms.entities)
   const currentUser = useSelector((state) => state.users.user) 
-  debugger
   console.log(currentUser)
   
 
@@ -93,8 +92,6 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
-      console.log(currentUser)
-      console.log(membershipData)
       setAllMemberships([...allMemberships, membershipData])
       dispatch(userAddMembership(membershipData))
       setGymData("")
@@ -105,14 +102,14 @@ function AddGymMembership() {
     .catch((error) => alert(error))
   }
 
-  function membershipDuplicationCheck() {
-    const checker = currentUser.gym_membership.gym.id
-    return checker
-  }
+  // function membershipDuplicationCheck() {
+  //   const checker = currentUser.gym_membership.gym.id
+  //   return checker
+  // }
 
   return (
     <Box>
-        {!membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+        {/* {!membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null} */}
       
       <Box
         paddingY={5}
@@ -183,15 +180,15 @@ function AddGymMembership() {
               alignItems="center"
               justifyContent="center"
             >
-            {membershipDuplicationCheck() ?
-              null :
+            {/* {membershipDuplicationCheck() ?
+              null : */}
               <Button
                 variant="contained"
                 type="submit"
               >
                 Purchase Membership
               </Button>
-            }
+            {/* } */}
             </Box>
           </form>
         </Paper>
