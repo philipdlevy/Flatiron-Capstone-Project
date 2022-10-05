@@ -67,9 +67,6 @@ function MembershipPage() {
                 className={classes.displays}
                 variant='h5' 
                 component="h2" 
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
               >
                 Monthly Gym Membership
               </Typography>
@@ -78,9 +75,6 @@ function MembershipPage() {
                 className={classes.displays}
                 variant='body2' 
                 component="p"
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
               >
                 (Monthly charge until stopped)
               </Typography>
@@ -90,9 +84,6 @@ function MembershipPage() {
                   className={classes.displays}
                   variant='h5' 
                   component="h2"
-                  // display="flex"
-                  // alignItems="center"
-                  // justifyContent="center"
                 >
                   $39.99 USD
                 </Typography>
@@ -100,9 +91,6 @@ function MembershipPage() {
                   className={classes.displays}
                   variant='body1' 
                   component="p"
-                  // display="flex"
-                  // alignItems="center"
-                  // justifyContent="center"
                 >
                   (No Contract)
                 </Typography>
@@ -110,9 +98,6 @@ function MembershipPage() {
 
               <Box
                 className={classes.displays}
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
                 sx={{ paddingY: 9}}
               >
                 {!currentUser.id ?
@@ -144,9 +129,6 @@ function MembershipPage() {
                 className={classes.displays}
                 variant='h5' 
                 component="h2"
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
               >
                 1 Year Gym Membership
               </Typography>
@@ -155,9 +137,6 @@ function MembershipPage() {
                 className={classes.displays}
                 variant='body2' 
                 component="p"
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
               >
                 (Paid in full)
               </Typography>
@@ -167,9 +146,6 @@ function MembershipPage() {
                   className={classes.displays}
                   variant='h5' 
                   component="h2"
-                  // display="flex"
-                  // alignItems="center"
-                  // justifyContent="center"
                 >
                   $400.00 USD
                 </Typography>
@@ -177,9 +153,6 @@ function MembershipPage() {
                   className={classes.displays}
                   variant='body1' 
                   component="p"
-                  // display="flex"
-                  // alignItems="center"
-                  // justifyContent="center"
                 >
                   (Save over 10%!)
                 </Typography>
@@ -187,9 +160,6 @@ function MembershipPage() {
 
               <Box
                 className={classes.displays}
-                // display="flex"
-                // alignItems="center"
-                // justifyContent="center"
                 sx={{ paddingY: 9}}
               >
                 {!currentUser.id ?

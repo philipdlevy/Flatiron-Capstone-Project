@@ -27,10 +27,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function AccountPage() {
-  const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
+  const currentUser = useSelector((state) => state.users.user)
 
-  // debugger
   const rows = [
     { rowName: "Username:", rowValue: currentUser.username },
     { rowName: "Email:", rowValue: currentUser.email },

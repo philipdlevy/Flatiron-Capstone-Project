@@ -105,17 +105,7 @@ function AddExercise() {
             value={newExerciseData.image_url}
             onChange={handleChange}
           />
-          <Typography padding={1}>How To Perform: 10-150 characters</Typography>
-          {/* <TextField
-            sx={{ ml: 1, width: 333}}
-            required
-            id="outlined-password-input"
-            label="required"
-            type="text"
-            name="info"
-            value={newExerciseData.info}
-            onChange={handleChange}
-          /> */}
+          <Typography padding={1}>How To Perform: 10-150 characters</Typography>\
           <Box
             sx={{ ml: 1}}
           >

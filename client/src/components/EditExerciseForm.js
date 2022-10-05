@@ -129,7 +129,6 @@ function EditExerciseForm() {
             sx={{ ml: 1}}
           >
             <TextareaAutosize
-              // sx={{ ml: 1, width: 333}}
               required
               id="outlined-password-input"
               label="required"

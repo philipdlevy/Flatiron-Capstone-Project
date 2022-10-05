@@ -57,7 +57,6 @@ function AdminSignupForm() {
         }
       }
       dispatch(userAdded(user))
-      console.log(user)
       setNewUserData({
         username: "",
         password: "",

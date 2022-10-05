@@ -13,11 +13,9 @@ import Alert from '@mui/material/Alert';
 function SearchUserMembership() {
     const [foundUserData, setFoundUserData] = useState({})
     const [searchBar, setSearchBar] = useState("")
-    console.log(foundUserData)
 
     const dispatch = useDispatch();
     const usersArray = useSelector((state) => state.users.entities)
-    console.log(usersArray)
 
     function handleChange(e) {
         setSearchBar(e.target.value)
@@ -43,7 +41,6 @@ function SearchUserMembership() {
             dispatch(userDeleteMembership(foundUserData))
             setSearchBar("")
             setFoundUserData({})
-            // <Alert severity="success">Success! Users membership deleted.</Alert>
         })
         .catch((error) => alert(error))
     }

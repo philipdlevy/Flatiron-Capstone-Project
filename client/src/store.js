@@ -9,13 +9,7 @@ import sessionStorage from 'redux-persist/lib/storage/session';
 // changes here
 import { 
     persistReducer, 
-    persistStore, 
-    // FLUSH, 
-    // REHYDRATE, 
-    // PAUSE, 
-    // PERSIST,
-    // PURGE,
-    // REGISTER,
+    persistStore,
 } from 'redux-persist';
 
 import thunk from 'redux-thunk';
@@ -46,9 +40,6 @@ const store = configureStore({
     //new middleware to get rid of errors
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware({
-            // serializableCheck: {
-            //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            // },
             serializableCheck: false,
             middleware: [thunk]
         }),

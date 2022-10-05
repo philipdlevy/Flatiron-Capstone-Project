@@ -90,7 +90,6 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
-      // debugger
       setAllMemberships([...allMemberships, membershipData])
       dispatch(userAddMembership(membershipData))
       setGymData("")
@@ -133,8 +132,6 @@ function AddGymMembership() {
                   id="outlined-required"
                   label="Required"
                   labelId="select-labels"
-                  // id="simple-select"
-                  // label="Membership"
                   onChange={handleMembershipChange}
                   value={membershipTypeData}
                 >
@@ -167,7 +164,6 @@ function AddGymMembership() {
                   id="outlined-required"
                   label="Required"
                   labelId="select-label"
-                  // id="simple-select"
                   value={gymData}
                   // label="Gym"
                   onChange={handleGymChange}

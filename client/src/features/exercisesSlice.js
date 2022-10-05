@@ -20,7 +20,6 @@ const exercisesSlice = createSlice({
             state.entities = state.entities.filter((exercise) => exercise.id !== action.payload);
         },
         exerciseUpdated(state, action) {
-            // debugger
             state.exercise = state.entities.find((exercise) => exercise.id === action.payload.id)
         }
     },

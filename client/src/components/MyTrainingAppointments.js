@@ -55,7 +55,6 @@ function MyTrainingAppointments() {
             method: "DELETE"
             })
             .then(() => {
-                console.log(appointment)
                 dispatch(trainersAppointmentDeleted(appointment))
                 dispatch(userDeleteTrainingAppointments(appointment))
         })

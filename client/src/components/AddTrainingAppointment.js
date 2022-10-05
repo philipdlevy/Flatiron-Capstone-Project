@@ -85,7 +85,6 @@ function AddTrainingAppointment() {
         setDateTimeData(null)
         document.getElementById("error-alert2").hidden = true
         return document.getElementById("success-alert").hidden = false
-        // setTimeout(e)
       }
       // history.push("/trainers")
     })

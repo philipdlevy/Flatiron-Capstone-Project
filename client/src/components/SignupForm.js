@@ -87,9 +87,6 @@ function SignupForm() {
       <Box
         paddingY={5}
         className={classes.displays}
-        // display="flex"
-        // alignItems="center"
-        // justifyContent="center"
       >
 
         <Paper sx={{

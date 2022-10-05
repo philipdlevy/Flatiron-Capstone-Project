@@ -4,14 +4,12 @@ import { useDispatch } from "react-redux";
 import { loginUser } from '../features/usersSlice';
 
 import Box from '@mui/material/Box';
-// import { grey } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
-// const color = grey[800]
 
 const useStyles = makeStyles({
   displays: {
@@ -53,14 +51,12 @@ function Login() {
     .then((user) => {
       if (user.error) {
         return document.getElementById("error-alert").hidden = false
-        // return user.error.login
       }
       if (!user.gym_membership) {
         user.gym_membership = {
           gym: {}
         }
       }
-      console.log(user)
       dispatch(loginUser(user))
       setLoginData({
         username: "",
