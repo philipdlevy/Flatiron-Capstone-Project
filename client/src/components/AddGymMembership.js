@@ -102,14 +102,8 @@ function AddGymMembership() {
     .catch((error) => alert(error))
   }
 
-  // function membershipDuplicationCheck() {
-  //   const checker = currentUser.gym_membership.gym.id
-  //   return checker
-  // }
-
   return (
     <Box>
-        {/* {!membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null} */}
       
       <Box
         paddingY={5}
@@ -180,15 +174,12 @@ function AddGymMembership() {
               alignItems="center"
               justifyContent="center"
             >
-            {/* {membershipDuplicationCheck() ?
-              null : */}
               <Button
                 variant="contained"
                 type="submit"
               >
                 Purchase Membership
               </Button>
-            {/* } */}
             </Box>
           </form>
         </Paper>

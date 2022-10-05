@@ -118,16 +118,6 @@ function MembershipPage() {
                 sx={{ paddingY: 9}}
               >
                 {membershipDisplay()}
-                {/* {!currentUser.id || !currentUser.gym_membership?.gym.id ?
-                  <Link to="/signup" style={{ textDecoration: 'none'}}>
-                    <Button className={classes.root}>Purchase Membership</Button>
-                  </Link>
-                  : 
-                  // <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
-                  //   <Button className={classes.root}>Purchase Membership</Button>
-                  // </Link>
-                  <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
-                } */}
               </Box>
 
             </Box>
@@ -183,17 +173,6 @@ function MembershipPage() {
               
 
                 {membershipDisplay()}
-                {/* {!currentUser.id || !currentUser.gym_membership?.gym.id ?
-                <Link to="/signup" style={{ textDecoration: 'none'}}>
-                  <Button 
-                    className={classes.root}>Purchase Membership</Button>
-                </Link>
-                : 
-                // <Link to="/memberships/new" style={{ textDecoration: 'none'}}>
-                //   <Button className={classes.root}>Purchase Membership</Button>
-                // </Link>
-                <Alert severity="info">You already have an active membership. Cancel your current membership to purchase another.</Alert>
-                } */}
               </Box>
 
             </Box>

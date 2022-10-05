@@ -41,7 +41,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
     // const trainersArray = useSelector((state) => state.trainers.entities)
-    console.log(currentUser)
     const dispatch = useDispatch()
 
     useEffect(() => {

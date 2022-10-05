@@ -52,7 +52,6 @@ function AccountPage() {
                 <StyledTableCell >
                   {row.rowName} {row.rowValue}
                 </StyledTableCell>
-                {/* <StyledTableCell sx={{ width: 100 }}>{row.rowValue}</StyledTableCell> */}
               </StyledTableRow>
             ))}
           </TableBody>
