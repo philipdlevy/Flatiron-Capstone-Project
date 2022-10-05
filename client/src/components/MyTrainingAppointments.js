@@ -16,6 +16,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Alert from '@mui/material/Alert';
 import Checkbox from '@mui/material/Checkbox';
+import { current } from '@reduxjs/toolkit';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -40,6 +41,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 function MyTrainingAppointments() {
     const currentUser = useSelector((state) => state.users.user)
     // const trainersArray = useSelector((state) => state.trainers.entities)
+    console.log(currentUser)
     const dispatch = useDispatch()
 
     useEffect(() => {

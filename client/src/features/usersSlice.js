@@ -41,7 +41,7 @@ const usersSlice = createSlice({
         },
         userDeleteMembership(state, action) {
             state.entities.find((user) => user.id == action.payload.id).gym_membership = {}
-        },
+        }
     }
 })
 

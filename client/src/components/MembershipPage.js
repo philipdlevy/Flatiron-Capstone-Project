@@ -37,6 +37,8 @@ const useStyles = makeStyles({
 
 function MembershipPage() {
   const currentUser = useSelector((state) => state.users.user)
+  console.log(currentUser)
+
   // State for all classes. Access them by classes.whichclass
   const classes = useStyles()
 
@@ -100,7 +102,7 @@ function MembershipPage() {
                 className={classes.displays}
                 sx={{ paddingY: 9}}
               >
-                {!currentUser.id ?
+                {!currentUser.id || !currentUser.gym_membership?.gym.id ?
                   <Link to="/signup" style={{ textDecoration: 'none'}}>
                     <Button className={classes.root}>Purchase Membership</Button>
                   </Link>
@@ -162,7 +164,7 @@ function MembershipPage() {
                 className={classes.displays}
                 sx={{ paddingY: 9}}
               >
-                {!currentUser.id ?
+                {!currentUser.id || !currentUser.gym_membership?.gym.id ?
                 <Link to="/signup" style={{ textDecoration: 'none'}}>
                   <Button 
                     className={classes.root}>Purchase Membership</Button>

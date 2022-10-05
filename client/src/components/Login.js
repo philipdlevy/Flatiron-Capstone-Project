@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from '../features/usersSlice';
 
 import Box from '@mui/material/Box';
@@ -29,6 +29,8 @@ function Login() {
   const dispatch = useDispatch()
   const history = useHistory()
 
+  const allUsers = useSelector((state) => state.users.entities)
+  console.log(allUsers)
 
   function handleChange(e) {
     setLoginData({

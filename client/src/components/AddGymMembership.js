@@ -29,6 +29,9 @@ function AddGymMembership() {
 
   const gymArray = useSelector((state) => state.gyms.entities)
   const currentUser = useSelector((state) => state.users.user) 
+  debugger
+  console.log(currentUser)
+  
 
   useEffect(() => {
     dispatch(fetchGyms())
@@ -90,6 +93,8 @@ function AddGymMembership() {
     })
     .then((resp) => resp.json())
     .then((membershipData) => {
+      console.log(currentUser)
+      console.log(membershipData)
       setAllMemberships([...allMemberships, membershipData])
       dispatch(userAddMembership(membershipData))
       setGymData("")
@@ -101,13 +106,13 @@ function AddGymMembership() {
   }
 
   function membershipDuplicationCheck() {
-    const checker = currentUser.gym_membership.gym.id && currentUser.gym_membership.gym.id === gymData.id
+    const checker = currentUser.gym_membership.gym.id
     return checker
   }
 
   return (
     <Box>
-        {membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
+        {!membershipDuplicationCheck() ? <Alert severity="error">Already has a membership at that gym, please choose another.</Alert> : null}
       
       <Box
         paddingY={5}
