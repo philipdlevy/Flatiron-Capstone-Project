@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTrainers } from '../features/trainersSlice';
 import {useHistory} from "react-router-dom"
 import { userAddTrainingAppointments } from '../features/usersSlice';
+import { useParams } from 'react-router-dom';
 
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -24,7 +25,6 @@ function AddTrainingAppointment() {
   const [trainingAppointments, setTrainingAppointments] = useState([])
   const [trainerData, setTrainerData] = useState("")
   const [dateTimeData, setDateTimeData] = React.useState(null);
-
   const handleDateAndTimeChange = (newValue) => {
     setDateTimeData(newValue);
   };
@@ -32,7 +32,6 @@ function AddTrainingAppointment() {
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
   
-
   const dispatch = useDispatch()
   const history = useHistory()
 
