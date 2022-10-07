@@ -57,13 +57,14 @@ function AddTrainingAppointment() {
     setTrainerData(event.target.value);
   };
 
-  // sets success alert off after 4 seconds
+  // sets success alert off after 1 seconds
   function alertTimer() {
-    const box = document.getElementById("success-alert").hidden = true;
-    return box
+    const message = document.getElementById("success-alert").hidden = true
+      return message
   }
   function successAlertOff() {
-    const turnOffAlert = setTimeout(alertTimer, 4000)
+    const turnOffAlert = setTimeout(alertTimer, 1000)
+    return turnOffAlert
   }
 
   function handleSubmit(e) {
