@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 
 function HomePage() {
   const currentUser = useSelector((state) => state.users.user)
+  const usersArray = useSelector((state) => state.users.entities)
+  console.log(usersArray)
   
   return (
     <Container>

@@ -16,6 +16,7 @@ function SearchUserMembership() {
 
     const dispatch = useDispatch();
     const usersArray = useSelector((state) => state.users.entities)
+    console.log(usersArray)
 
     function handleChange(e) {
         setSearchBar(e.target.value)
