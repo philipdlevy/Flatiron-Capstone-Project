@@ -42,7 +42,7 @@ function GymCard({ gymObj }) {
           </Typography>
         </CardContent>
         
-        {currentUser.role && currentUser.role.name === "admin" ?
+        {currentUser.role && currentUser.role.name === "Admin" ?
         <Button 
           variant='contained' 
           size='small'
@@ -52,7 +52,7 @@ function GymCard({ gymObj }) {
         </Button>
         : null}
 
-        {currentUser.role && currentUser.role.name === "admin" ?
+        {currentUser.role && currentUser.role.name === "Admin" ?
         <Link to={`/gyms/${id}`} style={{ textDecoration: 'none'}}>
           <Button variant='contained' size='small'> Edit Gym</Button>
         </Link>

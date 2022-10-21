@@ -26,7 +26,7 @@ function AdminSignupForm() {
       age: "",
       email: "",
       address: "",
-      role_id: 4
+      role_id: 1
   })
   const classes = useStyles()
 

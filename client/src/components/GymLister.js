@@ -30,7 +30,7 @@ function GymLister() {
   } else {
     return (   
       <Box padding={2}>
-        {currentUser.role && currentUser.role.name === "admin" ?
+        {currentUser.role && currentUser.role.name === "Admin" ?
           <Link to="/gyms/new" style={{ textDecoration: 'none'}}>
             <Button variant="contained">Add new gym</Button>
           </Link>

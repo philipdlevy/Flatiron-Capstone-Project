@@ -228,7 +228,7 @@ function Navbar() {
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
 
-              {currentUser.role.name === "admin" ? 
+              {currentUser.role.name === "Admin" ? 
               <MenuItem
                 onClick={handleCloseUserMenu}
               > 
@@ -237,7 +237,7 @@ function Navbar() {
                 </Link>
               </MenuItem> : null }
 
-              {currentUser.role.name === "admin" ? 
+              {currentUser.role.name === "Admin" ? 
               <MenuItem
                 onClick={handleCloseUserMenu}
               > 

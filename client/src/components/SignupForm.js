@@ -28,7 +28,7 @@ function SignupForm() {
     age: "",
     email: "",
     address: "",
-    role_id: 3
+    role_id: 2
   })
   // State for all classes. Acces them by classes.whichclass
   const classes = useStyles()

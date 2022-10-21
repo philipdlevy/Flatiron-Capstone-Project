@@ -18,14 +18,12 @@ const trainersSlice = createSlice({
     reducers: {
         trainerAdded(state, action) {
             state.entities.push(action.payload)
-            console.log(state, action)
         },
         trainerRemoved(state, action) {
             state.entities = state.entities.filter((trainer) => trainer.id !== action.payload);
         },
         trainerUpdated(state, action) {
             state.trainer = state.entities.find((trainer) => trainer.id === action.payload.id)
-            console.log(action.payload)
         },
         trainersAppointmentDeleted(state, action) {
             state.trainer.training_appointments = state.trainer.training_appointments.filter(appt => appt.id !== action.payload.id)          

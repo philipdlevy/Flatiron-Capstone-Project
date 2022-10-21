@@ -6,6 +6,7 @@ class GymsController < ApplicationController
     def index
         gyms = Gym.all
         render json: gyms
+        # binding.pry
     end
 
     def create

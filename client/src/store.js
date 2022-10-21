@@ -26,15 +26,14 @@ const store = configureStore({
         // users: usersReducer,
         users: persistedReducer,
         gyms: gymsReducer,  
+        // gyms: persistedReducer,
         exercises: exercisesReducer,
         trainers: trainersReducer,
+        // trainers: persistedReducer,
         memberships: membershipsReducer,
 
         // Added the reducer part
         reducer: persistedReducer,
-
-        // old middleware, may need again
-        // middleware: [thunk]
     },
     
     //new middleware to get rid of errors

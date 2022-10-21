@@ -13,7 +13,6 @@ import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
 
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
@@ -28,8 +27,7 @@ function AddGymMembership() {
   const history = useHistory()
 
   const gymArray = useSelector((state) => state.gyms.entities)
-  const currentUser = useSelector((state) => state.users.user) 
-  console.log(currentUser)
+  const currentUser = useSelector((state) => state.users.user)
   
 
   useEffect(() => {
