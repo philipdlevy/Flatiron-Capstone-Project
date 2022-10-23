@@ -1,6 +1,7 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { fetchUser } from '../features/usersSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -11,6 +12,12 @@ function HomePage() {
   const currentUser = useSelector((state) => state.users.user)
   const usersArray = useSelector((state) => state.users.entities)
   console.log(usersArray)
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
   
   return (
     <Container>

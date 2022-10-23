@@ -40,7 +40,17 @@ const usersSlice = createSlice({
             state.user.training_appointments = state.user.training_appointments.filter((appt) => appt.id !== action.payload.id)
         },
         userDeleteMembership(state, action) {
+            state.user.gym_membership = {}
             state.entities.find((user) => user.id == action.payload.id).gym_membership = {}
+        }
+    },
+    extraReducers: {
+        [fetchUser.pending](state) {
+            state.status = "Loading";
+        },
+        [fetchUser.fulfilled](state, action) {
+            state.entities = action.payload;
+            state.status = "idle"
         }
     }
 })

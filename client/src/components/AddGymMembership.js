@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from "react-router-dom"
 import { fetchGyms } from '../features/gymsSlice';
+import { fetchUser } from '../features/usersSlice';
 import { userAddMembership } from '../features/usersSlice';
 
 import Paper from '@mui/material/Paper';
@@ -13,7 +14,6 @@ import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
 
 const memberships = ["Monthly Membership", "Yearly Membership"]
 
@@ -29,6 +29,10 @@ function AddGymMembership() {
   const gymArray = useSelector((state) => state.gyms.entities)
   const currentUser = useSelector((state) => state.users.user)
   
+
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchGyms())
