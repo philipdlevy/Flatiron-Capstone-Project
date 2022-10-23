@@ -14,6 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { current } from "@reduxjs/toolkit";
 
 function TrainerLister() {
   const [editing, setEditing] = useState(false)
@@ -21,6 +22,7 @@ function TrainerLister() {
 
   const trainersArray = useSelector((state) => state.trainers.entities)
   const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
   const getGyms = useSelector((state) => state.gyms.entities)
 
   const dispatch = useDispatch()

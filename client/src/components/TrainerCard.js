@@ -43,6 +43,7 @@ const ExpandMore = styled((props) => {
 
 function TrainerCard({ trainerObj }) {
   const currentUser = useSelector((state) => state.users.user) 
+  console.log(currentUser)
   const {id, name, bio, email, image_url} = trainerObj
   const classes = useStyles()
 
@@ -116,7 +117,7 @@ function TrainerCard({ trainerObj }) {
             <Box
               className={classes.displays}
             >
-              {!currentUser.gym_membership?.gym.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
+              {!currentUser.gym_membership?.gym?.id ? <Alert severity="info">Must Purchase a Membership to Add Training Appointments.</Alert> : 
               <Link to="/trainingAppointment/new" style={{ textDecoration: 'none'}}>
                 <Button variant="contained">Book an appointment</Button>
               </Link>
